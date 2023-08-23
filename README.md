@@ -4,7 +4,7 @@ This website (template) is based on [Gatsby's RolwinReevan Portfolio template](h
 
 It is rewritten for academic usage with the help of [Reapor-Yurnero](https://github.com/Reapor-Yurnero).
 
-Full credits for the website template goes to [tc-imba's Gatsby Personal Website Template for Academic Usage](https://github.com/tc-imba/gatsby-theme-academic/tree/master).
+Full credits for this awesome website template goes to [tc-imba's Gatsby Personal Website Template for Academic Usage](https://github.com/tc-imba/gatsby-theme-academic/tree/master).
 
 ## Why Gatsby?
 
