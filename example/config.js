@@ -1,24 +1,26 @@
 module.exports = {
-  pathPrefix: '/gatsby-theme-academic',
-  siteUrl: 'https://tc-imba.github.io',
-  title: 'John Doe',
-  description: 'Personal Website of John Doe',
-  author: 'John Doe',
-  authorAlternative: '豆浆',
+  // pathPrefix: '',
+  siteUrl: 'https://codejaeger.github.io',
+  title: 'Debabrata Mandal',
+  description: 'codejaeger ',
+  author: 'Debabrata Mandal',
+  // authorAlternative: '',
   introduction: [
-    'You can write one or several paragraphs to introduce yourself here. You can find this introduction in the `config.js` file in the template.',
-    'In this site, almost everything supports Markdown Syntax. For example, you can add hyperlinks in the introduction such as [fxhsb](https://github.com/Reapor-Yurnero) with\n```markdown\n[fxhsb](https://github.com/Reapor-Yurnero)\n```',
+    'I am first-year Ph.D. student in UNC-CH working with Praneeth Chakravarthula exploring deep-optics and computational image reconstruction. Specifically, I am looking at improving the achievable image quality with meta-lenses, one of the pioneering revolution under Fourier optics. Our research aims to stretch the limits imposed by wave-guided imaging pipelines to open up a diverse range of applications involving meta-lenses.',
+    'My primary areas of interest lie in the field of computer graphics and accelerated computing. I am also interested in understanding scene representation through surface and shape modeling. I am drawn towards skeletal-pose and shape estimation models which often intermix physics and kinematics with deep learning. In my spare time I play with vector graphics and 2D visualisations made through programming.',
+    'I also have been exposed to industry during my role as an AI engineer at ACL (Advanced Computing Labs, IIT Madras) at KLA-Tencor, Chennai. I spent there time designing some of the most efficient software infrastructures running inference workloads at the speed of light. As an open source enthusiast, I have received both scholarships and sponsoring to support my contributions.',
+    'Before that, I was assisting in the research for realistic hand shape modelling with Prof. Parag Chaudhuri and Prateek Kalshetti at ViGIL, IIT Bombay.',
+    '\n```markdown\nDoing research may be similar to MCMC sampling, you start at zero knowledge and after a \n burnout may get enlightened with an idea!\n```'
   ],
-  avatar: 'avatar.png',
+  avatar: '/2me.jpg',
   professions: [
-    'Software Engineer',
-    'Full Stack Developer',
+    'Ph.D. student at UNC-CH'
   ],
   tocMaxDepth: 2,
   excerptMaxLength: 500,
-  birthday: 'Some day',
-  location: 'Earth',
-  email: 'john.doe@gmail.com',
+  // birthday: '',
+  location: 'North Carolina, USA',
+  email: 'debman@cs.unc.edu',
   postsForArchivePage: 3,
   defaultLanguage: 'en',
   disqusScript: process.env.DISQUS_SCRIPT
@@ -36,11 +38,14 @@ module.exports = {
       url: '/resume.pdf',
       icon: ['ai', 'cv'],
     }, {
-      url: 'https://github.com/',
+      url: 'https://github.com/codejaeger',
       icon: ['fab', 'github'],
     }, {
-      url: 'https://twitter.com/',
-      icon: ['fab', 'twitter'],
+      url: 'https://scholar.google.com/citations?user=_0p4hC8zf7MC&hl=en',
+      icon: ['fa', 'graduation-cap'],
+    }, {
+      url: 'https://www.linkedin.com/in/debabrata-mandal-0702a0167/',
+      icon: ['fab', 'linkedin'],
     },
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
@@ -58,20 +63,21 @@ module.exports = {
   googleAnalyticTrackingId: process.env.GA_TRACKING_ID || '',
   education: [
     {
-      date: 'Jan 2020 - Present',
+      date: 'Jul 2023 - Present',
       icon: 'graduation-cap',
       title: 'Ph.D in Computer Science',
-      location: 'Some University, Somewhere',
+      location: 'University of North Carolina, Chapel Hill',
     }, {
-      date: 'Sept 2015 - Aug 2019',
+      date: 'Aug 2022 - May 2023',
       icon: 'university',
-      title: 'B.S.E. in Electrical and Computer Engineering',
-      location: 'Some University, Somewhere',
+      title: 'Non-degree, part-time',
+      location: 'IIT Madras, India',
     }, {
-      date: 'Sept 2008 - June 2015',
-      icon: 'school',
-      title: 'Middle School',
-      location: 'Some Middle School, Somewhere',
+      date: 'Jun 2017 - June 2021',
+      icon: 'university',
+      content: 'gpa: 4.3',
+      title: 'B.Tech in Computer Science',
+      location: 'IIT Bombay, India',
     }],
   interests: [
     {

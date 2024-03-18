@@ -6,12 +6,16 @@
   "scripts": {
     "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "deploy": "gatsby build --prefix-paths && gh-pages -f -d public"
   },
   "dependencies": {
     "gatsby": "^3.14.0",
     "gatsby-theme-academic": "*",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }
