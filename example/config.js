@@ -33,7 +33,7 @@ module.exports = {
   social: [
     {
       url: "/resume.pdf",
-      icon: ["fa", "cv"],
+      icon: ["ai", "cv"],
     },
     {
       url: "https://github.com/huskydoge",

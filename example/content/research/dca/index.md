@@ -14,12 +14,12 @@ authors:
 path: "research/dca"
 # excerpt: Dire Tide 2020
 selected: true
-cover: "./preview.png"
-links:
-  - name: "pdf"
-    file: "./diretide.pdf"
-  - name: "website"
-    url: "https://www.dota2.com/diretide/?l=english"
+cover: "./preview.pdf"
+# links:
+#   - name: "pdf"
+#     file: "./diretide.pdf"
+#   - name: "website"
+#     url: "https://www.dota2.com/diretide/?l=english"
 priority: 20
 ---
 
