@@ -10,11 +10,11 @@ authors:
   - name: "Siyu Lou"
   - name: "Benhao Huang"
   - name: "Quanshi Zhang"
-    path: "research/generalizable"
-    excerpt: Given different DNNs trained for the same task, we develop a method to extract their shared interactions.
-    selected: true
-    cover: "./preview.png"
-    links:
+path: "research/generalizable"
+excerpt: Given different DNNs trained for the same task, we develop a method to extract their shared interactions.
+selected: true
+cover: "./preview.png"
+links:
   - name: "paper"
     file: "https://arxiv.org/abs/2401.16318"
   - name: "code"
