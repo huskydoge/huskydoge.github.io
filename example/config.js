@@ -45,7 +45,7 @@ module.exports = {
     },
     {
       url: "https://scholar.google.com/citations?user=SiAFHb8AAAAJ&hl=zh-CN",
-      icon: ["ai", "google-scholar"],
+      icon: "google-scholar",
     },
     {
       url: "https://www.linkedin.com/in/benhao-h-6534b629a/",
@@ -53,7 +53,7 @@ module.exports = {
     },
     {
       url: "mailto:hbh001098hbh@sjtu.edu.cn",
-      icon: ["ai", "envelope"],
+      icon: "envelope",
     },
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
