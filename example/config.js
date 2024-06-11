@@ -94,18 +94,18 @@ module.exports = {
       title: "Explainability",
     },
     {
-      icon: ["fab", "robot"],
+      icon: ["fab", "user"],
       title: "RLHF",
     },
   ],
   experience: [
     {
-      title: "Moonshot AI",
+      title: "Internship",
       position: "left",
       data: [
         {
           date: "March 2024 - June 2024",
-          title: "Research Intern",
+          title: "Research Intern @ Moonshot AI",
           location: "Somewhere",
           description:
             "Experimented and validated the LLM's ability on responding to contrafactual instructions, explored the possiblity of MindSteal of LLMs.",
