@@ -3,7 +3,7 @@ title: "Defining and extracting generalizable interaction primitives from DNNs"
 tags:
   - "LLM"
   - "Explainablity"
-date: 2024
+# date: 2024
 venue: ICLR-2024
 authors:
   - name: "Lu Chen"
