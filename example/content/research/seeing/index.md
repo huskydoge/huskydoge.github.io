@@ -1,7 +1,7 @@
 ---
 title: "Seeing is not always believing: The Space of Harmless Perturbations"
 tags:
-  - "Adversarial Perturbations"
+  - "Perturbations"
 date: 2024-5-7
 venue: Preprint
 authors:
@@ -17,7 +17,7 @@ path: "research/seeing"
 selected: true
 cover: "./preview.png"
 links:
-  - name: "pdf"
+  - name: "paper"
     url: "https://arxiv.org/pdf/2402.02095"
 
 priority: 3
