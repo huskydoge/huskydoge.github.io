@@ -14,7 +14,7 @@ authors:
 path: "research/dca"
 # excerpt: Dire Tide 2020
 selected: true
-cover: "./preview.pdf"
+cover: "./preview.svg"
 # links:
 #   - name: "pdf"
 #     file: "./diretide.pdf"

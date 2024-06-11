@@ -1,0 +1,38 @@
+{
+    "sourceFile": "example/content/research/generalizable/index.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1718077145236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1718077156070,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n title: \"Defining and extracting generalizable interaction primitives from DNNs\"\n tags:\n   - \"LLM\"\n   - \"Explainablity\"\n-date: 2024-6-5\n+date: 2024\n # venue: a very very very very long long long long long long venue\n authors:\n   - name: \"Benhao Huang\"\n   - name: \"Yingzhuo Yu\"\n"
+                },
+                {
+                    "date": 1718077166935,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n tags:\n   - \"LLM\"\n   - \"Explainablity\"\n date: 2024\n-# venue: a very very very very long long long long long long venue\n+venue: ICLR-2024\n authors:\n   - name: \"Benhao Huang\"\n   - name: \"Yingzhuo Yu\"\n   - name: \"Jin Huang\"\n"
+                },
+                {
+                    "date": 1718077191126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,14 +5,12 @@\n   - \"Explainablity\"\n date: 2024\n venue: ICLR-2024\n authors:\n+  - name: \"Lu Chen\"\n+  - name: \"Siyu Lou\"\n   - name: \"Benhao Huang\"\n-  - name: \"Yingzhuo Yu\"\n-  - name: \"Jin Huang\"\n-  - name: \"Xingjian Zhang\"\n-  - name: \"Jiaqi Ma\"\n-path: \"research/dca\"\n+path: \"research/generalizable\"\n # excerpt: Dire Tide 2020\n selected: true\n cover: \"./preview.svg\"\n # links:\n"
+                },
+                {
+                    "date": 1718077208448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n   - name: \"Lu Chen\"\n   - name: \"Siyu Lou\"\n   - name: \"Benhao Huang\"\n path: \"research/generalizable\"\n-# excerpt: Dire Tide 2020\n+excerpt: Given different DNNs trained for the same task, we develop a method to extract their shared interactions. \n selected: true\n cover: \"./preview.svg\"\n # links:\n #   - name: \"pdf\"\n"
+                },
+                {
+                    "date": 1718077257633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,13 +12,13 @@\n path: \"research/generalizable\"\n excerpt: Given different DNNs trained for the same task, we develop a method to extract their shared interactions.\n selected: true\n cover: \"./preview.svg\"\n-# links:\n-#   - name: \"pdf\"\n-#     file: \"./diretide.pdf\"\n-#   - name: \"website\"\n-#     url: \"https://www.dota2.com/diretide/?l=english\"\n+links:\n+  - name: \"paper\"\n+    file: \"https://arxiv.org/abs/2401.16318\"\n+  - name: \"code\"\n+    url: \"https://github.com/sjtu-xai-lab/generalizable-interaction\"\n priority: 20\n ---\n \n ## Incoming\n"
+                }
+            ],
+            "date": 1718077145236,
+            "name": "Commit-0",
+            "content": "---\ntitle: \"Defining and extracting generalizable interaction primitives from DNNs\"\ntags:\n  - \"LLM\"\n  - \"Explainablity\"\ndate: 2024-6-5\n# venue: a very very very very long long long long long long venue\nauthors:\n  - name: \"Benhao Huang\"\n  - name: \"Yingzhuo Yu\"\n  - name: \"Jin Huang\"\n  - name: \"Xingjian Zhang\"\n  - name: \"Jiaqi Ma\"\npath: \"research/dca\"\n# excerpt: Dire Tide 2020\nselected: true\ncover: \"./preview.svg\"\n# links:\n#   - name: \"pdf\"\n#     file: \"./diretide.pdf\"\n#   - name: \"website\"\n#     url: \"https://www.dota2.com/diretide/?l=english\"\npriority: 20\n---\n\n## Incoming\n\n```\n\n```\n"
+        }
+    ]
+}
