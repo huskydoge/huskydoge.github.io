@@ -1,0 +1,22 @@
+{
+    "sourceFile": "example/content/research/diretide/index.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1718074973252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1718075043300,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n ---\n-title: \"Dire Tide 2020\"\n+title: \"DCA-Bench: A Benchmark for Dataset Curation Agents\"\n tags:\n   - \"dota2\"\n   - \"game\"\n   - \"moba\"\n"
+                }
+            ],
+            "date": 1718074973252,
+            "name": "Commit-0",
+            "content": "---\ntitle: \"Dire Tide 2020\"\ntags:\n  - \"dota2\"\n  - \"game\"\n  - \"moba\"\n  - \"event\"\ndate: 2024-6-5\nvenue: a very very very very long long long long long long venue\nauthors:\n  - name: \"Valve\"\n    url: \"https://www.valvesoftware.com/\"\n  - \"Perfect World\"\npath: \"research/diretide\"\nexcerpt: Dire Tide 2020\nselected: true\ncover: \"./preview.png\"\nlinks:\n  - name: \"pdf\"\n    file: \"./diretide.pdf\"\n  - name: \"website\"\n    url: \"https://www.dota2.com/diretide/?l=english\"\npriority: 20\n---\n\n## Title 1\n\n### Preview\n\n[Preview](./preview.png)\n\n### Website\n\n[Dire Tide 2020](https://www.dota2.com/diretide/?l=english)\n\n## Title 2\n\n## Title 3\n\n## Title 4\n\n```cpp\n#include <iostream>\n\nint main() {\n    std::cout << \"Hello World!\";\n    return 0;\n}\n```\n"
+        }
+    ]
+}

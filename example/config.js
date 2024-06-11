@@ -33,7 +33,7 @@ module.exports = {
   social: [
     {
       url: "/resume.pdf",
-      icon: ["ai", "cv"],
+      icon: ["fa", "cv"],
     },
     {
       url: "https://github.com/huskydoge",
@@ -45,7 +45,7 @@ module.exports = {
     },
     {
       url: "https://scholar.google.com/citations?user=SiAFHb8AAAAJ&hl=zh-CN",
-      icon: "google-scholar",
+      icon: ["fa", "graduation-cap"],
     },
     {
       url: "https://www.linkedin.com/in/benhao-h-6534b629a/",
