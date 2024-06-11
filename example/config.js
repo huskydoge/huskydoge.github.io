@@ -104,12 +104,17 @@ module.exports = {
       position: "left",
       data: [
         {
-          date: "March 2024 - June 2024",
-          title: "Research Intern @ Moonshot AI",
-          location: "Somewhere",
-          description:
-            "Experimented and validated the LLM's ability on responding to contrafactual instructions, explored the possiblity of MindSteal of LLMs.",
-        },
+          date: "Mar.2024 - Jun.2024",
+          title: "Research Intern @ [Moonshot AI](https://www.moonshot.cn/)",
+          location: "remote",
+        {
+          date: "Nov.2023 - present",
+          title: "[TRAIS Lab](https://github.com/TRAIS-Lab), UIUC",
+          location: "remote",
+        {
+          date: "Apr. 2023 - Jan. 2024",
+          title: "[XAI Lab](https://sjtu-xai-lab.github.io/), SJTU",
+          location: "Shanghai, China",
       ],
     },
     {
