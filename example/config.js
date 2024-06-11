@@ -17,7 +17,7 @@ module.exports = {
   excerptMaxLength: 500,
   // birthday: "Some day",
   location: "Shanghai, China",
-  email: "huskydogewoof@gmail.com",
+  // email: "huskydogewoof@gmail.com",
   postsForArchivePage: 3,
   defaultLanguage: "en",
   disqusScript:
@@ -53,7 +53,7 @@ module.exports = {
     },
     {
       url: "mailto:hbh001098hbh@sjtu.edu.cn",
-      icon: ["fab", "email"],
+      icon: ["fab", "envelope"],
     },
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',

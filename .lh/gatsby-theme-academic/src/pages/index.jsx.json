@@ -1,0 +1,22 @@
+{
+    "sourceFile": "gatsby-theme-academic/src/pages/index.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1718073341056,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1718073411748,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,8 @@\n     <AboutMe />\n     <Experience />\n     <Awards />\n     <SelectedResearch />\n+    <a href='https://clustrmaps.com/site/1bx0x'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=261b1b&w=a&t=tt&d=KsX45ylDjq2_61A1AolUOdbXxnUJf4u2QvsJIkBT68U&co=ffffff&ct=808080'/></a>\n     {/* <SkillProgress/> */}\n   </>\n );\n"
+                }
+            ],
+            "date": 1718073341056,
+            "name": "Commit-0",
+            "content": "import React from 'react';\n\nimport AboutMe from '../components/PageFragments/HomePage/AboutMe';\nimport Awards from '../components/PageFragments/HomePage/Awards';\nimport Experience from '../components/PageFragments/HomePage/Experience';\nimport SelectedResearch from '../components/PageFragments/HomePage/SelectedResearch';\nimport SkillProgress from '../components/PageFragments/HomePage/SkillProgress';\nimport SEO from '../components/Seo';\n\nexport default () => (\n  <>\n    <SEO\n      title=\"About\"\n      description=\"\"\n      path=\"\"\n      keywords={['NodeJS', 'Gatsby']}\n    />\n    <AboutMe />\n    <Experience />\n    <Awards />\n    <SelectedResearch />\n    {/* <SkillProgress/> */}\n  </>\n);\n"
+        }
+    ]
+}
