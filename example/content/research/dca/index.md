@@ -9,11 +9,11 @@ authors:
   - name: "Benhao Huang"
   - name: "Yingzhuo Yu"
   - name: "Jin Huang"
-      url: "https://jn-huang.github.io/"
+    url: "https://jn-huang.github.io/"
   - name: "Xingjian Zhang"
-      url: "https://sites.google.com/umich.edu/xingjian-zhang"
+    url: "https://sites.google.com/umich.edu/xingjian-zhang"
   - name: "Jiaqi Ma"
-      url: "https://jiaqima.github.io/"
+    url: "https://jiaqima.github.io/"
 path: "research/dca"
 # excerpt: Dire Tide 2020
 selected: true
