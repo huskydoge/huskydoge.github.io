@@ -1,13 +1,13 @@
 ---
-title: "Elastic Net Regularization: Combining Rigde and Lasso"
+title: "Machine Learning Review"
 tags: ["ML"]
 date: 2024-06-11
 cover: "./preview.png"
 path: "posts/Math/Ridge-Lasso"
-excerpt: "What will happen to $\beta$ if we combine Ridge and Lasso regularization together?"
+excerpt: "Only 3 days left to the final exam, let's review the knowledge of Machine Learning."
 ---
 
-## Introduction
+## Elastic Net Regularization
 
 In Machine learning, Ridge and Lasso are two common regularization methods.
 
@@ -27,9 +27,7 @@ $$
 
 Then what will happen to the $\beta$? Will it be sparse or dense?
 
-## Elastic Net Regularization
-
-Actually, the combined regularization is called Elastic Net Regularization. It is a linear combination of L1 and L2 regularization. It combines the advantages of Ridge and Lasso regularization.
+Actually, the combined regularization is called Elastic Net Regularization[^1]. It is a linear combination of L1 and L2 regularization, which has pros and cons as follow[^2]:
 
 **Advantages:**
 
@@ -41,8 +39,22 @@ Actually, the combined regularization is called Elastic Net Regularization. It i
 - Parameter tuning, such as the regularization strength α and the L1/L2 weights ρ, needs to be carefully selected through methods like cross-validation; otherwise, it might lead to poor model performance.
 - Compared to Lasso alone, Elastic Net's solutions may not be sparse enough in extremely sparse problems, which could reduce model interpretability.
 
+## KL Divergence
+
+When reviewing the Variational Autoencoder, there is a equation in the derivation process:
+
+$$
+\mathrm{KL}\left(P_{\text {data }}(X) \mid p_\theta(X)\right)+\operatorname{KL}\left(q_\phi(h \mid X) \mid p_\theta(h \mid X)\right)=\operatorname{KL}\left(P_{\text {data }}(X) q_\phi(h \mid X) \mid p_\theta(h, X)\right)
+$$
+
+We know that, for KL Divergence, we have:
+
+- $\mathrm{KL}(p(y \mid x) \mid q(y \mid x)) \stackrel{\text { def }}{=} \mathrm{E}_{p(x)} \mathrm{E}_{p(y \mid x)}\left[\log \frac{p(Y \mid X)}{q(Y \mid X)}\right]$.
+- $\mathrm{KL}(p(x, y) \mid q(x, y))=\operatorname{KL}(p(x) \mid q(x))+\mathrm{KL}(p(y \mid x) \mid q(y \mid x))$
+
+But why the KL Divergence in the derivation of VAE is like this? What is the intuitive explanation of this equation?
+
 ## Reference
 
-> https://en.wikipedia.org/wiki/Elastic_net_regularization
-
-> https://blog.csdn.net/qq_51320133/article/details/137421397
+[^1] https://en.wikipedia.org/wiki/Elastic_net_regularization
+[^2] https://blog.csdn.net/qq_51320133/article/details/137421397
