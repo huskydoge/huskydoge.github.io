@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1718073522974,
@@ -20,6 +20,14 @@
                 {
                     "date": 1718073662207,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,9 @@\n       icon: \"layer-group\",\n       title: \"Explainability\",\n     },\n     {\n-      icon: [\"fab\", \"robot\"],\n+      icon: [\"fab\", \"user\"],\n       title: \"RLHF\",\n     },\n   ],\n   experience: [\n"
+                },
+                {
+                    "date": 1718074253636,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,9 @@\n       icon: \"layer-group\",\n       title: \"Explainability\",\n     },\n     {\n-      icon: [\"fab\", \"user\"],\n+      icon: \"user\",\n       title: \"RLHF\",\n     },\n   ],\n   experience: [\n"
+                },
+                {
+                    "date": 1718074414986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,9 +44,9 @@\n       icon: [\"fab\", \"twitter\"],\n     },\n     {\n       url: \"https://scholar.google.com/citations?user=SiAFHb8AAAAJ&hl=zh-CN\",\n-      icon: [\"fab\", \"google-scholar\"],\n+      icon: [\"ai\", \"google-scholar\"],\n     },\n     {\n       url: \"https://www.linkedin.com/in/benhao-h-6534b629a/\",\n       icon: [\"fab\", \"linkedin\"],\n"
                 }
             ],
             "date": 1718073522974,

@@ -45,7 +45,7 @@ module.exports = {
     },
     {
       url: "https://scholar.google.com/citations?user=SiAFHb8AAAAJ&hl=zh-CN",
-      icon: ["fab", "google-scholar"],
+      icon: ["ai", "google-scholar"],
     },
     {
       url: "https://www.linkedin.com/in/benhao-h-6534b629a/",
@@ -53,7 +53,7 @@ module.exports = {
     },
     {
       url: "mailto:hbh001098hbh@sjtu.edu.cn",
-      icon: ["fab", "envelope"],
+      icon: ["ai", "envelope"],
     },
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
@@ -94,7 +94,7 @@ module.exports = {
       title: "Explainability",
     },
     {
-      icon: ["fab", "user"],
+      icon: "user",
       title: "RLHF",
     },
   ],
