@@ -1,0 +1,30 @@
+{
+    "sourceFile": "example/content/research/seeing/index.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1718082017031,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1718082034671,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n ---\n-title: \"DCA-Bench: A Benchmark for Dataset Curation Agents\"\n+title: \"Seeing is not always believing: The Space of Harmless Perturbations\"\n tags:\n   - \"LLM Agent\"\n   - \"Benchmark\"\n date: 2024-6-5\n"
+                },
+                {
+                    "date": 1718082058621,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,8 @@\n-<!--\n- * @Author: huskydoge hbh001098hbh@sjtu.edu.cn\n- * @Date: 2024-06-11 12:58:12\n- * @LastEditors: huskydoge hbh001098hbh@sjtu.edu.cn\n- * @LastEditTime: 2024-06-11 13:00:35\n- * @FilePath: /codejaeger.github.io/example/content/research/seeing/index.md\n- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE\n--->\n ---\n title: \"Seeing is not always believing: The Space of Harmless Perturbations\"\n tags:\n-  - \"LLM Agent\"\n+  - \" Adversarial Perturbations\"\n   - \"Benchmark\"\n date: 2024-6-5\n # venue: a very very very very long long long long long long venue\n authors:\n"
+                },
+                {
+                    "date": 1718082141477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,32 @@\n+---\n+title: \"Seeing is not always believing: The Space of Harmless Perturbations\"\n+tags:\n+  - \"Adversarial Perturbations\"\n+  - \"Benchmark\"\n+date: 2024-5-7\n+# venue: a very very very very long long long long long long venue\n+authors:\n+  - name: \"Lu Chen\"\n+  - name: \"Shaofeng Li\"\n+  - name: \"Benhao Huang\"\n+  - name: \"Fan Yang\"\n+  - name: \"Zheng Li\"\n+  - name: \"Jie Li\"\n+  - name: \"Luo Yuan\"\n+path: \"research/seeing\"\n+# excerpt: Dire Tide 2020\n+selected: true\n+cover: \"./preview.png\"\n+# links:\n+#   - name: \"pdf\"\n+#     file: \"./diretide.pdf\"\n+#   - name: \"website\"\n+#     url: \"https://www.dota2.com/diretide/?l=english\"\n+priority: 20\n+---\n+\n+## Incoming\n+\n+```\n+\n+```\n"
+                }
+            ],
+            "date": 1718082017031,
+            "name": "Commit-0",
+            "content": "---\ntitle: \"DCA-Bench: A Benchmark for Dataset Curation Agents\"\ntags:\n  - \"LLM Agent\"\n  - \"Benchmark\"\ndate: 2024-6-5\n# venue: a very very very very long long long long long long venue\nauthors:\n  - name: \"Benhao Huang\"\n  - name: \"Yingzhuo Yu\"\n  - name: \"Jin Huang\"\n  - name: \"Xingjian Zhang\"\n  - name: \"Jiaqi Ma\"\npath: \"research/dca\"\n# excerpt: Dire Tide 2020\nselected: true\ncover: \"./preview.png\"\n# links:\n#   - name: \"pdf\"\n#     file: \"./diretide.pdf\"\n#   - name: \"website\"\n#     url: \"https://www.dota2.com/diretide/?l=english\"\npriority: 20\n---\n\n## Incoming\n\n```\n\n```\n"
+        }
+    ]
+}
