@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/gatsby-theme-academic",
+  // pathPrefix: "/gatsby-theme-academic",
   siteUrl: "https://huskydoge.github.io",
   title: "HuskyDoge",
   description: "Personal Website of Benhao Huang",
@@ -11,7 +11,7 @@ module.exports = {
     "I am now preparing my MS/PhD applications for Fall 2025, so if interested, please drop me an email!",
     "### 📅 News \n * I will be visiting UCSD as an intern supervised by [Zhiting Hu](http://zhiting.ucsd.edu/) this summer!",
   ],
-  avatar: "avatar.png",
+  avatar: "/avatar.png",
   professions: ["Junior Student"],
   tocMaxDepth: 2,
   excerptMaxLength: 500,
