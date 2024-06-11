@@ -12,7 +12,7 @@ authors:
 path: "research/generalizable"
 excerpt: Given different DNNs trained for the same task, we develop a method to extract their shared interactions.
 selected: true
-cover: "./preview.svg"
+cover: "./preview.png"
 links:
   - name: "paper"
     file: "https://arxiv.org/abs/2401.16318"
