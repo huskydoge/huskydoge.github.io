@@ -1,10 +1,13 @@
 ---
-title: "The influence on $\beta$ when combining Rigde and Lasso Regularization"
+title: "Elastic Net Regularization: Combining Rigde and Lasso"
 tags: ["ML"]
 date: 2024-06-11
 cover: "./preview.png"
 path: "posts/Math/Ridge-Lasso"
+excerpt: "What will happen to $\beta$ if we combine Ridge and Lasso regularization together?"
 ---
+
+## Introduction
 
 In Machine learning, Ridge and Lasso are two common regularization methods.
 
@@ -19,7 +22,27 @@ We know that Ridge will penalize those dimensions with large $\beta$, which resu
 However, what if we combine Ridge and Lasso together? That is, we use the following equation:
 
 $$
-\mathcal{L}=\|Y-X \beta\|_2^2+\lambda_1\|\beta\|^2+\lambda_2\|\beta\|_1
+\mathcal{L}=\|Y-X \beta\|_2^2+\lambda_2\|\beta\|^2+\lambda_1\|\beta\|_1
 $$
 
 Then what will happen to the $\beta$? Will it be sparse or dense?
+
+## Elastic Net Regularization
+
+Actually, the combined regularization is called Elastic Net Regularization. It is a linear combination of L1 and L2 regularization. It combines the advantages of Ridge and Lasso regularization.
+
+**Advantages:**
+
+- Elastic Net combines the strengths of both Lasso and Ridge. It can select features among a large number of redundant features and also handle highly correlated features.
+- When there is multicollinearity among features, Elastic Net can select a group of correlated features to participate together in model building, enhancing model stability.
+
+**Disadvantages:**
+
+- Parameter tuning, such as the regularization strength α and the L1/L2 weights ρ, needs to be carefully selected through methods like cross-validation; otherwise, it might lead to poor model performance.
+- Compared to Lasso alone, Elastic Net's solutions may not be sparse enough in extremely sparse problems, which could reduce model interpretability.
+
+## Reference
+
+> https://en.wikipedia.org/wiki/Elastic_net_regularization
+
+> https://blog.csdn.net/qq_51320133/article/details/137421397
