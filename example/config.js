@@ -104,6 +104,11 @@ module.exports = {
       position: "left",
       data: [
         {
+          date: "June 2024 - ?",
+          title: "[Maitrix.org](https://github.com/maitrix-org), UCSD",
+          location: "San Diego, CA, USA",
+        },
+        {
           date: "Mar.2024 - Jun.2024",
           title: "Research Intern @ [Moonshot AI](https://www.moonshot.cn/)",
           location: "remote",
@@ -121,7 +126,7 @@ module.exports = {
       ],
     },
     {
-      title: "Teaching",
+      title: "Teaching & Tutoring",
       position: "right",
       data: [
         {
