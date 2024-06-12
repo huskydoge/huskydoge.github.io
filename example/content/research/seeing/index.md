@@ -1,13 +1,14 @@
 ---
 title: "Seeing is not always believing: The Space of Harmless Perturbations"
 tags:
-  - "Perturbations"
+  - "Adversarial Perturbations"
+  - "security"
 date: 2024-5-7
 venue: Preprint
 authors:
   - name: "Lu Chen"
   - name: "Shaofeng Li"
-  - name: "Benhao Huang"
+  - name: "**Benhao Huang**"
   - name: "Fan Yang"
   - name: "Zheng Li"
   - name: "Jie Li"
