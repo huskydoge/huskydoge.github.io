@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1718073341056,
@@ -12,6 +12,10 @@
                 {
                     "date": 1718073411748,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,8 @@\n     <AboutMe />\n     <Experience />\n     <Awards />\n     <SelectedResearch />\n+    <a href='https://clustrmaps.com/site/1bx0x'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=261b1b&w=a&t=tt&d=KsX45ylDjq2_61A1AolUOdbXxnUJf4u2QvsJIkBT68U&co=ffffff&ct=808080'/></a>\n     {/* <SkillProgress/> */}\n   </>\n );\n"
+                },
+                {
+                    "date": 1718241339257,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,25 +1,22 @@\n-import React from 'react';\n+import React from \"react\";\n \n-import AboutMe from '../components/PageFragments/HomePage/AboutMe';\n-import Awards from '../components/PageFragments/HomePage/Awards';\n-import Experience from '../components/PageFragments/HomePage/Experience';\n-import SelectedResearch from '../components/PageFragments/HomePage/SelectedResearch';\n-import SkillProgress from '../components/PageFragments/HomePage/SkillProgress';\n-import SEO from '../components/Seo';\n+import AboutMe from \"../components/PageFragments/HomePage/AboutMe\";\n+import Awards from \"../components/PageFragments/HomePage/Awards\";\n+import Experience from \"../components/PageFragments/HomePage/Experience\";\n+import SelectedResearch from \"../components/PageFragments/HomePage/SelectedResearch\";\n+import SkillProgress from \"../components/PageFragments/HomePage/SkillProgress\";\n+import SEO from \"../components/Seo\";\n \n export default () => (\n   <>\n-    <SEO\n-      title=\"About\"\n-      description=\"\"\n-      path=\"\"\n-      keywords={['NodeJS', 'Gatsby']}\n-    />\n+    <SEO title=\"About\" description=\"\" path=\"\" keywords={[\"NodeJS\", \"Gatsby\"]} />\n     <AboutMe />\n     <Experience />\n     <Awards />\n     <SelectedResearch />\n-    <a href='https://clustrmaps.com/site/1bx0x'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=261b1b&w=a&t=tt&d=KsX45ylDjq2_61A1AolUOdbXxnUJf4u2QvsJIkBT68U&co=ffffff&ct=808080'/></a>\n+    {/* <a href=\"https://clustrmaps.com/site/1bx0x\" title=\"Visit tracker\">\n+      <img src=\"//clustrmaps.com/map_v2.png?cl=261b1b&w=a&t=tt&d=KsX45ylDjq2_61A1AolUOdbXxnUJf4u2QvsJIkBT68U&co=ffffff&ct=808080\" />\n+    </a> */}\n     {/* <SkillProgress/> */}\n   </>\n );\n"
                 }
             ],
             "date": 1718073341056,
