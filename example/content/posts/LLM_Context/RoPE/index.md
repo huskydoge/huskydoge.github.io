@@ -2,7 +2,7 @@
 title: "The Long-Term Decay Property of RoPE"
 tags: ["PosEmbed"]
 date: 2024
-path: "posts/rope"
+path: "posts/LLM_Context/RoPE"
 # excerpt: paperlist
 ---
 
@@ -131,8 +131,7 @@ For same $i$ and $d$, larger base will make the $\theta_i=base^{-2(i-1)/d}$ smal
 ## References
 
 [^1]: Su, Jianlin, et al. "Roformer: Enhanced transformer with rotary position embedding." Neurocomputing 568 (2024): 127063.
-[^2]:苏剑林. (Mar. 23, 2021). 《Transformer 升级之路：2、博采众长的旋转式位置编码 》[Blog post]. Retrieved from https://spaces.ac.cn/archives/8265
-
+[^2]: 苏剑林. (Mar. 23, 2021). 《Transformer 升级之路：2、博采众长的旋转式位置编码 》[Blog post]. Retrieved from https://spaces.ac.cn/archives/8265
 [^3]: https://clvsit.github.io/RoPE-%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E8%A7%A3%E8%AF%BB%E4%B8%8E%E5%A4%96%E6%8E%A8%E6%80%A7%E7%A0%94%E7%A9%B6/
 
 ## Desserts
@@ -141,7 +140,7 @@ Jianlin Su is a very talented guy, his Blogs are all very insightful. Among his 
 
 [Transformer 升级之路：2、博采众长的旋转式位置编码](https://spaces.ac.cn/archives/8265)
 
-* This blog introduces RoPE.
+- This blog introduces RoPE.
 
 [Transformer 升级之路：7、长度外推性与局部注意力](https://spaces.ac.cn/archives/9431)
 
@@ -150,7 +149,5 @@ Jianlin Su is a very talented guy, his Blogs are all very insightful. Among his 
 [Transformer 升级之路：10、RoPE 是一种 β 进制编码](https://spaces.ac.cn/archives/9675)
 
 [Transformer 升级之路：18、RoPE 的底数选择原则](https://spaces.ac.cn/archives/10122)
-
-
 
 Still updating.....
