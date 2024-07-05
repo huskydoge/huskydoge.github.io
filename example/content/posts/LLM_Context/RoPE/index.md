@@ -3,6 +3,7 @@ title: "The Long-Term Decay Property of RoPE"
 tags: ["PosEmbed"]
 date: 2024
 path: "posts/LLM_Context/RoPE"
+cover: "https://files.oaiusercontent.com/file-20cvaffMPRIPJFx1wJWncMQX?se=2024-07-05T08%3A51%3A54Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D299%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D86d42ee9-ec31-44a1-ac66-919f6b0036c0&sig=F%2BcScvgF2myGv6crfHbbn84y2h3gNo1rrF4fvAGqg5c%3D"
 # excerpt: paperlist
 ---
 
@@ -116,23 +117,53 @@ The derivation of Eq.(36) is relatively simple. We just focus on $S_{i+1}$, and 
 
 ### Why Long-term Decay?
 
+![Output image](https://files.oaiusercontent.com/file-20cvaffMPRIPJFx1wJWncMQX?se=2024-07-05T08%3A51%3A54Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D299%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D86d42ee9-ec31-44a1-ac66-919f6b0036c0&sig=F%2BcScvgF2myGv6crfHbbn84y2h3gNo1rrF4fvAGqg5c%3D)
+
 Well, then we arrive at the most important part, we need to prove the value of $\frac{1}{d / 2} \sum_{j=1}^{d / 2}\left|S_j\right|$ decay with the relative distance $m-n$ increases by setting $\theta_i=10000^{-2 i / d}$, where $S_j=$ $\sum_{i=0}^{j-1} e^{i(m-n) \theta_i}$.
 
 It's acutally very hard to analyze by taking derivative of $(m-n)$, since we cannot easily find the analytical solution of.
 
 One intuitive way to understand is to take the sum of $e^{i(m-n)\theta_i}$ as walking on a plane, which is the geometric meaning of adding two vectors. Apparently, when $m-n$ is close to zero, then we almost walking in a constant direction, which makes the sum of $e^{i(m-n)\theta_i}$ large. However, when $m-n$ is large, then the sum of $e^{i(m-n)\theta_i}$ will be small, since we are walking in different directions, with the worst case where we are walking in a circle.
 
+**The Concept of Phase Cancellation**
+
+Phase cancellation occurs when complex exponentials (vectors on the unit circle in the complex plane) with differing directions are summed together. The result can be a vector with a smaller magnitude than the individual vectors due to the geometric addition properties of complex numbers.
+
+**The Sum $S_j$**
+
+Recall:
+$$S_j = \sum_{i=0}^{j-1} e^{i(m-n) \theta_i}$$
+with $\theta_i = 10000^{-2i/d}$.
+
+**Examining the Phases**
+
+1. **Distribution of Phases**:
+
+   - The phases $(m-n)\theta_i$ for each term in the sum depend on both $m-n$ and $i$.
+   - As $m-n$ increases, the value of $(m-n)\theta_i$ changes more rapidly due to the exponential nature of $\theta_i$.
+   - For a fixed large $m-n$, the phases $(m-n)\theta_i$ effectively **"scan"** a broader range of angles on the unit circle as $i$ varies.
+
+2. **Uniform Distribution Assumption**:
+   - If $m-n$ is sufficiently large and $i$ ranges over a significant interval, $(m-n)\theta_i$ can cover the interval $[0, 2\pi]$ multiple times, depending on $m-n$, effectively randomizing the phase angles.
+   - Under this assumption, the phases of the terms in $S_j$ can be seen as being uniformly distributed across $[0, 2\pi]$.
+
+**Illustrating Cancellation**
+
+- **Cancellation Through Averaging**:
+
+  - If the phases of $e^{i(m-n) \theta_i}$ are uniformly distributed or nearly so, the expected value of their sum approaches zero:
+    $$E\left[\sum_{i=0}^{j-1} e^{i(m-n) \theta_i}\right] = \sum_{i=0}^{j-1} E[e^{i(m-n) \theta_i}] = \sum_{i=0}^{j-1} \int_0^{2\pi} e^{i\phi} \frac{d\phi}{2\pi} = 0$$
+  - Intuitively speaking, $E[e^{i\phi}]$ over $[0, 2\pi]$ is zero because for every vector, there is another vector pointing in the opposite direction, cancelling out.
+
+- **Expected Magnitude with High Variability**:
+  - While the average expected value is zero, individual realizations of $S_j$ can vary widely, typically resulting in smaller magnitudes as more vectors are added due to increasing likelihood of opposite directions.
+  - The more terms added (i.e., larger $j$), the greater the potential for cancellation, especially when $(m-n)\theta_i$ provides a full or multiple rotations around the circle.
+
 ## Other Interesting findings
 
 ### The Influence of Base Choice on Long-term Decay
 
 For same $i$ and $d$, larger base will make the $\theta_i=base^{-2(i-1)/d}$ smaller. According to the blog here[^3], too small base (e.g. 1) will completely destroy the long-term decay property, **while too large base will also decrease the long-term decay property.**
-
-## References
-
-[^1]: Su, Jianlin, et al. "Roformer: Enhanced transformer with rotary position embedding." Neurocomputing 568 (2024): 127063.
-[^2]: 苏剑林. (Mar. 23, 2021). 《Transformer 升级之路：2、博采众长的旋转式位置编码 》[Blog post]. Retrieved from https://spaces.ac.cn/archives/8265
-[^3]: https://clvsit.github.io/RoPE-%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E8%A7%A3%E8%AF%BB%E4%B8%8E%E5%A4%96%E6%8E%A8%E6%80%A7%E7%A0%94%E7%A9%B6/
 
 ## Desserts
 
@@ -149,5 +180,9 @@ Jianlin Su is a very talented guy, his Blogs are all very insightful. Among his 
 [Transformer 升级之路：10、RoPE 是一种 β 进制编码](https://spaces.ac.cn/archives/9675)
 
 [Transformer 升级之路：18、RoPE 的底数选择原则](https://spaces.ac.cn/archives/10122)
+
+[^1]: Su, Jianlin, et al. "Roformer: Enhanced transformer with rotary position embedding." Neurocomputing 568 (2024): 127063.
+[^2]: 苏剑林. (Mar. 23, 2021). 《Transformer 升级之路：2、博采众长的旋转式位置编码 》[Blog post]. Retrieved from https://spaces.ac.cn/archives/8265
+[^3]: https://clvsit.github.io/RoPE-%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E8%A7%A3%E8%AF%BB%E4%B8%8E%E5%A4%96%E6%8E%A8%E6%80%A7%E7%A0%94%E7%A9%B6/
 
 Still updating.....
