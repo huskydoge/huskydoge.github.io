@@ -88,7 +88,7 @@ $$
 It's easy to see that the RHS of Eq.(4) is a **scalar**. We focus on $\boldsymbol{q}^T\boldsymbol{R}_{\Theta, n-m}^d$ first. For index $2j, 2j+1, 0\le j\le d/2-1$ , It's easy to see that elements $[q_{2j},q_{2j+1}]$ in $\boldsymbol{q}^T$ will only interact with the block $\boldsymbol{R_{(n-m)\theta_{j+1}}}$, and we have:
 
 $$
-(\boldsymbol{q}^T\boldsymbol{R}_{\Theta, n-m}^d)[2j:2j+1] = [q_{2j}cos(n-m)\theta_{j+1}+q_{2j+1}sin(n-m)\theta_{j+1}, -q_{2j}sin(n-m)\theta_{j+1}+q_{2j+1}cos(n-m)\theta_{j+1}]_{1\times 2} \tag{key}
+(\boldsymbol{q}^T\boldsymbol{R}_{\Theta, n-m}^d)[2j:2j+1] \newline = [q_{2j}cos(n-m)\theta_{j+1}+q_{2j+1}sin(n-m)\theta_{j+1}, -q_{2j}sin(n-m)\theta_{j+1}+q_{2j+1}cos(n-m)\theta_{j+1}]_{1\times 2} \tag{key}
 $$
 
 And these two elements will be multiplied with the $2j, 2j+1$ elements of $\boldsymbol{k}$, then we finally get:
