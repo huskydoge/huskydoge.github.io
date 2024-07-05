@@ -3,7 +3,7 @@ title: "The Long-Term Decay Property of RoPE"
 tags: ["PosEmbed"]
 date: 2024
 path: "posts/LLM_Context/RoPE"
-cover: "https://files.oaiusercontent.com/file-20cvaffMPRIPJFx1wJWncMQX?se=2024-07-05T08%3A51%3A54Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D299%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D86d42ee9-ec31-44a1-ac66-919f6b0036c0&sig=F%2BcScvgF2myGv6crfHbbn84y2h3gNo1rrF4fvAGqg5c%3D"
+cover: "./rope-long-term.png"
 # excerpt: paperlist
 ---
 
@@ -117,7 +117,7 @@ The derivation of Eq.(36) is relatively simple. We just focus on $S_{i+1}$, and 
 
 ### Why Long-term Decay?
 
-![Output image](https://files.oaiusercontent.com/file-20cvaffMPRIPJFx1wJWncMQX?se=2024-07-05T08%3A51%3A54Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D299%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D86d42ee9-ec31-44a1-ac66-919f6b0036c0&sig=F%2BcScvgF2myGv6crfHbbn84y2h3gNo1rrF4fvAGqg5c%3D)
+![Output image](./rope-long-term.png)
 
 Well, then we arrive at the most important part, we need to prove the value of $\frac{1}{d / 2} \sum_{j=1}^{d / 2}\left|S_j\right|$ decay with the relative distance $m-n$ increases by setting $\theta_i=10000^{-2 i / d}$, where $S_j=$ $\sum_{i=0}^{j-1} e^{i(m-n) \theta_i}$.
 
