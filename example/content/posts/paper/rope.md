@@ -1,0 +1,156 @@
+---
+title: "The Long-Term Decay Property of RoPE"
+tags: ["PosEmbed"]
+date: 2024
+path: "posts/rope"
+# excerpt: paperlist
+---
+
+## Introduction
+
+RoPE[^1] is the most common positional embedding method that has been applied in many popular Language Models. RoPE has several properties, among which the **long-term decay** property is really interesting. Recently, I've been researching on how to make long-term decay property more customizable and controllable. Therefore, I want to get myself really understand why RoPE has the long-term decay property and how it works. In this post, I try to provide a more intuitive understanding of the long-term decay property of RoPE, and will also cover some recent researches relevant to RoPE.
+
+## Review | Some Details
+
+Before getting the proof, let's first recal the **Long-term decay of RoPE** (Sec.3.4.3) in the original paper[^1]. Contents below are completely copied from the orginal paper, <u>the equation number from paper is kept.</u>
+
+---
+
+We can group entries of vectors $\boldsymbol{q}=\boldsymbol{W}_q \boldsymbol{x}_m$ and $\boldsymbol{k}=\boldsymbol{W}_k \boldsymbol{x}_n$ in pairs, and the inner product of RoPE in Equation (16) can be written as a complex number multiplication.
+
+$$
+\left(\boldsymbol{R}_{\Theta, m}^d \boldsymbol{W}_q \boldsymbol{x}_m\right)^{\top}\left(\boldsymbol{R}_{\Theta, n}^d \boldsymbol{W}_k \boldsymbol{x}_n\right)=\operatorname{Re}\left[\sum_{i=0}^{d / 2-1} \boldsymbol{q}_{[2 i: 2 i+1]} k_{[2 i: 2 i+1]}^* e^{i(m-n) \theta_i}\right] \tag{1 or 35}
+$$
+
+where $\boldsymbol{q}_{[2 i: 2 i+1]}$ represents the $2 i^{\text {th }}$ to $(2 i+1)^{\text {th }}$ entries of $\boldsymbol{q}$. Denote $h_i=\boldsymbol{q}_{[2 i: 2 i+1]} \boldsymbol{k}_{[2 i: 2 i+1]}^*$ and $S_j=$ $\sum_{i=0}^{j-1} e^{i(m-n) \theta_i}$, and let $h_{d / 2}=0$ and $S_0=0$, we can rewrite the summation using Abel transformation
+
+$$
+\sum_{i=0}^{d / 2-1} \boldsymbol{q}_{[2 i: 2 i+1]} \boldsymbol{k}_{[2 i: 2 i+1]}^* e^{i(m-n) \theta_i}=\sum_{i=0}^{d / 2-1} h_i\left(S_{i+1}-S_i\right)=-\sum_{i=0}^{d / 2-1} S_{i+1}\left(h_{i+1}-h_i\right) \tag{2 or 36}
+$$
+
+Thus,
+
+$$
+\begin{aligned}
+\left|\sum_{i=0}^{d / 2-1} \boldsymbol{q}_{[2 i: 2 i+1]} \boldsymbol{k}_{[2 i: 2 i+1]}^* e^{i(m-n) \theta_i}\right| & =\left|\sum_{i=0}^{d / 2-1} S_{i+1}\left(h_{i+1}-h_i\right)\right| \\
+& \leq \sum_{i=0}^{d / 2-1}\left|S_{i+1}\right|\left|\left(h_{i+1}-h_i\right)\right| \\
+& \leq\left(\max _i\left|h_{i+1}-h_i\right|\right) \sum_{i=0}^{d / 2-1}\left|S_{i+1}\right|
+\end{aligned} \tag{3 or 37}
+$$
+
+Note that the value of $\frac{1}{d / 2} \sum_{i=1}^{d / 2}\left|S_i\right|$ decay with the relative distance $m-n$ increases by setting $\theta_i=10000^{-2 i / d}$, as shown in Figure (2).
+
+---
+
+I believe some readers will have common questions with me, it seems in this part of paper, **many details are elliminated for simplicity.** I don't want to be the guy who just pretend these details are not important, focus on ideas, I will present more derivations here, since so far I haven't seen any detailed explanations here, including the blog of the author[^2].
+
+Let's revise some annotation here. $\boldsymbol{R}_{\theta, m}^d$ is the following matrix:
+
+$$
+\boldsymbol{R}_{\theta, m}^d=\left(\begin{array}{ccccccc}
+\cos m \theta_1 & -\sin m \theta_1 & 0 & 0 & \cdots & 0 & 0 \\
+\sin m \theta_1 & \cos m \theta_1 & 0 & 0 & \cdots & 0 & 0 \\
+0 & 0 & \cos m \theta_2 & -\sin m \theta_2 & \cdots & 0 & 0 \\
+0 & 0 & \sin m \theta_2 & \cos m \theta_2 & \cdots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \cdots & \cos m \theta_{d / 2} & -\sin m \theta_{d / 2} \\
+0 & 0 & 0 & 0 & \cdots & \sin m \theta_{d / 2} & \cos m \theta_{d / 2}
+\end{array}\right)_{d\times d}
+$$
+
+$\theta_i$ belongs to $\Theta=\left\{\theta_i=10000^{-2(i-1) / d}, i \in[1,2, \ldots, d / 2]\right\}$​​, where 10000 is called **"base"**, as a predefined constant. The value of base will have interesting effect on RoPE, which we will discuss later.
+
+$\boldsymbol{x}_i \in \mathbb{R}^d$ is the d-dimensional word embedding vector of token $w_i$ (Let $\mathbb{S}_N=\left\{w_i\right\}_{i=1}^N$ be a sequence of $N$ input tokens with $w_i$ being the $i^{t h}$ element. The corresponding word embedding of $\mathbb{S}_N$ is denoted as $\mathbb{E}_N=\left\{\boldsymbol{x}_i\right\}_{i=1}^N$). $\boldsymbol{q}=\boldsymbol{W}_q \boldsymbol{x}_m$ and $\boldsymbol{k}=\boldsymbol{W}_k \boldsymbol{x}_n$ are of the shape as $\boldsymbol{x_i}$.
+
+### Derivation of Eq.(35)
+
+**Now let's first derive Eq.(35).** We first try to get **its complete form without using complex numbers**. Each block $\boldsymbol{R_{m\theta_i}}$ in matrix $\boldsymbol{R_{\theta, m}^d}$ is a rotation matrix, where $\boldsymbol{R_{m\theta_i}}=\left(\begin{array}{cc}
+\cos m \theta_1 & -\sin m \theta_1 \\
+\sin m \theta_1 & \cos m \theta_1
+\end{array}\right)$ means contrarotating $m\theta_1$, while
+
+$$
+{\boldsymbol{R_{n\theta_i}}}^T=\left(\begin{array}{cc}
+\cos n \theta_1 & \sin n \theta_1 \\
+-\sin n \theta_1 & \cos n \theta_1
+\end{array}\right) = \left(\begin{array}{cc}
+\cos (-n \theta_1) & - \sin (-n \theta_1) \\
+\sin (-n \theta_1) & \cos (-n \theta_1)
+\end{array}\right)= {\boldsymbol{R_{(-n\theta_i)}}}
+$$
+
+which means rotate $n\theta_i$ clockwise. Therefore, the LHS of Eq.(35) can be written as:
+
+$$
+\left(\boldsymbol{R}_{\Theta, m}^d \boldsymbol{W}_q \boldsymbol{x}_m\right)^{\top}\left(\boldsymbol{R}_{\Theta, n}^d \boldsymbol{W}_k \boldsymbol{x}_n\right)=\boldsymbol{q}^T\boldsymbol{R}_{\Theta, n-m}^d\boldsymbol{k}  \tag{4}
+$$
+
+It's easy to see that the RHS of Eq.(4) is a **scalar**. We focus on $\boldsymbol{q}^T\boldsymbol{R}_{\Theta, n-m}^d$ first. For index $2j, 2j+1, 0\le j\le d/2-1$ , It's easy to see that elements $[q_{2j},q_{2j+1}]$ in $\boldsymbol{q}^T$ will only interact with the block $\boldsymbol{R_{(n-m)\theta_{j+1}}}$, and we have:
+
+$$
+(\boldsymbol{q}^T\boldsymbol{R}_{\Theta, n-m}^d)[2j:2j+1] = [q_{2j}cos(n-m)\theta_{j+1}+q_{2j+1}sin(n-m)\theta_{j+1}, -q_{2j}sin(n-m)\theta_{j+1}+q_{2j+1}cos(n-m)\theta_{j+1}]_{1\times 2} \tag{key}
+$$
+
+And these two elements will be multiplied with the $2j, 2j+1$ elements of $\boldsymbol{k}$, then we finally get:
+
+$$
+(q_{2j}k_{2j}+q_{2j+1}k_{2j+1})cos(n-m)\theta_{j+1}+(q_{2j+1}k_{2j}-q_{2j}k_{2j+1})sin(n-m)\theta_{j+1}
+$$
+
+Then we back to the complex number form used by authors. In Eq.(35), it's said $\boldsymbol{q}_{[2 i: 2 i+1]}\cdot k_{[2 i: 2 i+1]}$ is **operated as complex multiplication**, which means:
+
+$$
+\begin{aligned}
+\boldsymbol{q}_{[2 i: 2 i+1]}\cdot k_{[2 i: 2 i+1]}^* &= (q_{2i} + iq_{2i+1})\cdot (k_{2i}+ik_{2i+1})^* \newline
+&= (q_{2i}k_{2i}+q_{2i+1}k_{2i+1})+i(-q_{2i}k_{2i+1}+q_{2i+1}k_{2i})
+\end{aligned} \tag{5}
+$$
+
+**_(Please don't confuse your self with the index $i$ and $i$ representing imaginary number)_**. Then if we multiply the RHS of Eq.(5) with $e^{i(m-n)\theta_i}=cos(m-n)\theta_i+i\cdot sin(m-n)\theta_i$, and focus on real part, we will magically get the Eq.(key), with $i$ substituted by $j$. It's quite elegant!
+
+We then sum up $j$ from $0$ to $d/2-1$, then we successfully get Eq.(35).
+
+### Derivation of Eq.(36)
+
+The derivation of Eq.(36) is relatively simple. We just focus on $S_{i+1}$, and combine the same items will give us correct coefficient which is $h_{i+1}-h_i$. Then we sum up $i$ from $0$ to $d/2-1$, and we get Eq.(36). See [Wikipedia](https://en.wikipedia.org/wiki/Summation_by_parts) for more details about Abel transformation.
+
+### Why Long-term Decay?
+
+Well, then we arrive at the most important part, we need to prove the value of $\frac{1}{d / 2} \sum_{j=1}^{d / 2}\left|S_j\right|$ decay with the relative distance $m-n$ increases by setting $\theta_i=10000^{-2 i / d}$, where $S_j=$ $\sum_{i=0}^{j-1} e^{i(m-n) \theta_i}$.
+
+It's acutally very hard to analyze by taking derivative of $(m-n)$, since we cannot easily find the analytical solution of.
+
+One intuitive way to understand is to take the sum of $e^{i(m-n)\theta_i}$ as walking on a plane, which is the geometric meaning of adding two vectors. Apparently, when $m-n$ is close to zero, then we almost walking in a constant direction, which makes the sum of $e^{i(m-n)\theta_i}$ large. However, when $m-n$ is large, then the sum of $e^{i(m-n)\theta_i}$ will be small, since we are walking in different directions, with the worst case where we are walking in a circle.
+
+## Other Interesting findings
+
+### The Influence of Base Choice on Long-term Decay
+
+For same $i$ and $d$, larger base will make the $\theta_i=base^{-2(i-1)/d}$ smaller. According to the blog here[^3], too small base (e.g. 1) will completely destroy the long-term decay property, **while too large base will also decrease the long-term decay property.**
+
+## References
+
+[^1]: Su, Jianlin, et al. "Roformer: Enhanced transformer with rotary position embedding." Neurocomputing 568 (2024): 127063.
+[^2]:苏剑林. (Mar. 23, 2021). 《Transformer 升级之路：2、博采众长的旋转式位置编码 》[Blog post]. Retrieved from https://spaces.ac.cn/archives/8265
+
+[^3]: https://clvsit.github.io/RoPE-%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E8%A7%A3%E8%AF%BB%E4%B8%8E%E5%A4%96%E6%8E%A8%E6%80%A7%E7%A0%94%E7%A9%B6/
+
+## Desserts
+
+Jianlin Su is a very talented guy, his Blogs are all very insightful. Among his numerous blogs, a series called "To upgrade Transformer" **(Transformer 升级之路)** really deserve an In-depth reading. Here I curate a list, since the search engine in the blog website seems not to work well.
+
+[Transformer 升级之路：2、博采众长的旋转式位置编码](https://spaces.ac.cn/archives/8265)
+
+* This blog introduces RoPE.
+
+[Transformer 升级之路：7、长度外推性与局部注意力](https://spaces.ac.cn/archives/9431)
+
+[Transformer 升级之路：9、一种全局长度外推的新思路](https://spaces.ac.cn/archives/9603)
+
+[Transformer 升级之路：10、RoPE 是一种 β 进制编码](https://spaces.ac.cn/archives/9675)
+
+[Transformer 升级之路：18、RoPE 的底数选择原则](https://spaces.ac.cn/archives/10122)
+
+
+
+Still updating.....
