@@ -119,7 +119,7 @@ The derivation of Eq.(36) is relatively simple. We just focus on $S_{i+1}$, and 
 
 ![Output image](./rope-long-term.png)
 
-Well, then we arrive at the most important part, we need to prove the value of $\frac{1}{d / 2} \sum_{j=1}^{d / 2}\left|S_j\right|$ decay with the relative distance $m-n$ increases by setting $\theta_i=10000^{-2 i / d}$, where $S_j=$ $\sum_{i=0}^{j-1} e^{i(m-n) \theta_i}$.
+Well, then we arrive at the most important part, we try to understand why the value of $\frac{1}{d / 2} \sum_{j=1}^{d / 2}\left|S_j\right|$ decay with the relative distance $m-n$ increases by setting $\theta_i=10000^{-2 i / d}$, where $S_j=$ $\sum_{i=0}^{j-1} e^{i(m-n) \theta_i}$. This property could also be described as "the closer token gets more attention: the current token tends to pay more attention to the token that has a smaller relative distance", as discussed in Sec.4 of this paper[^4].
 
 It's acutally very hard to analyze by taking derivative of $(m-n)$, since we cannot easily find the analytical solution of.
 
@@ -159,11 +159,55 @@ with $\theta_i = 10000^{-2i/d}$.
   - While the average expected value is zero, individual realizations of $S_j$ can vary widely, typically resulting in smaller magnitudes as more vectors are added due to increasing likelihood of opposite directions.
   - The more terms added (i.e., larger $j$), the greater the potential for cancellation, especially when $(m-n)\theta_i$ provides a full or multiple rotations around the circle.
 
-## Other Interesting findings
+## Surveying
 
-### The Influence of Base Choice on Long-term Decay
+### 1.The Influence of Base Choice on Long-term Decay
 
-For same $i$ and $d$, larger base will make the $\theta_i=base^{-2(i-1)/d}$ smaller. According to the blog here[^3], too small base (e.g. 1) will completely destroy the long-term decay property, **while too large base will also decrease the long-term decay property.**
+For same $i$ and $d$, larger base will make the $\theta_i=base^{-2(i-1)/d}$ smaller. According to the blog here[^3], too small base (e.g. 1) will completely destroy the long-term decay property, **while too large base will also decrease the long-term decay property.** However, it's argued in aother work that to achieve longer context we need to have larger base[^4], more detailed results from this paper are illustrated by this table:
+
+$$
+\begin{array}{|c|c|}
+\hline \text { Questions } & \text { Answers } \\
+\hline \begin{array}{l}
+\text { Q: Does RoPE's base bounds the context } \\
+\text { length during the fine-tuning stage? }
+\end{array} & \begin{array}{l}
+\text { Yes. When the base is small, it is difficult to get extrapolation } \\
+\text { for specific context length. }
+\end{array} \\
+\hline \begin{array}{l}
+\text { Q: Does RoPE's base bounds the context } \\
+\text { length during the pre-training stage? }
+\end{array} & \begin{array}{l}
+\text { Yes. Our proposed lower bound for RoPE's base also applies } \\
+\text { to pre-training. If we train a model from scratch with a small } \\
+\text { base but the context length is large (larger than the bounded } \\
+\text { length), the resulting model has very limited the context length } \\
+\text { capabilities, meaning some of context in pre-training is wasted. }
+\end{array} \\
+\hline \begin{array}{l}
+\text { Q: What happened when base is set } \\
+\text { smaller than the lower bound? }
+\end{array} & \begin{array}{l}
+\text { The model will get the superficial long context capability. } \\
+\text { The model can keep perplexity low, but can't retrieve useful } \\
+\text { information from long context. }
+\end{array} \\
+\hline
+\end{array}
+$$
+
+2. ### Long-term Decay of the Ability to Attend More to Similar Tokens than Random Tokens
+
+Theorem[^4]: Assuming that the components of query $q \in R^d$ and key $k \in R^d$ are independent and identically distributed, their standard deviations are denoted as $\sigma \in R$. The key $k^*=q+\epsilon$ is a token similar to the query, where $\epsilon$ is a random variable with a mean of 0 . Then we have:
+
+$$
+\frac{1}{2 \sigma^2}\left(\mathbb{E}_{q, k^*}\left[q^T R_{m, \theta} k^*\right]-\mathbb{E}_{q, k}\left[q^T R_{m, \theta} k\right]\right)=\sum_{i=0}^{d / 2-1} \cos \left(m \theta_i\right)
+$$
+
+3. ### The perplexity cannot be used to evaluate long context capabilities
+
+As indicated in [^4], perplexity is not a good metric to evaluate the long context capabilities of a model. In [Long-Eval](https://github.com/DachengLi1/LongChat/tree/longeval) bench, a model with small perplexity could have very low accuracy.
 
 ## Desserts
 
@@ -184,5 +228,6 @@ Jianlin Su is a very talented guy, his Blogs are all very insightful. Among his 
 [^1]: Su, Jianlin, et al. "Roformer: Enhanced transformer with rotary position embedding." Neurocomputing 568 (2024): 127063.
 [^2]: 苏剑林. (Mar. 23, 2021). 《Transformer 升级之路：2、博采众长的旋转式位置编码 》[Blog post]. Retrieved from https://spaces.ac.cn/archives/8265
 [^3]: https://clvsit.github.io/RoPE-%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E8%A7%A3%E8%AF%BB%E4%B8%8E%E5%A4%96%E6%8E%A8%E6%80%A7%E7%A0%94%E7%A9%B6/
+[^4]: Men, Xin, et al. "Base of RoPE Bounds Context Length." arXiv preprint arXiv:2405.14591 (2024).
 
 Still updating.....
