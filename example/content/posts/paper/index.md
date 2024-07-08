@@ -3,7 +3,7 @@ title: "Paper List"
 tags: ["paper"]
 date: 2024
 path: "posts/paper"
-excerpt: paperlist
+excerpt: How I hope I won't forget the papers I have read.
 ---
 
 ## World Models
@@ -18,3 +18,5 @@ excerpt: paperlist
   - Explore the influence of the base of RoPE on the context length of the model.
 
 - [3D-RPE: Enhancing Long-Context Modeling Through 3D Rotary Position Encoding](https://arxiv.org/abs/2406.09897), 2024
+- [LongEmbed: Extending Embedding Models for Long Context Retrieval](https://arxiv.org/abs/2404.12096), 2024 | [Code](https://github.com/dwzhu-pku/LongEmbed)
+  - A comprehensive experimental study on different methods to extend context window (e.g. Parallel Context Window, NTK, self-extend, Grouped Position & Reccurent Position, etc.). Also introduce a benchmark called LongEmbed.
