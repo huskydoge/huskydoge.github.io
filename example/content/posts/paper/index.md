@@ -22,3 +22,9 @@ excerpt: How I hope I won't forget the papers I have read.
   - A comprehensive experimental study on different methods to extend context window (e.g. Parallel Context Window, NTK, self-extend, Grouped Position & Reccurent Position, etc.). Also introduce a benchmark called LongEmbed.
 - [CAPE: Context-Adaptive Positional Encoding for Length Extrapolation](https://arxiv.org/abs/2405.14722), 2024
   - Exploring on using NNs to further enhance the additive PE methods.
+
+
+## Diffusion Models
+
+- [Step-by-Step Diffusion: An Elementary Tutorial](https://arxiv.org/pdf/2406.08929), 2024
+- [Understanding Diffusion Models: A Unified Perspective](https://arxiv.org/abs/2208.11970), 2022
