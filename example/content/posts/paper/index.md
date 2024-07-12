@@ -10,6 +10,12 @@ excerpt: How I hope I won't forget the papers I have read.
 
 - [Pandora: Towards General World Model with Natural Language Actions and Video States](https://world-model.maitrix.org/assets/pandora.pdf), 2024 | [Code](https://github.com/maitrix-org/Pandora?tab=readme-ov-file)
 
+## Video Generation
+
+### Benchmark
+
+- [VBench: Comprehensive Benchmark Suite for Video Generative Models](https://arxiv.org/abs/2311.17982) | [Code](https://github.com/Vchitect/VBench), 2023 (CVPR 2024)
+
 ## Long Context LLM
 
 - [RoFormer: Enhanced Transformer with Rotary Position Embedding](https://arxiv.org/abs/2104.09864), 2020
