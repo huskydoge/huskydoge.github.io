@@ -1,0 +1,18 @@
+{
+    "sourceFile": "gatsby-theme-academic/src/components/PageLayout/Footer/index.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1721080476131,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1721080476130,
+            "name": "Commit-0",
+            "content": "import { Divider } from 'rsuite';\nimport { useStaticQuery, graphql } from 'gatsby';\nimport moment from 'moment';\nimport React from 'react';\n\nexport default () => {\n  const data = useStaticQuery(graphql`\n  query {\n    currentBuildDate {\n      currentDate\n    }\n  }\n`);\n  const { currentBuildDate: { currentDate } } = data;\n  const buildTime = moment(currentDate).format('MMM Do YYYY');\n  return (\n    <>\n      <Divider style={{ color: 'var(--rs-text-tertiary)', marginTop: '3rem', marginBottom: '-3rem' }}>\n        {/*<Typography.Text type=\"secondary\">*/}\n          {/* {'Made with '}\n        <a href=\"https://www.gatsbyjs.com/\">Gatsby</a>\n        {', '}\n        <a href=\"https://ant.design/\">Ant Design</a>\n        {', '}\n        <a href=\"https://www.jetbrains.com/lp/mono/\">Jetbrains Mono Font</a>\n        {' and '}\n        <a href=\"https://github.com/\">GitHub</a>\n        {' style markdown'} */}\n        {/* {`Last Updated on ${buildTime}`} */}\n        {/* {'Powered by '}\n          <a href=\"https://github.com/tc-imba/greatest-gatsby-academic-template\">\n            greatest-gatsby-academic-template\n          </a>\n          . */}\n      {/*</Typography.Text>*/}\n      </Divider>\n    </>\n  );\n};\n"
+        }
+    ]
+}
