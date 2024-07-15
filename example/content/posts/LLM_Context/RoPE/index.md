@@ -217,11 +217,16 @@ Jianlin Su is a very talented guy, his Blogs are all very insightful. Among his 
 
 - This blog introduces RoPE.
 
+[Transformer升级之路：4、二维位置的旋转式位置编码](https://spaces.ac.cn/archives/8397)
+- This blog introduces 2D RoPE, which could be applied in ViT.
+
 [Transformer 升级之路：7、长度外推性与局部注意力](https://spaces.ac.cn/archives/9431)
 
 [Transformer 升级之路：9、一种全局长度外推的新思路](https://spaces.ac.cn/archives/9603)
 
 [Transformer 升级之路：10、RoPE 是一种 β 进制编码](https://spaces.ac.cn/archives/9675)
+
+[Transformer升级之路：17、多模态位置编码的简单思考](https://spaces.ac.cn/archives/10040)
 
 [Transformer 升级之路：18、RoPE 的底数选择原则](https://spaces.ac.cn/archives/10122)
 

@@ -16,7 +16,9 @@ excerpt: How I hope I won't forget the papers I have read.
 ### Datasets
 - [(hdvila) Advancing High-Resolution Video-Language Representation with Large-Scale Video Transcriptions
 ](https://arxiv.org/abs/2111.10337) | [Code](https://github.com/microsoft/XPretrain/tree/main/hd-vila), 2021
-- [How Good is my Video LMM? Complex Video Reasoning and Robustness Evaluation Suite for Video-LMMs](https://arxiv.org/abs/2405.03690) | [Code](https://github.com/mbzuai-oryx/CVRR-Evaluation-Suite/)
+- [How Good is my Video LMM? Complex Video Reasoning and Robustness Evaluation Suite for Video-LMMs](https://arxiv.org/abs/2405.03690) | [Code](https://github.com/mbzuai-oryx/CVRR-Evaluation-Suite/), 2024
+- [ShareGPT4Video:
+Improving Video Understanding and Generation with Better Captions](https://sharegpt4video.github.io/), 2024
 
 ## Video Generation
 
