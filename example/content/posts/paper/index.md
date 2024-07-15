@@ -6,9 +6,17 @@ path: "posts/paper"
 excerpt: How I hope I won't forget the papers I have read.
 ---
 
-## World Models
+## World Models & Video Reasoning
 
 - [Pandora: Towards General World Model with Natural Language Actions and Video States](https://world-model.maitrix.org/assets/pandora.pdf), 2024 | [Code](https://github.com/maitrix-org/Pandora?tab=readme-ov-file)
+- [Video-of-Thought: Step-by-Step Video Reasoning from Perception to Cognition](https://haofei.vip/VoT/)
+  - Insightful and comprehensive. The conecept of spatial-temporal scene graph (STSG) is something new to me.
+- [Robotic Control via Embodied Chain-of-Thought Reasoning](https://arxiv.org/html/2407.08693v1)
+
+### Datasets
+- [(hdvila) Advancing High-Resolution Video-Language Representation with Large-Scale Video Transcriptions
+](https://arxiv.org/abs/2111.10337) | [Code](https://github.com/microsoft/XPretrain/tree/main/hd-vila), 2021
+- [How Good is my Video LMM? Complex Video Reasoning and Robustness Evaluation Suite for Video-LMMs](https://arxiv.org/abs/2405.03690) | [Code](https://github.com/mbzuai-oryx/CVRR-Evaluation-Suite/)
 
 ## Video Generation
 
