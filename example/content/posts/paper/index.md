@@ -13,6 +13,9 @@ excerpt: How I hope I won't forget the papers I have read.
   - Insightful and comprehensive. The conecept of spatial-temporal scene graph (STSG) is something new to me.
 - [Robotic Control via Embodied Chain-of-Thought Reasoning](https://arxiv.org/html/2407.08693v1)
 
+### Video Position Encoding
+- [Rotary Position Embedding for Vision Transformer]()
+
 ### Datasets
 - [(hdvila) Advancing High-Resolution Video-Language Representation with Large-Scale Video Transcriptions
 ](https://arxiv.org/abs/2111.10337) | [Code](https://github.com/microsoft/XPretrain/tree/main/hd-vila), 2021
