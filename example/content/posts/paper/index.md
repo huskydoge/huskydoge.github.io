@@ -13,8 +13,10 @@ excerpt: How I hope I won't forget the papers I have read.
   - Insightful and comprehensive. The conecept of spatial-temporal scene graph (STSG) is something new to me.
 - [Robotic Control via Embodied Chain-of-Thought Reasoning](https://arxiv.org/html/2407.08693v1)
 
-### Video Position Encoding
-- [Rotary Position Embedding for Vision Transformer]()
+### Video Position Encoding & Temporal/Spacial Attention
+- [Rotary Position Embedding for Vision Transformer](https://arxiv.org/abs/2403.13298), 2024
+- [Video Transformers: A Survey](https://arxiv.org/abs/2201.05991), 2022
+- [Space or time for video classification transformers](https://link.springer.com/article/10.1007/s10489-023-04756-5), 2023
 
 ### Datasets
 - [(hdvila) Advancing High-Resolution Video-Language Representation with Large-Scale Video Transcriptions
