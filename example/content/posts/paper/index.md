@@ -52,5 +52,7 @@ Improving Video Understanding and Generation with Better Captions](https://share
 
 ## Diffusion Models
 
+- https://github.com/showlab/Awesome-Video-Diffusion?tab=readme-ov-file
+
 - [Step-by-Step Diffusion: An Elementary Tutorial](https://arxiv.org/pdf/2406.08929), 2024
 - [Understanding Diffusion Models: A Unified Perspective](https://arxiv.org/abs/2208.11970), 2022
