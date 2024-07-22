@@ -1,7 +1,7 @@
 ---
 title: "Paper List"
 tags: ["paper"]
-date: 2024
+date: 2024-06-25
 path: "posts/paper"
 excerpt: How I hope I won't forget the papers I have read.
 ---

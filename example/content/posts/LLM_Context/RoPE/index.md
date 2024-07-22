@@ -1,7 +1,7 @@
 ---
 title: "The Long-Term Decay Property of RoPE"
 tags: ["PosEmbed"]
-date: 2024
+date: 2024-06-28
 path: "posts/LLM_Context/RoPE"
 cover: "./rope-long-term.png"
 # excerpt: paperlist

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 15,
+            "activePatchIndex": 18,
             "patches": [
                 {
                     "date": 1720465695051,
@@ -68,6 +68,18 @@
                 {
                     "date": 1720471512677,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n title: \"Skills for LLMer\"\n tags: [\"skills\"]\n date: 2024\n path: \"posts/skills\"\n+cover: \"./code.jpg\"\n excerpt: Never learn all, but learn the most important.\n ---\n \n ## Linux\n@@ -17,24 +18,5 @@\n ## Docker\n 1. [you need to learn Docker RIGHT NOW!! // Docker Containers 101](https://www.youtube.com/watch?v=eGz9DS-aIeY)\n     > Introduction to Docker\n \n-2. [Docker Crash Course for Absolute Beginners [NEW]](https://www.youtube.com/watch?v=pg19Z8LL06w)\n----\n-title: \"Skills for LLMer\"\n-tags: [\"skills\"]\n-date: 2024\n-path: \"posts/skills\"\n-excerpt: Never learn all, but learn the most important.\n----\n-\n-## Linux\n-\n-1. [60 Linux Commands you NEED to know (in 10 minutes)](https://www.youtube.com/watch?v=gd7BXuUQ91w)\n-    > fast, easy, and useful\n-\n-\n-## Docker\n-1. [you need to learn Docker RIGHT NOW!! // Docker Containers 101](https://www.youtube.com/watch?v=eGz9DS-aIeY)\n-    > Introduction to Docker\n-\n 2. [Docker Crash Course for Absolute Beginners [NEW]](https://www.youtube.com/watch?v=pg19Z8LL06w)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1721678527654,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n ---\n title: \"Skills for LLMer\"\n tags: [\"skills\"]\n-date: 2024\n+date: 2024-06-27\n path: \"posts/skills\"\n cover: \"./code.jpg\"\n excerpt: Never learn all, but learn the most important.\n ---\n"
+                },
+                {
+                    "date": 1721678539247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n ---\n title: \"Skills for LLMer\"\n tags: [\"skills\"]\n-date: 2024-06-27\n+date: 2024-07-10\n path: \"posts/skills\"\n cover: \"./code.jpg\"\n excerpt: Never learn all, but learn the most important.\n ---\n"
+                },
+                {
+                    "date": 1721678554196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,10 @@\n \n 1. [60 Linux Commands you NEED to know (in 10 minutes)](https://www.youtube.com/watch?v=gd7BXuUQ91w)\n     > fast, easy, and useful\n \n-2. \n+2. [Vim Cheat Sheet](https://vim.rtorr.com/lang/zh_en)\n+    > Vim is a powerful text editor used in CLI.\n \n \n ## Docker\n 1. [you need to learn Docker RIGHT NOW!! // Docker Containers 101](https://www.youtube.com/watch?v=eGz9DS-aIeY)\n"
                 }
             ],
             "date": 1720465695051,

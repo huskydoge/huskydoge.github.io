@@ -1,0 +1,42 @@
+{
+    "sourceFile": "example/content/posts/paper/influence-paper/index.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1721519414244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1721519422987,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n ---\n title: \"Survey on Influence Function\"\n-tags: [\"paper\"]\n+tags: [\"paper\", \"influence function\"]\n date: 2024\n path: \"posts/paper\"\n excerpt: How I hope I won't forget the papers I have read.\n ---\n"
+                },
+                {
+                    "date": 1721519428313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,6 @@\n title: \"Survey on Influence Function\"\n tags: [\"paper\", \"influence function\"]\n date: 2024\n path: \"posts/paper\"\n-excerpt: How I hope I won't forget the papers I have read.\n ---\n+\n"
+                },
+                {
+                    "date": 1721519483980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,4 +4,11 @@\n date: 2024\n path: \"posts/paper\"\n ---\n \n+# Introduction\n+\n+\n+# Basic Concepts\n+\n+\n+# Influence Function for Diffusions\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1721519502811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,15 @@\n ---\n title: \"Survey on Influence Function\"\n tags: [\"paper\", \"influence function\"]\n date: 2024\n-path: \"posts/paper\"\n+path: \"posts/paper/influence-paper\"\n ---\n \n # Introduction\n \n \n # Basic Concepts\n \n \n\\ No newline at end of file\n-# Influence Function for Diffusions\n+# Influence Function for Diffusions\n+\n"
+                },
+                {
+                    "date": 1721519783944,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,15 @@\n+---\n+title: \"Survey on Influence Function\"\n+tags: [\"paper\", \"influence function\"]\n+date: 2024\n+path: \"posts/paper/influence-paper\"\n+---\n+\n+# Introduction\n+\n+\n+# Basic Concepts\n+\n+\n+# Influence Function for Diffusions\n+\n"
+                },
+                {
+                    "date": 1721540252287,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,4 +12,5 @@\n \n \n # Influence Function for Diffusions\n \n+no\n"
+                }
+            ],
+            "date": 1721519414244,
+            "name": "Commit-0",
+            "content": "---\ntitle: \"Survey on Influence Function\"\ntags: [\"paper\"]\ndate: 2024\npath: \"posts/paper\"\nexcerpt: How I hope I won't forget the papers I have read.\n---\n"
+        }
+    ]
+}
