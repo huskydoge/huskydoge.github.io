@@ -6,7 +6,7 @@ tags:
 authors:
   - name: "**Benhao Huang**"
 path: "project/3D-Recon"
-excerpt: AI4701 Computer Vision, 2024. Instructor: [Prof. Xu Zhao](https://scholar.google.com/citations?user=bsp_RSUAAAAJ)
+excerpt: "AI4701 Computer Vision, 2024. Instructor: [Prof. Xu Zhao](https://scholar.google.com/citations?user=bsp_RSUAAAAJ)"
 selected: true
 cover: "./preview.png"
 links:
