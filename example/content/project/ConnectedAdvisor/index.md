@@ -5,6 +5,8 @@ tags:
   - "MongoDB"
 authors:
   - name: "**Benhao Huang**"
+  - name: "[Pengxiang Zhu](https://jubsteven.github.io/)"
+  - name: "[Yizhou Liu](https://github.com/yizhou0409)"
 path: "project/ConnectedAdvisor"
 excerpt: "CS3321 Database Technology, 2024. Instructor: [Prof. Jie Guo](https://infosec.sjtu.edu.cn/DirectoryDetail.aspx?id=143)"
 selected: true
