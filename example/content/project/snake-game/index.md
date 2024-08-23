@@ -2,7 +2,7 @@
 title: "SNAKE Game: Pixel"
 tags:
   - "C++"
-  - "Course Project"
+  - "Game Design"
 authors:
   - name: "**Benhao Huang**"
   - name: "[Yixin Huang](https://github.com/CindyH1103)"

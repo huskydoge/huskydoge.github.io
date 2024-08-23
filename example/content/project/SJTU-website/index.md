@@ -4,7 +4,6 @@ tags:
   - "Vue.js"
   - "echarts"
   - "element-ui"
-  - "Course Project"
 authors:
   - name: "**Benhao Huang**"
   - name: "Ai Ji"
