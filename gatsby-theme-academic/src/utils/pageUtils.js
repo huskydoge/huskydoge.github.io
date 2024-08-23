@@ -129,7 +129,7 @@ const Utils = {
    */
   capitalize: (str) => str[0].toUpperCase() + str.slice(1),
   generateOmittedPostInfo: (node) => {
-    const regex = /(?<=content\/)(posts|research)\/.*(?=\/index\.md)/g;
+    const regex = /(?<=content\/)(posts|research|project)\/.*(?=\/index\.md)/g;
     const fileAbsolutePath = node.fileAbsolutePath || '';
     const matches = fileAbsolutePath.match(regex);
     if (matches && matches.length === 1 && !node.frontmatter.path) {

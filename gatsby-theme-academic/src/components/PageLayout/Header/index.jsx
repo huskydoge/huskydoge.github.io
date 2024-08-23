@@ -131,10 +131,11 @@ export default () => {
               <NavButton to="/" onClick={toggleMenu}>About</NavButton>
               <NavButton to="/experience/" onClick={toggleMenu} partiallyActive>Experience</NavButton>
               <NavButton to="/research/" onClick={toggleMenu} partiallyActive>Research</NavButton>
+              <NavButton to="/project/" onClick={toggleMenu} partiallyActive>Project</NavButton>
               <NavButton to="/posts/" onClick={toggleMenu} partiallyActive>Posts</NavButton>
-              <li className={style.navItem}>
+              {/* <li className={style.navItem}>
                 <ThemeModeSwitch />
-              </li>
+              </li> */}
               <li className={style.navItem} style={{ marginLeft: '1rem' }}>
                 <LoadableSearch
                   isSearchBarExpanded={isSearchBarExpanded}

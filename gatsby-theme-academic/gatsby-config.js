@@ -7,10 +7,10 @@ module.exports = ({
   pages = {
     home: '/',
     posts: 'posts',
-    contact: 'contact',
     resume: 'resume',
     tags: 'tags',
     research: 'research',
+    project: 'project',
   },
   icon = '',
   tagColors = [

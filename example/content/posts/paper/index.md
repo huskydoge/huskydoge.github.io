@@ -56,3 +56,10 @@ Improving Video Understanding and Generation with Better Captions](https://share
 
 - [Step-by-Step Diffusion: An Elementary Tutorial](https://arxiv.org/pdf/2406.08929), 2024
 - [Understanding Diffusion Models: A Unified Perspective](https://arxiv.org/abs/2208.11970), 2022
+
+## MLSys
+
+- vLLM (PagedAttention): 
+  - https://www.youtube.com/watch?v=Oq2SN7uutbQ (CN)
+  - https://www.youtube.com/watch?v=5ZlavKF_98U (EN)
+- 

@@ -13,6 +13,7 @@ import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import PostCard from '../../components/PostCard';
 // import Statistics from '../../../content/statistics.json';
 import ResearchCard from '../../components/ResearchCard';
+import ProjectCard from '../../components/ProjectCard';
 import SEO from '../../components/Seo';
 import Utils from '../../utils/pageUtils';
 
@@ -31,6 +32,7 @@ const TagPage = ({
   const docs = data.allMdx.edges;
   const posts = _.filter(docs, (doc) => doc.node.frontmatter.type === 'posts');
   const research = _.filter(docs, (doc) => doc.node.frontmatter.type === 'research');
+  const project = _.filter(docs, (doc) => doc.node.frontmatter.type === 'project');
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
 
@@ -66,6 +68,19 @@ const TagPage = ({
               // eslint-disable-next-line react/no-array-index-key
               <Col key={key} xs={24} sm={24} md={24} lg={24}>
                 <ResearchCard data={post} tagsMap={tagsMap} />
+              </Col>
+            ))}
+          </Row>
+        </>
+      ) : null}
+      {project.length > 0 ? (
+        <>
+          <h2>Projects</h2>
+          <Row gutter={[20, 20]} type="flex">
+            {project.map((post, key) => ( 
+              // eslint-disable-next-line react/no-array-index-key
+              <Col key={key} xs={24} sm={24} md={24} lg={24}>
+                <ProjectCard data={post} tagsMap={tagsMap} />
               </Col>
             ))}
           </Row>

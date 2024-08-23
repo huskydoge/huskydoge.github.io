@@ -8,6 +8,7 @@ import {
 import CodeBox from '../CodeBox';
 import PostCard from '../PostCard';
 import ResearchCard from '../ResearchCard';
+import ProjectCard from '../ProjectCard';
 import Tag from '../Tag';
 // import PostTag from '../PostTag';
 // import Utils from '../../utils/pageUtils';
@@ -16,6 +17,10 @@ import Tag from '../Tag';
 const Panel = (props) => {
   const { type, data } = props;
   const isResearch = type === 'research';
+  const isProject = type === 'project';
+  console.log(data);
+  console.log(isResearch);
+  console.log(isProject);
 
   // console.log(data.allTag);
   const tags = data.allTag ? data.allTag.edges : [];
@@ -66,7 +71,7 @@ const Panel = (props) => {
   return (
     <>
       <FlexboxGrid className="spacing-grid">
-        <FlexboxGrid.Item as={Col} xs={24} sm={24} md={24} lg={24}>
+        {/* <FlexboxGrid.Item as={Col} xs={24} sm={24} md={24} lg={24}>
           <CodeBox title="Filters">
             <Row gutter={8} align="middle" type="flex">
               <Col>
@@ -77,7 +82,7 @@ const Panel = (props) => {
               { tags.map(generateTag)}
             </Row>
           </CodeBox>
-        </FlexboxGrid.Item>
+        </FlexboxGrid.Item> */}
         {
           data.allMdx && data.allMdx.edges.map((val, key) => {
             // eslint-disable-next-line no-restricted-syntax
@@ -85,6 +90,13 @@ const Panel = (props) => {
               if (!val.tags.has(tag)) return null;
             }
             if (isResearch) {
+              return (
+                // eslint-disable-next-line react/no-array-index-key
+                <FlexboxGrid.Item as={Col} key={key} xs={24} sm={24} md={24} lg={24}>
+                  <ResearchCard data={val} tagsMap={tagsMap} />
+                </FlexboxGrid.Item>
+              );
+            } else if (isProject) {
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <FlexboxGrid.Item as={Col} key={key} xs={24} sm={24} md={24} lg={24}>
@@ -106,7 +118,7 @@ const Panel = (props) => {
 };
 
 Panel.propTypes = {
-  type: PropTypes.oneOf(['posts', 'research']).isRequired,
+  type: PropTypes.oneOf(['posts', 'research', 'project']).isRequired,
 };
 
 export default Panel;

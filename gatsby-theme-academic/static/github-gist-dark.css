@@ -689,3 +689,8 @@ body {
     color: var(--color-accent-fg);
 }
 
+
+a[target="_blank"][rel="nofollow"] {
+    color: rgb(224, 224, 232);
+    text-decoration: none; /* 如果您想移除下划线 */
+  }

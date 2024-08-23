@@ -17,7 +17,7 @@ cover: "./preview.png"
 links:
   - name: "paper"
     url: "https://arxiv.org/abs/2401.16318"
-  - name: "code"
+  - name: "GitHub"
     url: "https://github.com/sjtu-xai-lab/generalizable-interaction"
 priority: 2
 ---

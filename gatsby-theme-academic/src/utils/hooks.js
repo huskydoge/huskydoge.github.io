@@ -79,6 +79,7 @@ export const useSiteMetadata = () => {
             resume
             tags
             research
+            project
           }
           wakatime {
             username
