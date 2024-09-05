@@ -89,7 +89,7 @@ module.exports = {
   interests: [
     {
       icon: "cubes",
-      title: "LLM Agent, World Model",
+      title: "LLM Agent, World Model, LLM Reasoning",
     },
     {
       icon: "layer-group",
@@ -97,7 +97,7 @@ module.exports = {
     },
     {
       icon: "user",
-      title: "RLHF/LLM Alignment",
+      title: "LLM Alignment, Long Context Modeling",
     },
   ],
   experience: [
@@ -158,11 +158,11 @@ module.exports = {
   ],
   awards: [
     {
-      date: "2022-2023",
+      date: "2022 - 2023",
       title: "Rui Yuan Hong Shan Scholarship (Top 2%)",
     },
     {
-      date: "2021-2022",
+      date: "2021 - 2022",
       title: "Shao Qiu Scholarship (Top 4%)",
     },
     {
