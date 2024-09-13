@@ -6,10 +6,8 @@ module.exports = {
   author: "HuskyDoge",
   authorAlternative: "Benhao Huang",
   introduction: [
-    "Hello! Husky Here! I'm a junior student at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/)(SJTU), majoring in Computer Science. I'm currently collaborating with Professor [Jiaqi Ma](https://jiaqima.github.io/) at UIUC; before this, I had a wonderful research experience at Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
-    "My research interests include Instruction Following, RLHF, AI explainability, and interesting applications of LLMs, and I warmly welcome any invitations to further discussions!",
-    "I am now preparing my MS/PhD applications for Fall 2025, so if interested, please drop me an email!",
-    "### 📅 News \n * I will be visiting UCSD as an intern supervised by [Zhiting Hu](http://zhiting.ucsd.edu/) this summer!",
+    "Hello! Husky Here! I'm a junior student at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/)(SJTU), majoring in Computer Science. I'm currently collaborating with with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) on World Model Projects. Before this, I've been working with my amazing supervisor [Jiaqi Ma](https://jiaqima.github.io/) at [TRAIS Lab](https://github.com/TRAIS-Lab), UIUC. I also had a wonderful research experience at Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
+    "I'm now busy preparing my MS/PhD applications for Fall 2025, wish all the best!",
   ],
   avatar: "/avatar.png",
   professions: ["Junior Student"],
@@ -89,11 +87,11 @@ module.exports = {
   interests: [
     {
       icon: "cubes",
-      title: "LLM Agent, World Model, LLM Reasoning",
+      title: "LLM Agent, World Model, LLM Reasoning and Planning",
     },
     {
       icon: "layer-group",
-      title: "Interpretable AI",
+      title: "Interpretable AI, Data Influence",
     },
     {
       icon: "user",
@@ -159,11 +157,11 @@ module.exports = {
   awards: [
     {
       date: "2022 - 2023",
-      title: "Rui Yuan Hong Shan Scholarship (Top 2%)",
+      title: "Rui Yuan Hong Shan Scholarship (Top 2%, SJTU)",
     },
     {
       date: "2021 - 2022",
-      title: "Shao Qiu Scholarship (Top 4%)",
+      title: "Shao Qiu Scholarship (Top 4%, SJTU)",
     },
     {
       date: "2022",
