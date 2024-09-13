@@ -15,7 +15,7 @@ authors:
   - name: "Jiaqi Ma"
     url: "https://jiaqima.github.io/"
 path: "research/dca"
-# excerpt: Dire Tide 2020
+excerpt: A benchmark exploring the performance of LLM Agents on detecting issues in datasets hosted on popular platforms.
 selected: true
 cover: "./preview.png"
 links:
