@@ -156,11 +156,15 @@ module.exports = {
   ],
   awards: [
     {
-      date: "2022 - 2023",
+      date: "2024",
+      title: "**National Scholarship** (Top 0.2% nationwide)",
+    },
+    {
+      date: "2023",
       title: "Rui Yuan Hong Shan Scholarship (Top 2%, SJTU)",
     },
     {
-      date: "2021 - 2022",
+      date: "2022",
       title: "Shao Qiu Scholarship (Top 4%, SJTU)",
     },
     {
