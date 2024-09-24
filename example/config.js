@@ -157,7 +157,7 @@ module.exports = {
   awards: [
     {
       date: "2024",
-      title: "**National Scholarship** (Top 0.2% nationwide)",
+      title: "National Scholarship (Top 0.2% nationwide)",
     },
     {
       date: "2023",
