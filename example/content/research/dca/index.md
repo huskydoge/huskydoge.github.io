@@ -21,8 +21,6 @@ cover: "./preview.png"
 links:
   - name: "paper"
     url: "https://arxiv.org/pdf/2406.07275"
-  - name: "GitHub"
-    url: "https://github.com/TRAIS-Lab/dca-bench"
 priority: 1
 ---
 
