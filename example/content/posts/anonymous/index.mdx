@@ -1,0 +1,70 @@
+---
+title: "How to anonymize my paper?"
+tags: ["writing", "research"]
+date: 2024-10-01
+path: "posts/anonymous"
+---
+
+# Guide for Anonymizing Paper Submissions
+
+## 1. Personal Information Removal
+
+- Remove all links to **personal websites** or social media accounts
+- Delete any acknowledgements sections
+- Exclude all email addresses from the paper
+
+## 2. Code and Supplementary Material
+
+From ICLR 2025:
+> Source code submission: Source code associated with a paper can be uploaded as part of the supplementary material. Code submission gives more information to reviewers, especially for replicability of the paper. We encourage all authors to submit code as part of their submission. Note that reviewers are encouraged, but not required to review supplementary material during the review process. All supplementary code must be self-contained and zipped into a single file or can be downloaded via an anonymous URL. Note that supplementary material will be visible to reviewers and the public throughout and after the review period, and ensure all material is anonymized.
+
+> Q: How can we make our code available for reviewing anonymously?
+> You can share your code in three ways:
+> Anonymize your code, put it in a .zip file and submit it as supplementary materials.
+> Make an anonymous repository and put the link in your paper. The above methods will make your code public, along with your paper and reviews/comments for the paper.
+> After we open the discussion forums for all submitted papers, make a comment directed to the reviewers and area chairs and put a link to an anonymous repository. This method will let you keep your code visible only to the reviewers and ACs for your paper.
+
+- Remove links to personal code repositories
+- Check supplementary code for personal information:
+  - Remove email addresses
+  - Delete personal signatures or comments
+  - **Anonymize file paths and usernames**
+- **Ensure the license information doesn't contain personal details**
+- If using Jupyter notebooks:
+  - Avoid printing file paths that reveal personal information
+
+## 3. Document Metadata
+
+- Clear author information from document properties
+- Remove any custom fields that might contain identifying information
+- Check headers and footers for personal details
+
+## 4. Content Review
+
+- Use neutral language when referring to previous work (e.g., "In previous work..." instead of "In our previous work...")
+- Avoid phrases like "we build upon our previous work" that imply authorship
+- Be cautious when describing unique datasets or resources that could identify you
+
+## 5. Citations and References
+
+- If citing your own work, **refer to it in the third person**
+- Ensure bibliographic entries don't reveal authorship (e.g., avoid "Anonymous" for your papers)
+- Be careful with in-text citations that might reveal authorship (e.g., "In [1], we showed...")
+
+## 6. Figures and Tables
+
+- Remove author names or affiliations from figures, plots, or screenshots
+- Check image metadata for identifying information
+
+## 7. Funding and Institutional Information
+
+- Remove or anonymize information about specific grants or funding sources
+- Avoid mentioning specific institutions or laboratories that could identify you
+
+## 8. Final Check
+
+- Use a PDF viewer to ensure no hidden text or comments remain
+- Have a colleague review the paper to catch any overlooked identifying information
+- Run a search for terms like "I", "we", "our", and your name, @edu.cn to catch any missed instances
+
+Remember, the goal is to make it impossible for reviewers to guess your identity while still providing all necessary scientific information. 
