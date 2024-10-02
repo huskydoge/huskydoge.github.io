@@ -92,7 +92,7 @@ module.exports = {
     {
       icon: "brain",
       title: "World Model, Reasoning and Planning"
-    }
+    },
     {
       icon: "layer-group",
       title: "Interpretable AI, Data Influence",
