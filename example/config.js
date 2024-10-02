@@ -87,8 +87,12 @@ module.exports = {
   interests: [
     {
       icon: "cubes",
-      title: "LLM Agent, World Model, LLM Reasoning and Planning",
+      title: "LLM Agent",
     },
+    {
+      icon: "brain",
+      title: "World Model, Reasoning and Planning"
+    }
     {
       icon: "layer-group",
       title: "Interpretable AI, Data Influence",
