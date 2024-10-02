@@ -1,8 +1,6 @@
 import React from 'react';
 import { Timeline } from 'react-event-timeline';
-import {
-  Row, Col, List, FlexboxGrid,
-} from 'rsuite';
+import { Row, Col } from 'rsuite';
 
 import { useSiteMetadata } from '../../../utils/hooks';
 import IconListItem from '../../IconListItem';
@@ -21,38 +19,38 @@ const Experience = () => {
 
   return (
     <div className={styles.homepageSection}>
-      <Row type="flex">
-        <Col xs={24} sm={24} md={12} lg={15} style={{ marginBottom: '-2rem' }}>
+      {/* First section for Education */}
+      <Row type="flex" style={{ marginBottom: '2rem' }}>
+        <Col xs={24}>
           <h2 style={{ marginBottom: '0' }}>Education</h2>
-          {siteMetadata.education.length > 1
-            ? (
-              <Timeline lineStyle={{ top: '20px' }} lineColor="#44566C" style={{ width: '100%' }}>
-                {previousTimeLineData.map(TimelineItem)}
-              </Timeline>
-            ) : null}
-          {siteMetadata.education.length > 0
-            ? (
-              <Timeline
-                lineStyle={{ display: 'none' }}
-                style={{
-                  top: '-30px',
-                  width: '100%',
-                }}
-              >
-                {lastTimeLineData.map(TimelineItem)}
-              </Timeline>
-            ) : null}
-        </Col>
-        <Col xs={24} sm={24} md={12} lg={9}>
-          <h2 style={{ marginBottom: '0.8rem' }} className="interests">Interests</h2>
-          {/* <List itemLayout="horizontal" split={false}> */}
-          <div>
-            {siteMetadata.interests.map(generateInterest)}
-          </div>
-          {/* </List> */}
+          {siteMetadata.education.length > 1 ? (
+            <Timeline lineStyle={{ top: '20px' }} lineColor="#44566C" style={{ width: '100%' }}>
+              {previousTimeLineData.map(TimelineItem)}
+            </Timeline>
+          ) : null}
+          {siteMetadata.education.length > 0 ? (
+            <Timeline
+              lineStyle={{ display: 'none' }}
+              style={{
+                top: '-30px',
+                width: '100%',
+              }}
+            >
+              {lastTimeLineData.map(TimelineItem)}
+            </Timeline>
+          ) : null}
         </Col>
       </Row>
 
+      {/* Second section for Interests */}
+      <Row type="flex">
+        <Col xs={24}>
+          <h2 style={{ marginBottom: '0.8rem' }} className="interests">Interests</h2>
+          <div>
+            {siteMetadata.interests.map(generateInterest)}
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 };
