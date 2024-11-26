@@ -4,7 +4,7 @@ import React, { useRef, useContext } from 'react';
 import {
   Container, Content, Row, Col, List, Button, Sidebar, Grid, FlexboxGrid, Divider, IconButton,
 } from 'rsuite';
-
+import { Link } from 'gatsby'
 import Context from '../../../utils/context';
 import { useWindowSize, useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
@@ -44,20 +44,35 @@ const UserInfo = () => {
   return (
     <>
       <div className={`${style.name} centerAlign`}>
-        <Row type="flex">
-          {siteMetadata.professions.map((profession) => (
-            <Col
-              key={profession}
-              xs={24}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              <span className={`${style.badge} ${style.badgeGray}`}>{profession}</span>
-            </Col>
-          ))}
-        </Row>
+      <Row type="flex" className={style.badgeContainer}>
+        {siteMetadata.professions.map((profession) => {
+          const name = typeof profession === 'string' ? profession : profession.name;
+          const url = typeof profession === 'string' ? null : profession.url;
+          
+          const BadgeContent = (
+            <span className={`${style.badge} ${style.badgeGray}`}>
+              {name}
+            </span>
+          );
+
+          return (
+            <div key={name}>
+              {url ? (
+                <Link
+                  href={url}
+                  className={style.badgeLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {BadgeContent}
+                </Link>
+              ) : (
+                BadgeContent
+              )}
+            </div>
+          );
+        })}
+      </Row>
         <div className="centerAlign box" style={{ marginTop: '0.5rem' }}>
           <FlexboxGrid>
             {siteMetadata.social.map((social) => (

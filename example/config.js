@@ -6,14 +6,27 @@ module.exports = {
   author: "HuskyDoge",
   authorAlternative: "Benhao Huang",
   introduction: [
-    "Hello! Husky Here! I'm a junior student at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/)(SJTU), majoring in Computer Science. I'm currently collaborating with with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) on World Model Projects. Before this, I've been working with my amazing supervisor [Jiaqi Ma](https://jiaqima.github.io/) at [TRAIS Lab](https://github.com/TRAIS-Lab), UIUC. I also had a wonderful research experience at Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
+    "Hello! Husky Here! I'm a senior student at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/)(SJTU), majoring in Computer Science. I'm currently working with with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) on World Model Projects. Before this, I've been working with my amazing supervisor [Jiaqi Ma](https://jiaqima.github.io/) at [TRAIS Lab](https://github.com/TRAIS-Lab), UIUC. I also had a wonderful research experience at Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
     "I'm now busy preparing my MS/PhD applications for Fall 2025, wish all the best!",
   ],
   avatar: "/avatar.png",
-  professions: ["Junior Student"],
+  professions: [
+    {
+      name: "MAITRIX",
+      url: "https://maitrix.org/" 
+    },
+    {
+      name: "TRAIS",
+      url: "https://github.com/TRAIS-Lab"
+    },
+    {
+      name: "SJTU-XAI",
+      url: "https://sjtu-xai-lab.github.io/"
+    },
+  ],
   tocMaxDepth: 2,
   excerptMaxLength: 500,
-  // birthday: "Some day",
+  // birthday: "xxxx",
   location: "Shanghai, China",
   // email: "huskydogewoof@gmail.com",
   postsForArchivePage: 3,
@@ -86,21 +99,17 @@ module.exports = {
   ],
   interests: [
     {
-      icon: "cubes",
-      title: "LLM Agent",
-    },
-    {
       icon: "brain",
       title: "World Model, Reasoning and Planning"
     },
     {
-      icon: "layer-group",
-      title: "Interpretable AI, Data Influence",
+      icon: "cubes",
+      title: "AI Agents",
     },
     {
-      icon: "user",
-      title: "LLM Alignment, Long Context Modeling",
-    },
+      icon: "layer-group",
+      title: "Interpretable AI, Data Influence",
+    }
   ],
   experience: [
     {
@@ -108,7 +117,7 @@ module.exports = {
       position: "left",
       data: [
         {
-          date: "June 2024 - ?",
+          date: "June 2024 - Present",
           title: "[Maitrix.org](https://github.com/maitrix-org), UCSD",
           location: "San Diego, CA, USA",
         },
@@ -118,7 +127,7 @@ module.exports = {
           location: "remote",
         },
         {
-          date: "Nov.2023 - present",
+          date: "Nov.2023 - Present",
           title: "[TRAIS Lab](https://github.com/TRAIS-Lab), UIUC",
           location: "remote",
         },

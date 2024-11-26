@@ -65,18 +65,43 @@
         font-weight: 600;
         letter-spacing: 0;
       }
-
-      .badge {
-        margin: 0.5rem;
-        font-size: 0.9rem;
-        font-weight: 400;
-        border-radius: 10rem;
-        padding: .6rem 1rem;
+      .badgeContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
       }
-
+      
+      .badgeLink {
+        text-decoration: none;
+        transition: transform 0.2s ease;
+        
+        &:hover {
+          transform: translateY(-1px);
+        }
+      }
+      
+      .badge {
+        font-size: 0.75rem;
+        font-weight: 500;
+        border-radius: 1rem;
+        padding: 0.3rem 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.2s ease;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+      }
+      
       .badgeGray {
         background-color: var(--rs-gray-100);
         color: var(--rs-gray-900);
+        
+        &:hover {
+          background-color: var(--rs-gray-200);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
       }
 
       .boxName {

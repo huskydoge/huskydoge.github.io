@@ -59,7 +59,10 @@ export const useSiteMetadata = () => {
           authorAlternative
           introduction
           avatar
-          professions
+          professions {
+            name
+            url
+          }
           tocMaxDepth
           excerptMaxLength
           birthday
