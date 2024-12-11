@@ -6,7 +6,7 @@ module.exports = {
   author: "HuskyDoge",
   authorAlternative: "Benhao Huang",
   introduction: [
-    "Hello! Husky Here! I'm a senior student at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/)(SJTU), majoring in Computer Science. I'm currently working with with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) on World Model Projects. Before this, I've been working with my amazing supervisor [Jiaqi Ma](https://jiaqima.github.io/) at [TRAIS Lab](https://github.com/TRAIS-Lab), UIUC. I also had a wonderful research experience at Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
+    "Hello! Husky Here! I'm a senior student at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/)(SJTU), majoring in Computer Science. I'm currently working with with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) on World Model Projects. Before this, I've been working with my amazing supervisor [Jiaqi W. Ma](https://jiaqima.github.io/) at [TRAIS Lab](https://github.com/TRAIS-Lab), UIUC. I also had a wonderful research experience at Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
     "I'm now busy preparing my MS/PhD applications for Fall 2025, wish all the best!",
   ],
   avatar: "/avatar.png",

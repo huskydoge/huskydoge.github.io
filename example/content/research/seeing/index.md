@@ -1,10 +1,10 @@
 ---
-title: "Seeing is not always believing: The Space of Harmless Perturbations"
+title: "Contrasting Adversarial Perturbations: The Space of Harmless Perturbations"
 tags:
   - "Adversarial Perturbations"
   - "security"
-date: 2024-5-7
-venue: Preprint
+date: 2024-12-10
+venue: AAAI 2025
 authors:
   - name: "Lu Chen"
   - name: "Shaofeng Li"
@@ -19,7 +19,7 @@ selected: true
 cover: "./preview.png"
 links:
   - name: "paper"
-    url: "https://arxiv.org/pdf/2402.02095"
+    url: "https://arxiv.org/abs/2402.02095"
 
 priority: 3
 ---
