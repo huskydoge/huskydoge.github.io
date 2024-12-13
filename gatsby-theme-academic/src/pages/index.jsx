@@ -15,7 +15,7 @@ export default () => (
     <Awards />
     <SelectedResearch />
     <a href="https://clustrmaps.com/site/1bx0x" title="Visit tracker">
-      <img src="//clustrmaps.com/map_v2.png?cl=261b1b&w=a&t=tt&d=KsX45ylDjq2_61A1AolUOdbXxnUJf4u2QvsJIkBT68U&co=ffffff&ct=808080" />
+    <img src="//clustrmaps.com/map_v2.png?cl=261b1b&w=a&t=tt&d=KsX45ylDjq2_61A1AolUOdbXxnUJf4u2QvsJIkBT68U&co=ffffff&ct=808080" style="width: 0; height: 0;" />
     </a>
     {/* <SkillProgress/> */}
   </>
