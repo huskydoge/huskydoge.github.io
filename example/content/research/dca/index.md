@@ -3,8 +3,8 @@ title: "DCA-Bench: A Benchmark for Dataset Curation Agents"
 tags:
   - "LLM Agent"
   - "Benchmark"
-date: 2024-6-5
-# venue: a very very very very long long long long long long venue
+
+# venue: 
 authors:
   - name: "**Benhao Huang**"
   - name: "Yingzhuo Yu"
@@ -15,7 +15,7 @@ authors:
   - name: "Jiaqi W. Ma"
     url: "https://jiaqima.github.io/"
 path: "research/dca"
-excerpt: A benchmark exploring the performance of LLM Agents on detecting issues in datasets hosted on popular platforms.
+excerpt: A benchmark exploring the performance of LLM Agents on detecting issues in datasets hosted on popular platforms. (Under Review)
 selected: true
 cover: "./preview.png"
 links:
