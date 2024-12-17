@@ -11,7 +11,7 @@ authors:
   - name: "Pandora Team"
   - name: "Zhiting Hu"
     url: "https://zhiting.ucsd.edu/" 
-  - name: "Eric Xing"
+  - name: "Eric P. Xing"
     url: "https://www.cs.cmu.edu/~epxing/"
 path: "research/pan"
 excerpt: "A step towards a General World Model (GWM) that can simulate complex video scenarios with natural language actions."
