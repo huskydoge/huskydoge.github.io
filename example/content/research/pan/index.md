@@ -34,6 +34,7 @@ priority: 0
 
 - **Large-Scale Training Data Pipeline:** Designed and implemented a high-efficiency processing pipeline for video training data, processing over 10 million videos simultaneously, significantly improving the overall data quality and processing speed.
 
+![mcts](./mcts.png)
 
 ```
 
