@@ -28,7 +28,7 @@ const Utils = {
   generateFullUrl: (siteMetaData, ...path) => {
     let urlPrefix;
     if (process && process.env.NODE_ENV !== 'production') {
-      urlPrefix = 'http://127.0.0.1:8000/';
+      urlPrefix = 'http://localhost:8000/';
     } else {
       urlPrefix = siteMetaData.siteUrl;
       if (siteMetaData.pathPrefix) {
