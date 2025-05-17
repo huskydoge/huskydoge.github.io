@@ -81,9 +81,10 @@ const ResearchCard = (props) => {
     ]);
   }
   if (venue) {
+    let markdown = Utils.parseMarkDown(venue, true);
     infoLine = infoLine.concat([
       <div key="venue">
-        <span>{venue}</span>
+        <span dangerouslySetInnerHTML={{ __html: markdown }} />
       </div>,
     ]);
   }

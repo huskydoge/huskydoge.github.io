@@ -7,14 +7,14 @@ venue: AAAI 2025
 authors:
   - name: "Lu Chen"
   - name: "Shaofeng Li"
-  - name: "**Benhao Huang**"
+  - name: "*Benhao Huang*"
   - name: "Fan Yang"
   - name: "Zheng Li"
   - name: "Jie Li"
   - name: "Luo Yuan"
-path: "research/seeing"
+path: "research/2025/seeing"
 # excerpt: Dire Tide 2020
-selected: true
+selected: false
 cover: "./preview.png"
 links:
   - name: "paper"
@@ -23,7 +23,6 @@ links:
 priority: 3
 ---
 
-## Incoming
 
 ```
 

@@ -244,7 +244,7 @@ module.exports = ({
       avatar: '',
       professions: [],
       tocMaxDepth: 2,
-      excerptMaxLength: 500,
+      excerptMaxLength: 100,
       birthday: '',
       location: '',
       email: '',

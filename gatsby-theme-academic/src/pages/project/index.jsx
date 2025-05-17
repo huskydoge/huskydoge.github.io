@@ -20,6 +20,7 @@ const Project = ({ data }) => (
     />
     <div className="marginTopTitle">
       <h1 className="titleSeparate">Project</h1>
+      <h3 className="titleSeparate">My Undergraduate Projects</h3>
       <Panel type="project" data={data} />
     </div>
   </>

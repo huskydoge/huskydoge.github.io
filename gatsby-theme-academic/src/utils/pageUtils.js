@@ -170,7 +170,7 @@ const Utils = {
     }
   },
 
-  trimExcerpt: (excerpt, excerptMaxLength = 500) => {
+  trimExcerpt: (excerpt, excerptMaxLength = 200) => {
     if (!excerpt) return '';
     if (excerpt.length < excerptMaxLength) return excerpt;
     return `${excerpt.substring(0, excerptMaxLength)} ...`;

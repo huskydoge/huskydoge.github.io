@@ -36,7 +36,7 @@ const PostCard = (props) => {
   //   }
   // };
 
-  const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt), true);
+  const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt, excerptMaxLength), true);
 
   return (
     <Panel

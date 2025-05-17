@@ -124,9 +124,13 @@ const Post = ({ data }) => {
         </div>
         <FlexboxGrid style={{ marginBottom: '1rem' }}>
           <FlexboxGrid.Item as={Col} xs={24} sm={24} md={fluid ? 12 : 24} lg={fluid ? 16 : 24}>
-            <CodeBox title="Abstract" style={{ height: '100%' }}>
+            <CodeBox
+                title={<span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>Abstract</span>}
+                style={{ height: '100%' }}
+              >
+
               <p
-                style={{ marginBottom: '0' }}
+                style={{ marginBottom: '0', fontSize: '1rem', lineHeight: '1.6' }}
                 dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }}
               />
             </CodeBox>
