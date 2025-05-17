@@ -98,7 +98,7 @@ const ResearchCard = (props) => {
     ]);
   }
 
-  const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt, siteMetadata.exc), true);
+  const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt), true);
 
   return (
     <Panel
