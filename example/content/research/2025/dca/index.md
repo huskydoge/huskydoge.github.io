@@ -17,7 +17,7 @@ authors:
   - name: "Jiaqi W. Ma"
     url: "https://jiaqima.github.io/"
 path: "research/2025/dca"
-excerpt: A benchmark exploring the performance of LLM Agents on detecting issues in datasets hosted on popular platforms. (Under Review)
+excerpt: A benchmark exploring the performance of LLM Agents on detecting issues in datasets hosted on popular platforms.
 selected: true
 cover: "./preview.png"
 links:
