@@ -126,22 +126,27 @@ module.exports = {
       position: "left",
       data: [
         {
-          date: "June 2024 - Present",
+          date: "Mar. 2025 - May. 2025",
+          title: "[VCG Group](https://vcg.seas.harvard.edu/), Harvard",
+          location: "Cambridge, MA, USA",
+        },
+        {
+          date: "Jun. 2024 - Mar. 2025",
           title: "[Maitrix.org](https://github.com/maitrix-org), UCSD",
           location: "San Diego, CA, USA",
         },
         {
-          date: "Mar.2024 - Jun.2024",
+          date: "Mar. 2024 - Jun. 2024",
           title: "Research Intern @ [Moonshot AI](https://www.moonshot.cn/)",
           location: "remote",
         },
         {
-          date: "Nov.2023 - Present",
+          date: "Nov. 2023 - Sept. 2024",
           title: "[TRAIS Lab](https://github.com/TRAIS-Lab), UIUC",
           location: "remote",
         },
         {
-          date: "Apr. 2023 - Jan. 2024",
+          date: "Feb. 2023 - Jan. 2024",
           title: "[XAI Lab](https://sjtu-xai-lab.github.io/), SJTU",
           location: "Shanghai, China",
         },
