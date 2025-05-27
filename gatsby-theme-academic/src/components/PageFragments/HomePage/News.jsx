@@ -10,7 +10,7 @@ const News = () => (
             <Col xs={24}>
                 <ul style={{ paddingLeft: '1.2em', fontSize: '1rem' }}>
                     <li>
-                        2025/05: <strong>DCA-Bench</strong> has been accepted to <strong>KDD 2025</strong> DB-Track as an <strong>oral paper</strong>! See you in Vancouver 🎉
+                        2025/05: <strong>DCA-Bench</strong> has been accepted to <strong>KDD 2025</strong> DB-Track as an <strong>oral paper</strong>! See you in Toronto 🎉
                     </li>
                 </ul>
             </Col>
