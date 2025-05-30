@@ -21,7 +21,7 @@ excerpt: A benchmark exploring the performance of LLM Agents on detecting issues
 selected: true
 cover: "./preview.png"
 links:
-  - name: "paper (to be updated soon)"
+  - name: "paper"
     url: "https://arxiv.org/abs/2406.07275"
   - name: "code"
     url: "https://github.com/TRAIS-Lab/dca-bench"
