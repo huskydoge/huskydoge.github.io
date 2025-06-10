@@ -9,6 +9,7 @@ tags:
 authors:
   - name: "**Benhao Huang**"
   - name: "Pandora Team"
+    url:  "https://maitrix.org/"
   - name: "Zhiting Hu"
     url: "https://zhiting.ucsd.edu/" 
   - name: "Eric P. Xing"

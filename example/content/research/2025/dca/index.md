@@ -5,11 +5,12 @@ tags:
   - "Benchmark"
   - "2025"
 
-venue: "KDD-2025 DB Track **(Oral)**"
+venue: "[KDD-2025 DB Track](https://kdd2025.kdd.org/call-for-datasets-and-benchmarks-track-papers/) **(Oral)**, [ICML-2025 Data World](https://dataworldicml2025.github.io/)"
 
 authors:
   - name: "**Benhao Huang**"
   - name: "Yingzhuo Yu"
+    url: "https://www.linkedin.com/in/yingzhuo-yu-302334232/" 
   - name: "Jin Huang"
     url: "https://jn-huang.github.io/"
   - name: "Xingjian Zhang"
