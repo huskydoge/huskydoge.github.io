@@ -24,10 +24,14 @@ authors:
   - name: "Chao-Jung Lai"
   - name: "Chuanyang Jin"
   - name: "Jiannan Xiang"
-  - name: "*Benhao Huang*"
+  - name: "**Benhao Huang**"
   - name: "Zeming Chen"
   - name: "David Danks"
   - name: "Hao Su"
+  - name: "Tianming Shu"
+  - name: "Ziqiao Ma"
+  - name: "Lianhui Qin"
+  - name: "Zhiting Hu"
 
 
 path: "research/2025/wm-bench"
