@@ -114,6 +114,7 @@ export const useSiteMetadata = () => {
           awards {
             date
             title
+            show
           }
           tags {
             id

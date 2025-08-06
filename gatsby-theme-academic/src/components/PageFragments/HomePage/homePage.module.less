@@ -22,3 +22,43 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+/* Smooth transition effect */
+.timeline-enter, .timeline-leave {
+  transition: all 0.3s ease-in-out;
+}
+
+.rs-button {
+  font-weight: 500;
+}
+
+/* Awards collapse styles */
+.awardsToggleButton {
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  color: #999;
+  font-size: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.awardsToggleButton:hover {
+  color: #666;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.hiddenAwardsContainer {
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.awardsDivider {
+  text-align: center;
+  margin: 0.1rem 0 0.1rem 0;
+  padding: 0.1rem 0;
+}

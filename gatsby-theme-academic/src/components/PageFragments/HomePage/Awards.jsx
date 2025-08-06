@@ -1,5 +1,5 @@
-import { Col, Row, FlexboxGrid } from 'rsuite';
-import React from 'react';
+import { Col, Row, FlexboxGrid, Button } from 'rsuite';
+import React, { useState } from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
 
 import { useSiteMetadata } from '../../../utils/hooks';
@@ -22,7 +22,7 @@ const AwardItem = (data) => {
     <TimelineEvent
       title={title}
       style={{
-        paddingBottom: '0.8rem',
+        paddingBottom: '0.1rem',
         paddingTop: '0.3rem',
       }}
       icon={<Icon size={data.iconSize || 'lg'} fixedWidth icon={data.icon || 'award'} />}
@@ -35,14 +35,58 @@ const AwardItem = (data) => {
 
 const Awards = () => {
   const siteMetadata = useSiteMetadata();
+  const [showHidden, setShowHidden] = useState(false);
+  
+  // Separate visible and hidden awards
+  const visibleAwards = siteMetadata.awards.filter(award => award.show === true);
+  const hiddenAwards = siteMetadata.awards.filter(award => award.show === false);
+  
+  const hasHiddenAwards = hiddenAwards.length > 0;
+  
+
+  
   return (
     <div className={styles.homepageSection}>
       <h2 style={{ marginBottom: '0rem' }}>Awards & Scholarships</h2>
       <Row>
-        <Col xs={24} style={{ marginBottom: '-0.5rem' }}>
-          <Timeline lineStyle={{ display: 'none' }} style={{ width: '100%' }}>
-            {siteMetadata.awards.map(AwardItem)}
+        <Col xs={24} style={{ marginBottom: '0.1rem' }}>
+
+          
+          <Timeline lineStyle={{ display: 'none' }} style={{ width: '100%', marginBottom: '0rem', paddingBottom: '0rem' }}>
+            {visibleAwards.map(AwardItem)}
           </Timeline>
+          
+          {/* Toggle button for hidden awards */}
+          {hasHiddenAwards && (
+            <div className={styles.awardsDivider}>
+              <button
+                onClick={() => setShowHidden(!showHidden)}
+                className={styles.awardsToggleButton}
+              >
+                <Icon 
+                  icon={showHidden ? 'chevron-up' : 'chevron-down'} 
+                  style={{ fontSize: '14px' }} 
+                />
+                {showHidden ? 'Close' : ``}
+              </button>
+            </div>
+          )}
+          
+          {/* Hidden awards section with smooth animation */}
+          {hasHiddenAwards && (
+            <div 
+              className={styles.hiddenAwardsContainer}
+              style={{
+                maxHeight: showHidden ? '500px' : '0px',
+                opacity: showHidden ? 1 : 0,
+                marginTop: showHidden ? '0.5rem' : '0',
+              }}
+            >
+              <Timeline lineStyle={{ display: 'none' }} style={{ width: '100%' }}>
+                {hiddenAwards.map(AwardItem)}
+              </Timeline>
+            </div>
+          )}
         </Col>
       </Row>
     </div>

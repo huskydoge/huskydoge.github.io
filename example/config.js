@@ -184,19 +184,23 @@ module.exports = {
   awards: [
     {
       date: "2024",
-      title: "National Scholarship (Top 0.2% nationwide)",
+      title: "National Scholarship",
+      show: true,
     },
     {
       date: "2023",
       title: "Rui Yuan Hong Shan Scholarship (Top 2%, SJTU)",
+      show: false,
     },
     {
       date: "2022",
       title: "Shao Qiu Scholarship (Top 4%, SJTU)",
+      show: false,
     },
     {
       date: "2022",
       title: "Meritorious Winner of MCM/ICM",
+      show: false,
     },
   ],
   tagColors: [
