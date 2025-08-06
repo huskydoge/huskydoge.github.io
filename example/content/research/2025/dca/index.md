@@ -1,9 +1,10 @@
 ---
 title: "DCA-Bench: A Benchmark for Dataset Curation Agents"
+date: "2025-05-01"
 tags:
   - "LLM Agent"
   - "Benchmark"
-  - "2025"
+  - "Data-centric AI"
 
 venue: "[KDD-2025 DB Track](https://kdd2025.kdd.org/call-for-datasets-and-benchmarks-track-papers/) **(Oral)**, [ICML-2025 Data World](https://dataworldicml2025.github.io/)"
 

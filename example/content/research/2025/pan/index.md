@@ -1,5 +1,6 @@
 ---
 title: "PAN: Towards General World Model with Natural Language Actions and Video States"
+date: "2025-07-01"
 tags:
   - "World Model"
   - "Image to Video"

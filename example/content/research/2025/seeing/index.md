@@ -1,8 +1,9 @@
 ---
 title: "Contrasting Adversarial Perturbations: The Space of Harmless Perturbations"
+date: "2024-12-10"
 tags:
   - "Adversarial Perturbations"
-  - "security"
+  - "AI Safety"
 venue: AAAI 2025
 authors:
   - name: "Lu Chen"

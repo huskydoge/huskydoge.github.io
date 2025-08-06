@@ -1,9 +1,10 @@
 ---
 title: "Do Vision-Language Models Have Internal World Models? Towards an Atomic Evaluation"
+date: "2025-06-01"
 tags:
   - "World Model"
   - "Benchmark"
-  - "2025"
+  - "Benchmark"
 
 venue: "ICLR 2025 Workshop World Models / ACL 2025 Findings"
 
@@ -36,7 +37,7 @@ selected: false
 cover: "./preview.png"
 links:
   - name: "paper"
-    url: "https://openreview.net/pdf/fad1cdbf1a8687d3e2a1924573c79977176f6b06.pdf"
+    url: "https://arxiv.org/abs/2506.21876"
 priority: 2
 ---
 
