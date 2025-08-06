@@ -8,7 +8,7 @@ venue: ICLR-2024
 authors:
   - name: "Lu Chen"
   - name: "Siyu Lou"
-  - name: "*Benhao Huang*"
+  - name: "**Benhao Huang**"
   - name: "Quanshi Zhang"
 path: "research/2024/generalizable"
 excerpt: Given different DNNs trained for the same task, developed a new method to extract interactions that are shared by these DNNs. Experiments show that the extracted interactions can better reflect common knowledge shared by different DNNs.

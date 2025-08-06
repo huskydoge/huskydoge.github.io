@@ -8,7 +8,7 @@ venue: AAAI 2025
 authors:
   - name: "Lu Chen"
   - name: "Shaofeng Li"
-  - name: "*Benhao Huang*"
+  - name: "**Benhao Huang**"
   - name: "Fan Yang"
   - name: "Zheng Li"
   - name: "Jie Li"
