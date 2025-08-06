@@ -64,6 +64,7 @@ const SelectedResearch = () => {
   return (data.allMdx && data.allMdx.edges && data.allMdx.edges.length) ? (
     <div className={styles.homepageSection}>
       <h2 style={{ marginBottom: '1rem' }}>Selected Works</h2>
+      <p style={{ marginBottom: '1rem' }}>Refer to <a href="/research">Research page</a> for complete list.</p>
       <FlexboxGrid className="spacing-grid">
         {data.allMdx &&
           data.allMdx.edges.map((val, key) => (

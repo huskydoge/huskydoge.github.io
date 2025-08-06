@@ -20,12 +20,14 @@ excerpt: "A step towards a General World Model (GWM) that can simulate complex v
 selected: true
 cover: "./preview.png"
 links:
-  - name: "机器之心"
+  - name: "新智元"
     url: "https://mp.weixin.qq.com/s/KeFkjhxkxhwGop5cNJwMOg"
   - name: "report-v1"
     url: "https://world-model.maitrix.org/assets/pandora.pdf"
   - name: "code"
     url: "https://github.com/maitrix-org/Pandora"
+  - name: "online-demo of Mirage"
+    url: "https://blog.dynamicslab.ai/"
 priority: 0
 ---
 

@@ -30,7 +30,7 @@ module.exports = {
   tocMaxDepth: 2,
   excerptMaxLength: 50,
   // birthday: "xxxx",
-  location: "Shanghai, China",
+  location: "Pittsburgh, PA, USA",
   // email: "huskydogewoof@gmail.com",
   postsForArchivePage: 3,
   defaultLanguage: "en",

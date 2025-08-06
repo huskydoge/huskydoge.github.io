@@ -8,9 +8,27 @@ const News = () => (
         <h2>News</h2>
         <Row gutter={[20, 20]} type="flex">
             <Col xs={24}>
-                <ul style={{ paddingLeft: '1.2em', fontSize: '1rem' }}>
-                    <li>
-                        2025/05: <strong>DCA-Bench</strong> has been accepted to <strong>KDD 2025</strong> DB-Track as an <strong>oral paper</strong>! See you in Toronto 🎉
+                <ul style={{ 
+                    paddingLeft: '1.2em', 
+                    fontSize: '1rem',
+                    lineHeight: '1.8',
+                    listStyle: 'none'
+                }}>
+                    <li className={styles.newsItem}>
+                        <span className={styles.newsDate}>
+                            2025/07
+                        </span>
+                        <span className={styles.newsContent}>
+                            <strong><a href="https://blog.dynamicslab.ai/">Mirage</a> (Game Engine based on PAN)</strong> is now available online! 🎉
+                        </span>
+                    </li>
+                    <li className={styles.newsItem}>
+                        <span className={styles.newsDate}>
+                            2025/05
+                        </span>
+                        <span className={styles.newsContent}>
+                            <strong>DCA-Bench</strong> has been accepted to <strong>KDD 2025</strong> DB-Track as an <strong>oral paper</strong>! See you in Toronto 🎉
+                        </span>
                     </li>
                 </ul>
             </Col>
