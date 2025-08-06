@@ -14,6 +14,14 @@ import ResearchCard from '../../components/ResearchCard';
 const Research = ({ data }) => {
   const [viewMode, setViewMode] = useState('date'); // 'date' or 'tag'
   
+  // Define the specific tags to display in tag view (in preferred order)
+  const displayTags = [
+    'World Model',
+    'LLM Agent',
+    'AI Interpretability',
+    'Benchmark',
+  ];
+  
   // Create tagsMap like Panel component does
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
@@ -45,20 +53,23 @@ const Research = ({ data }) => {
       
       return { type: 'date', groups: groupedByYear, sortedKeys: sortedYears };
     } else {
-      // Group by tags
+      // Group by tags - only include specified display tags
       const groupedByTag = research.reduce((acc, edge) => {
         const tags = edge.node.frontmatter.tags || [];
         tags.forEach(tag => {
-          if (!acc[tag]) {
-            acc[tag] = [];
+          // Only include tags that are in our displayTags list
+          if (displayTags.includes(tag)) {
+            if (!acc[tag]) {
+              acc[tag] = [];
+            }
+            acc[tag].push(edge);
           }
-          acc[tag].push(edge);
         });
         return acc;
       }, {});
       
-      // Sort tags alphabetically and within each tag by date (descending)
-      const sortedTags = Object.keys(groupedByTag).sort();
+      // Use displayTags order instead of alphabetical, but only include tags that have research
+      const sortedTags = displayTags.filter(tag => groupedByTag[tag] && groupedByTag[tag].length > 0);
       
       sortedTags.forEach(tag => {
         groupedByTag[tag].sort((a, b) => 
@@ -112,7 +123,7 @@ const Research = ({ data }) => {
               </h2>
               <FlexboxGrid>
                 {researchData.groups[key].map((edge, index) => (
-                  <FlexboxGrid.Item as={Col} key={index} xs={24} sm={24} md={24} lg={24}>
+                  <FlexboxGrid.Item as={Col} key={index} xs={24} sm={24} md={24} lg={24} style={{ marginBottom: '1rem' }}>
                     <ResearchCard data={edge} tagsMap={tagsMap} />
                   </FlexboxGrid.Item>
                 ))}
