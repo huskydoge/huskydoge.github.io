@@ -19,7 +19,8 @@ excerpt: "A step towards a General World Model (GWM) that can simulate complex v
 selected: true
 cover: "./preview.png"
 links:
-  - name: "paper (in progress)"
+  - name: "机器之心"
+    url: "https://mp.weixin.qq.com/s/KeFkjhxkxhwGop5cNJwMOg"
   - name: "report-v1"
     url: "https://world-model.maitrix.org/assets/pandora.pdf"
   - name: "code"
@@ -37,6 +38,4 @@ priority: 0
 
 ![mcts](./mcts.png)
 
-```
 
-```

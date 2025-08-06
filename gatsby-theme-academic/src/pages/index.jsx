@@ -18,6 +18,5 @@ export default () => (
     <Awards />
     <a href='https://clustrmaps.com/site/1bx0x'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=000000&w=a&t=n&d=KsX45ylDjq2_61A1AolUOdbXxnUJf4u2QvsJIkBT68U&co=ffffff'/></a>
     {/* <SkillProgress/> */}
-    Last updated: 2025/05/18
   </>
 );
