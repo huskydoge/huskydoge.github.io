@@ -30,7 +30,7 @@ links:
   - name: "slides"
     url: "/research/2025/dca/oral_slides.pdf"
   - name: "poster"
-    url: "/research/2025/dca/oral_slides.pdf"  
+    url: "/research/2025/dca/kdd_poster.pdf"  
 priority: 1
 ---
 
