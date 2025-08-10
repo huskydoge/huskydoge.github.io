@@ -41,6 +41,10 @@ cover: "./preview.png"
 links:
   - name: "paper"
     url: "https://arxiv.org/abs/2506.21876"
+  - name: "HuggingFace"
+    url: "https://huggingface.co/datasets/maitrix-org/WM-ABench"
+  - name: "website"
+    url: "https://wm-abench.maitrix.org/"
 priority: 2
 ---
 

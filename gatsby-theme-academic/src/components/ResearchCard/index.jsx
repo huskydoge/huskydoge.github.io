@@ -12,6 +12,7 @@ import {
 import { useSiteMetadata } from '../../utils/hooks';
 import Utils from '../../utils/pageUtils';
 import PostTag from '../PostTag';
+import Icon from '../Icon';
 
 import * as style from './researchCard.module.less';
 
@@ -55,8 +56,50 @@ const ResearchCard = (props) => {
         href = link.url;
       }
     }
+    
+    // Parse icon from name if it starts with an icon format
+    let iconElement = null;
+    let displayName = link.name;
+    
+    if (link.icon) {
+      // Direct icon specification
+      iconElement = <Icon icon={link.icon} fixedWidth style={{ marginRight: '0.25rem' }} />;
+    } else if (typeof link.name === 'string') {
+      // Auto-detect icons based on link name
+      const lowerName = link.name.toLowerCase().trim();
+      
+      if (lowerName.includes('github')) {
+        iconElement = <Icon icon={['fab', 'github']} fixedWidth style={{ marginRight: '0.25rem' }} />;
+        displayName = link.name.trim();
+      } else if (lowerName === 'hugging face' || lowerName === 'huggingface' || lowerName === 'hf') {
+        // Use a custom emoji or symbol for Hugging Face since FontAwesome doesn't have it
+        iconElement = <span style={{ marginRight: '0.25rem', fontSize: '0.9em' }}>🤗</span>;
+        displayName = link.name.trim();
+      } else if (lowerName === 'arxiv' || lowerName.includes('paper')) {
+        iconElement = <Icon icon={['fas', 'file-alt']} fixedWidth style={{ marginRight: '0.25rem' }} />;
+        displayName = link.name.trim();
+      } else if (lowerName.includes('code') || lowerName.includes('source')) {
+        iconElement = <Icon icon={['fas', 'code']} fixedWidth style={{ marginRight: '0.25rem' }} />;
+        displayName = link.name.trim();
+      } else if (lowerName.includes('demo') || lowerName.includes('website')) {
+        iconElement = <Icon icon={['fas', 'external-link-alt']} fixedWidth style={{ marginRight: '0.25rem' }} />;
+        displayName = link.name.trim();
+      } else if (lowerName.includes('slides') || lowerName.includes('presentation')) {
+        iconElement = <Icon icon={['fas', 'presentation']} fixedWidth style={{ marginRight: '0.25rem' }} />;
+        displayName = link.name.trim();
+      } else if (lowerName.includes('poster')) {
+        iconElement = <Icon icon={['fas', 'image']} fixedWidth style={{ marginRight: '0.25rem' }} />;
+        displayName = link.name.trim();
+      } else if (lowerName.includes('video')) {
+        iconElement = <Icon icon={['fas', 'play-circle']} fixedWidth style={{ marginRight: '0.25rem' }} />;
+        displayName = link.name.trim();
+      }
+    }
+    
     return (
-      <Button appearance="ghost" href={href} target="_blank" size="xs">{link.name}</Button>
+      <Button appearance="ghost" href={href} target="_blank" size="xs">
+        {iconElement}{displayName}
+      </Button>
     );
   };
 
