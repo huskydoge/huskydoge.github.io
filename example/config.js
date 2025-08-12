@@ -6,11 +6,11 @@ module.exports = {
   author: "HuskyDoge",
   authorAlternative: "Benhao Huang",
   introduction: [
-    "Hello! Husky here! I'm an incoming student in the CMU MSML program. Throughout my research journey, I've explored a variety of topics. Currently, my primary focus is on generative world modeling, where I have been working with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) on World Model Projects. Prior to this, I collaborated with my amazing supervisor [Jiaqi W. Ma](https://jiaqima.github.io/) at the [TRAIS Lab](https://github.com/TRAIS-Lab), focusing on dataset curation using LLM agents. I also had a valuable research experience in AI interpretability at Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
+    "Hello! Husky here! I'm an incoming student in the CMU MSML program. Throughout my research journey, I've explored a variety of topics. Currently, my primary focus is on generative world modeling,  where I have been fortunate to work closely with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) and Profesor [Yilun Du](https://yilundu.github.io/) on advancing the capabilities of world models. Previously, I collaborated with my amazing advisor [Jiaqi W. Ma](https://jiaqima.github.io/) at the [TRAIS Lab](https://github.com/TRAIS-Lab), focusing on dataset curation using LLM agents. I also gained valuable research experience in AI interpretability under Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
     
     "Within world modeling, I'm particularly(currently) interested in the following directions: \n - How can we enable world models to operate effectively in **long-sequence scenarios**? This includes both looking ahead (simulating long trajectories) and looking back (designing effective memory mechanisms).\n - How can we make world models **real-time interactive**? This is especially crucial for real world applications, and I find both the mathematical and ML systems perspectives fascinating.\n - How can we make world models more **physically grounded**? I'm excited to explore data-driven approaches, RLHF, and other emerging methods.",
     
-    "If you're also passionate about these areas, feel free to reach out! I'm always open to collaborations and eager to gain more experience along the way. "
+    "**I am now actively seeking internship opportunities in related fields.** If you share similar research interests, I would be delighted to connect. I am always open to collaboration and eager to expand my expertise through impactful projects."
   ],
   avatar: "/avatar.png",
   professions: [
