@@ -26,7 +26,7 @@ links:
     url: "https://world-model.maitrix.org/assets/pandora.pdf"
   - name: "Github"
     url: "https://github.com/maitrix-org/Pandora"
-  - name: "online-demo of Mirage"
+  - name: "Mirage"
     url: "https://blog.dynamicslab.ai/"
 priority: 0
 ---
