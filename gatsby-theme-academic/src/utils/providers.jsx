@@ -11,22 +11,31 @@ import { ContextProvider } from './context';
 
 const shortcodes = { Gist };
 
-export const wrapPageElement = ({
-  element,
-  props,
-}) => {
+export const wrapPageElement = ({ element, props }) => {
+  const pathname = props?.location?.pathname || '';
+  const isFullWidth = pathname.startsWith('/misc');
+
   return (
     <ContextProvider>
       <MDXProvider components={shortcodes}>
         <Container className="outerPadding">
           <Container className="container">
             <Header />
-            <SidebarWrapper>
-              <div>
-                {element}
-              </div>
-              <Footer />
-            </SidebarWrapper>
+            {isFullWidth ? (
+              <>
+                <div>
+                  {element}
+                </div>
+                <Footer />
+              </>
+            ) : (
+              <SidebarWrapper>
+                <div>
+                  {element}
+                </div>
+                <Footer />
+              </SidebarWrapper>
+            )}
           </Container>
         </Container>
       </MDXProvider>
