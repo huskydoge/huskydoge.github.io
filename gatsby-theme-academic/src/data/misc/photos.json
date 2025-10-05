@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Singing Sand Dunes",
+    "image": "/photos/minsha.jpg",
+    "ratio": "16x9",
+    "tags": ["travel"],
+    "description": "The Singing Sand Dunes were originally known as the Gods Sand Dunes. Sima Qian described the sound as if listening to music when the weather is fine.",
+    "date": "2025-07-19"
+  },
+  {
+    "title": "Heidu Mountain: Earth’s Lunar Twin",
+    "image": "/photos/heidu.jpg",
+    "ratio": "16x9",
+    "tags": ["travel", "geology"],
+    "description": "Heidu Mountain (黑独山), located near Lenghu Town in Mangya City, Qinghai Province, is known for its black-rock desert terrain and wind-eroded forms. It is often called the “moon on earth” for its stark, otherworldly landscape. Over millions of years, layers of black shale and volcanic debris eroded under wind and thermal cycling to form rugged ridges and hollows. Nearby rock removal by tourists has caused portions to fade from black. :contentReference[oaicite:0]{index=0}",
+    "date": "2025-07-20"
+  }  
+]
