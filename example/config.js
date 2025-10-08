@@ -55,7 +55,7 @@ module.exports = {
       icon: ["fab", "github"],
     },
     {
-      url: "https://x.com/huskydogewoof",
+      url: "https://twitter.com/intent/follow?&region=follow_link&screen_name=huskydogewoof",
       icon: ["fab", "twitter"],
     },
     {

@@ -8,13 +8,8 @@ tags:
 
 # venue: a very very very very long long long long long long venue
 authors:
-  - name: "**Benhao Huang**"
   - name: "Pandora Team"
     url:  "https://maitrix.org/"
-  - name: "Zhiting Hu"
-    url: "https://zhiting.ucsd.edu/" 
-  - name: "Eric P. Xing"
-    url: "https://www.cs.cmu.edu/~epxing/"
 path: "research/2025/pan"
 excerpt: "A step towards a General World Model (GWM) that can simulate complex video scenarios with natural language actions."
 selected: true
