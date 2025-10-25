@@ -1,37 +1,59 @@
-import React from 'react';
-import { Modal } from 'rsuite';
-import Img from 'gatsby-image';
-
+import React, { useEffect, useCallback } from 'react';
 import * as style from './imageModal.module.less';
 
 const ImageModal = ({ open, onClose, fluid, title }) => {
-  if (!fluid) return null;
+  const escListener = useCallback((event) => {
+    if (event.key === 'Escape') {
+      onClose();
+    }
+  }, [onClose]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    document.addEventListener('keydown', escListener);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', escListener);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [open, escListener]);
+
+  if (!open || !fluid) return null;
 
   return (
-    <Modal 
-      open={open} 
-      onClose={onClose} 
-      className={style.imageModal} 
-      size="lg" 
-      backdrop="static"
-      overflow={false}
+    <div
+      className={style.backdrop}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+      onClick={onClose}
+      tabIndex={-1}
     >
-      <Modal.Body className={style.modalBody}>
-        <div 
-          className={style.imageContainer}
+      <div
+        className={style.content}
+        role="presentation"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button
+          type="button"
+          className={style.closeButton}
           onClick={onClose}
-          onKeyPress={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              onClose();
-            }
-          }}
-          role="button"
-          tabIndex={0}
+          aria-label="Close image preview"
         >
-          <Img fluid={fluid} alt={title} />
+          ×
+        </button>
+        <div className={style.imageContainer}>
+          <img
+            src={fluid.src}
+            srcSet={fluid.srcSet}
+            sizes={fluid.sizes}
+            alt={title}
+            loading="lazy"
+          />
         </div>
-      </Modal.Body>
-    </Modal>
+      </div>
+    </div>
   );
 };
 

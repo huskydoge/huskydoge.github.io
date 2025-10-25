@@ -100,7 +100,7 @@ const Panel = (props) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <FlexboxGrid.Item as={Col} key={key} xs={24} sm={24} md={24} lg={24}>
-                  <ResearchCard data={val} tagsMap={tagsMap} />
+                  <ProjectCard data={val} tagsMap={tagsMap} />
                 </FlexboxGrid.Item>
               );
             }
