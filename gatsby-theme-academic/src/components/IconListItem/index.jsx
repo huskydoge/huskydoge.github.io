@@ -22,7 +22,10 @@ const IconListItem = (props) => {
 };
 
 IconListItem.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  ]).isRequired,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   size: PropTypes.string,
 };

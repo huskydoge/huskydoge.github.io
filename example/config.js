@@ -59,7 +59,7 @@ module.exports = {
       icon: ["fab", "twitter"],
     },
     {
-      url: "https://scholar.google.com/citations?user=SiAFHb8AAAAJ&hl=zh-CN",
+      url: "https://scholar.google.com/citations?hl=en&user=h2Lf0_EAAAAJ",
       icon: ["fa", "graduation-cap"],
     },
     {
@@ -67,9 +67,13 @@ module.exports = {
       icon: ["fab", "linkedin"],
     },
     {
-      url: "mailto:hbh001098hbh@sjtu.edu.cn",
-      icon: "envelope",
+      url: "mailto:huskydogewoof@gmail.com",
+      icon: ["fas", "envelope"],
     },
+    {
+      url: "https://www.xiaohongshu.com/user/profile/614a97f000000000020250c8",
+      icon: ["custom", "xiaohongshu"],
+    }
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
   // instagram: 'https://www.instagram.com/reevan100/',
@@ -124,6 +128,11 @@ module.exports = {
       title: "Internship",
       position: "left",
       data: [
+        {
+          date: "Sept. 2025 - Present",
+          title: "[LocusLab](https://zicokolter.com/), CMU",
+          location: "Pittsburgh, PA, USA",
+        },
         {
           date: "Mar. 2025 - Aug. 2025",
           title: "[VCG Group](https://vcg.seas.harvard.edu/), Harvard",

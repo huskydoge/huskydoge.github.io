@@ -21,7 +21,7 @@ links:
     url: "https://world-model.maitrix.org/assets/pandora.pdf"
   - name: "Github"
     url: "https://github.com/maitrix-org/Pandora"
-  - name: "Mirage"
+  - name: "Magica"
     url: "https://blog.dynamicslab.ai/"
 priority: 0
 ---
