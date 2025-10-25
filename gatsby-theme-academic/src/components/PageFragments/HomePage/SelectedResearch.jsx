@@ -47,6 +47,7 @@ const SelectedResearch = () => {
             excerpt
             selected
             priority
+            highlight
             links {
               name
               url

@@ -20,6 +20,7 @@ const ResearchCard = (props) => {
   const {
     data: { node },
     tagsMap,
+    enableHighlight = false,
   } = props;
   const {
     frontmatter: {
@@ -32,6 +33,7 @@ const ResearchCard = (props) => {
       venue,
       cover,
       links,
+      highlight,
     },
   } = node;
   const fluid = cover ? cover.childImageSharp.fluid : null;
@@ -145,7 +147,7 @@ const ResearchCard = (props) => {
 
   return (
     <Panel
-      className={classnames(style.researchCard, 'cursor-default')}
+      className={classnames(style.researchCard, { [style.highlighted]: highlight && enableHighlight }, 'cursor-default')}
       style={{ padding: '0.8rem' }}
       // hoverable
       bordered

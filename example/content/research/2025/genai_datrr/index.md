@@ -38,7 +38,7 @@ authors:
   - name: "Jiaqi W Ma"
 path: "research/2025/genai_dattr"
 excerpt: "A comprehensive survey on data attribution methods, applications, and evaluation protocols that address how training data influences the behaviors of generative AI systems."
-selected: true
+selected: false
 cover: "./preview.png"
 links:
   - name: "paper"

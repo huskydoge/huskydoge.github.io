@@ -124,7 +124,7 @@ const Research = ({ data }) => {
               <FlexboxGrid>
                 {researchData.groups[key].map((edge, index) => (
                   <FlexboxGrid.Item as={Col} key={index} xs={24} sm={24} md={24} lg={24} style={{ marginBottom: '1rem' }}>
-                    <ResearchCard data={edge} tagsMap={tagsMap} />
+                    <ResearchCard data={edge} tagsMap={tagsMap} enableHighlight={true} />
                   </FlexboxGrid.Item>
                 ))}
               </FlexboxGrid>
@@ -182,6 +182,7 @@ export const query = graphql`
             tags
             excerpt
             priority
+            highlight
             links {
               name
               url

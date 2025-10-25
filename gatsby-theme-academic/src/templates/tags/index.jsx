@@ -66,7 +66,7 @@ const TagPage = ({
           <Row gutter={[20, 20]} type="flex">
             {research.map((post, key) => (
               // eslint-disable-next-line react/no-array-index-key
-              <Col key={key} xs={24} sm={24} md={24} lg={24}>
+              <Col key={key} xs={24} sm={24} md={24} lg={24} style={{ marginBottom: '1rem' }}>
                 <ResearchCard data={post} tagsMap={tagsMap} />
               </Col>
             ))}
@@ -79,7 +79,7 @@ const TagPage = ({
           <Row gutter={[20, 20]} type="flex">
             {project.map((post, key) => ( 
               // eslint-disable-next-line react/no-array-index-key
-              <Col key={key} xs={24} sm={24} md={24} lg={24}>
+              <Col key={key} xs={24} sm={24} md={24} lg={24} style={{ marginBottom: '1rem' }}>
                 <ProjectCard data={post} tagsMap={tagsMap} />
               </Col>
             ))}
@@ -174,6 +174,7 @@ export const pageQuery = graphql`
             title
             tags
             excerpt
+            highlight
             links {
                 name
                 url
