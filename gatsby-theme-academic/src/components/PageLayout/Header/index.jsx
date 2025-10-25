@@ -120,7 +120,7 @@ export default () => {
           <div className={style.hamburgerText}>MENU</div>
         </div>
       </div>
-      <Container
+      <div
         className={`${style.navWrap} ${menu ? null : style.hidden} ${menu ? style.openMenu : null}`}
       >
         <div className={style.backgroundDiv}>
@@ -155,7 +155,7 @@ export default () => {
             </li> */}
           </ul>
         </div>
-      </Container>
+      </div>
     </Header>
   );
 };

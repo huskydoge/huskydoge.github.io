@@ -10,11 +10,7 @@
     margin: 0;
     border: none;
     box-shadow: none;
-}
-
-.headerShell :global(.rs-container) {
-    width: 100%;
-    max-width: none;
+    border-bottom: 1px solid var(--app-border);
 }
 
 .circleMenu {
@@ -88,13 +84,14 @@
     max-width: none;
     flex-direction: row-reverse;
     display: flex;
+    justify-content: center;
     ul {
         list-style: none;
         margin: 0;
         display: flex;
     }
     background: var(--app-bg);
-    padding: 0 clamp(20px, 4vw, 56px);
+    padding: 0;
     box-sizing: border-box;
     overflow-x: clip;
     border-radius: 0;
@@ -102,6 +99,22 @@
     border: none;
     align-items: center;
     min-height: 56px;
+}
+
+.backgroundDiv {
+    width: 100%;
+    max-width: 1264px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1.87rem;
+    
+    @media screen and (min-width: 2045px) {
+        max-width: 61.8vw;
+    }
+    
+    @media screen and (max-width: 768px) {
+        padding: 0 0.6rem;
+    }
 }
 .nav{
     .flex-center();

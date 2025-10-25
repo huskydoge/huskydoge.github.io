@@ -4,7 +4,7 @@
 import classnames from 'classnames';
 import Img from 'gatsby-image';
 import isRelativeUrl from 'is-relative-url';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Row, Col, Panel, Button, FlexboxGrid, Divider, Stack,
 } from 'rsuite';
@@ -13,6 +13,7 @@ import { useSiteMetadata } from '../../utils/hooks';
 import Utils from '../../utils/pageUtils';
 import PostTag from '../PostTag';
 import Icon from '../Icon';
+import ImageModal from '../ImageModal';
 
 import * as style from './projectCard.module.less';
 
@@ -21,6 +22,8 @@ const ProjectCard = (props) => {
     data: { node },
     tagsMap,
   } = props;
+  const [imageModalOpen, setImageModalOpen] = useState(false);
+  
   const {
     frontmatter: {
       title,
@@ -35,6 +38,7 @@ const ProjectCard = (props) => {
     },
   } = node;
   const fluid = cover ? cover.childImageSharp.fluid : null;
+  const largeFluid = cover && cover.childImageSharp.large ? cover.childImageSharp.large : fluid;
   // console.log(fluid);
 
   const siteMetadata = useSiteMetadata();
@@ -168,9 +172,25 @@ const ProjectCard = (props) => {
           ) : null}
         </FlexboxGrid.Item>
         <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={8}>
-          <a href={Utils.generateFullUrl(siteMetadata, url)}>
+          <div 
+            className={style.imageWrapper}
+            onClick={() => setImageModalOpen(true)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                setImageModalOpen(true);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+          >
             {fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
-          </a>
+          </div>
+          <ImageModal 
+            open={imageModalOpen}
+            onClose={() => setImageModalOpen(false)}
+            fluid={largeFluid}
+            title={title}
+          />
         </FlexboxGrid.Item>
       </FlexboxGrid>
     </Panel>

@@ -1,0 +1,47 @@
+@import (reference) '../../styles/index.less';
+
+.imageModal {
+  :global(.rs-modal-wrapper) {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+  }
+
+  :global(.rs-modal) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  :global(.rs-modal-content) {
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  :global(.rs-modal-body) {
+    padding: 2rem !important;
+  }
+}
+
+.modalBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer {
+  cursor: pointer;
+  max-width: 90vw;
+  max-height: 85vh;
+  
+  &:focus-visible {
+    outline: none;
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    display: block;
+  }
+}

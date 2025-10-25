@@ -16,7 +16,7 @@ authors:
   - name: "Jiachen T Wang"
   - name: "Dan Ley"
   - name: "Qirun Dai"
-  - name: "Benhao Huang"
+  - name: "**Benhao Huang**"
   - name: "Jin Huang"
   - name: "Cathy Jiao"
   - name: "Hoang Anh Just"

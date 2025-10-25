@@ -14,6 +14,26 @@
         //box-shadow: 1px 3px 16px #a7a7a7;
         background-size: cover
     }
+
+    .imageWrapper {
+        width: 100%;
+        cursor: pointer;
+        border-radius: var(--app-radius);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        display: block;
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--app-accent);
+            outline-offset: 2px;
+        }
+    }
+
     .mrTp20{
         margin-top: 20px
     }

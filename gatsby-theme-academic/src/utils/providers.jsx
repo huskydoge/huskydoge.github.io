@@ -18,9 +18,9 @@ export const wrapPageElement = ({ element, props }) => {
   return (
     <ContextProvider>
       <MDXProvider components={shortcodes}>
+        <Header />
         <Container className="outerPadding">
           <Container className="container">
-            <Header />
             {isFullWidth ? (
               <>
                 <div>

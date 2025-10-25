@@ -5,7 +5,7 @@ tags:
   - "World Model"
   - "Image to Video"
   - "Diffusion"
-
+highlight: true
 # venue: a very very very very long long long long long long venue
 authors:
   - name: "Pandora Team"
