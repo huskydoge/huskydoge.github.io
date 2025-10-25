@@ -17,7 +17,6 @@ import {
 } from 'rsuite';
 
 import { useWindowSize, useTheme } from '@/utils/hooks';
-import Affix from '../../Affix';
 import Icon from '../../Icon';
 import LoadableSearch from '../../SearchBar/loadable';
 
@@ -107,27 +106,25 @@ export default () => {
   };
 
   return (
-    <Affix top={0}>
-      <Header>
-        <div
-          className={style.circleMenu}
-          role="button"
-          tabIndex="0"
-          onKeyDown={toggleMenu}
-          onClick={toggleMenu}
-        >
-          <div className={`${style.hamburger} ${menu ? style.menuIcon : null}`}>
-            <div className={style.line} />
-            <div className={style.line} />
-            <div className={style.hamburgerText}>MENU</div>
-          </div>
+    <Header className={style.headerShell}>
+      <div
+        className={style.circleMenu}
+        role="button"
+        tabIndex="0"
+        onKeyDown={toggleMenu}
+        onClick={toggleMenu}
+      >
+        <div className={`${style.hamburger} ${menu ? style.menuIcon : null}`}>
+          <div className={style.line} />
+          <div className={style.line} />
+          <div className={style.hamburgerText}>MENU</div>
         </div>
-        <Container className={`${style.navWrap} ${menu ? null : style.hidden} ${menu ?
-          style.openMenu :
-          null}`}
-        >
-          <div className={style.backgroundDiv}>
-            <ul className={style.nav}>
+      </div>
+      <Container
+        className={`${style.navWrap} ${menu ? null : style.hidden} ${menu ? style.openMenu : null}`}
+      >
+        <div className={style.backgroundDiv}>
+          <ul className={style.nav}>
               <NavButton to="/" onClick={toggleMenu}>About</NavButton>
               <NavButton to="/experience/" onClick={toggleMenu} partiallyActive>Experience</NavButton>
               <NavButton to="/research/" onClick={toggleMenu} partiallyActive>Research</NavButton>
@@ -156,10 +153,9 @@ export default () => {
                 Resume
               </Link>
             </li> */}
-            </ul>
-          </div>
-        </Container>
-      </Header>
-    </Affix>
+          </ul>
+        </div>
+      </Container>
+    </Header>
   );
 };

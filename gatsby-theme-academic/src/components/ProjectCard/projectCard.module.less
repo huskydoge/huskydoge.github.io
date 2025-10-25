@@ -1,7 +1,9 @@
 @import (reference) '../../styles/index.less';
 
+
 .projectCard{
-     //margin-top: 20px;
+    //margin-top: 20px;
+    font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
 
     .postCardImg{
         width: 100%;
@@ -16,12 +18,14 @@
         margin-top: 20px
     }
     .dateHolder{
-        background: #ebbaa1;
-        //color: white;
+        background: rgba(232, 166, 139, 0.2);
+        color: var(--app-text-primary);
         padding: 6px;
-        border-radius: 7px;
+        border-radius: var(--app-radius-xs);
         font-size: @font-size-small;
         margin-right: 8px;
+        border: 1px solid rgba(232, 166, 139, 0.42);
+        font-family: inherit;
     }
     //a{
     //    color: rgba(0, 0, 0, 0.65);

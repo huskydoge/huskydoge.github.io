@@ -1,37 +1,54 @@
 @import (reference) '../../styles/index.less';
 
-.researchCard{
-     //margin-top: 20px;
+.researchCard {
+    background: var(--app-panel-bg);
+    border-radius: var(--app-radius) !important;
+    border: 1px solid var(--app-border) !important;
+    box-shadow: none !important;
+    color: var(--app-text-secondary);
+    font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
 
-    .postCardImg{
+    :global(.rs-panel-body) {
+        padding: 1.6rem !important;
+        background: transparent !important;
+        font-family: inherit !important;
+    }
+
+    h5 {
+        font-size: 1.35rem;
+        margin-bottom: 0.6rem;
+        font-weight: 600;
+        color: var(--app-text-primary);
+        font-family: inherit;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                color: var(--app-accent-strong);
+            }
+        }
+    }
+
+    p {
+        color: var(--app-text-secondary);
+        font-family: inherit;
+    }
+
+    .postCardImg {
         width: 100%;
         padding-top: 56.25%;
-        //height: 164px;
         background-repeat: no-repeat;
-        //border-radius: 10px;
-        //box-shadow: 1px 3px 16px #a7a7a7;
-        background-size: cover
+        background-size: cover;
     }
-    .mrTp20{
-        margin-top: 20px
-    }
-    .dateHolder{
-        background: #ebbaa1;
-        //color: white;
-        padding: 6px;
-        border-radius: 7px;
-        font-size: @font-size-small;
-        margin-right: 8px;
-    }
-    //a{
-    //    color: rgba(0, 0, 0, 0.65);
-    //    &:hover{
-    //        color: rgba(0, 0, 0, 0.45);
-    //    }
-    //}
 
-    .divider{
-        border-left: 1.5px solid rgba(0, 0, 0, 0.2);
+    .mrTp20 {
+        margin-top: 20px;
+    }
+
+    .divider {
+        border-left: 1.5px solid var(--app-border);
         top: 0.1em;
         height: 1.2em;
         margin-left: 6px;
@@ -44,4 +61,19 @@
         line-height: 80%;
     }
 
+    a {
+        color: var(--app-accent);
+        font-family: inherit;
+    }
+
+    .dateHolder {
+        background: rgba(232, 166, 139, 0.2);
+        color: var(--app-text-primary);
+        padding: 6px;
+        border-radius: var(--app-radius-xs);
+        font-size: @font-size-small;
+        margin-right: 8px;
+        border: 1px solid rgba(232, 166, 139, 0.42);
+        font-family: inherit;
+    }
 }

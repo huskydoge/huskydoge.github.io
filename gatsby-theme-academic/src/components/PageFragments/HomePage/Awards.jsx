@@ -24,10 +24,11 @@ const AwardItem = (data) => {
       style={{
         paddingBottom: '0.1rem',
         paddingTop: '0.3rem',
+        color: 'var(--app-text-secondary)',
       }}
       icon={<Icon size={data.iconSize || 'lg'} fixedWidth icon={data.icon || 'award'} />}
-      iconStyle={{ cursor: 'default' }}
-      iconColor="#44566C"
+      iconStyle={{ cursor: 'default', background: 'rgba(232, 166, 139, 0.18)', borderRadius: 'var(--app-radius-sm)' }}
+      iconColor="#d68d6b"
       // bubbleStyle={{ background: 'none', border: '0' }}
     />
   );

@@ -3,6 +3,26 @@
 .iconButton {
   padding-left: 4px !important;
   padding-right: 4px !important;
+  border-radius: var(--app-radius-sm) !important;
+  border: 1px solid transparent;
+  background: transparent !important;
+  transition: all 0.2s ease;
+
+  a {
+    color: var(--app-text-secondary);
+    transition: color 0.2s ease;
+    font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
+  }
+
+  &:hover {
+    border-color: rgba(232, 166, 139, 0.45);
+    background: rgba(232, 166, 139, 0.16) !important;
+    box-shadow: none;
+
+    a {
+      color: var(--app-text-primary);
+    }
+  }
 }
 
 .iconButtonCol {
@@ -10,18 +30,23 @@
 }
 
 .content {
-  border-radius: @border-radius-content;
+  border-radius: var(--app-radius);
   margin: 0px;
   min-height: 280px;
   overflow-y: auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .sidebarContent {
   // background: #F5F8F9;
-  border-radius: @border-radius-full;
+  border-radius: var(--app-radius);
   margin: 0px;
   .flex-center();
   overflow-y: auto;
+  color: var(--app-text-secondary);
 
   aside {
     .infoListItem {
@@ -30,13 +55,14 @@
     }
 
     padding: @padding-margin-val 0;
+    width: 100%;
 
     .profileAvatar {
       //background-image: url('../../../images/avatar.jpg');
       height: 180px;
       background-size: cover;
       background-repeat: no-repeat;
-      border-radius: @border-radius-full;
+      border-radius: var(--app-radius-lg);
       //@media screen and (max-width: 767px) {
       //  max-width: 180px;
       //  margin: auto;
@@ -46,24 +72,30 @@
 
     .name {
       margin-top: 1rem;
+      color: var(--app-text-primary);
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
 
       h2 {
         font-size: 1.75rem;
         font-weight: 200;
         letter-spacing: 2px;
         margin-bottom: 8px;
+        color: inherit;
+        font-family: inherit;
       }
 
       h3 {
         font-size: 1.25rem;
         font-weight: 600;
-        font-family: source-han-sans-simplified-c, Heiti SC, Microsoft YaHei, sans-serif;
+        font-family: inherit;
         margin-bottom: 0;
+  color: var(--app-accent-strong);
       }
 
       span {
         font-weight: 600;
         letter-spacing: 0;
+        color: inherit;
       }
       .badgeContainer {
         display: flex;
@@ -85,22 +117,28 @@
       .badge {
         font-size: 0.75rem;
         font-weight: 500;
-        border-radius: 1rem;
+        border-radius: var(--app-radius-xs);
         padding: 0.3rem 0.75rem;
         display: inline-flex;
         align-items: center;
         transition: all 0.2s ease;
         letter-spacing: 0.02em;
         cursor: pointer;
+        background-color: rgba(232, 166, 139, 0.15);
+        color: var(--app-text-primary);
+        border: 1px solid rgba(232, 166, 139, 0.32);
+        box-shadow: none;
+        font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
       }
       
       .badgeGray {
-        background-color: var(--rs-gray-100);
-        color: var(--rs-gray-900);
+        background-color: rgba(255, 255, 255, 0.75);
+        color: var(--app-text-secondary);
+        border-color: rgba(24, 24, 24, 0.08);
         
         &:hover {
-          background-color: var(--rs-gray-200);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          background-color: rgba(255, 255, 255, 0.92);
+          box-shadow: none;
         }
       }
 
@@ -121,13 +159,14 @@
       }
 
       .contactBlock {
-        color: #44566C;
-        font-size: .937rem;
+        color: var(--app-text-secondary);
+        font-size: 0.72rem;
         padding-left: 0;
-        margin-bottom: 1.3rem;
+        margin-bottom: 0.9rem;
         @media screen and (max-width: 767px) {
           max-width: 230px;
         }
+        font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
       }
 
       .contactBlockItem {
@@ -138,30 +177,78 @@
         -webkit-align-items: center;
         -ms-flex-align: center;
         align-items: center;
-        margin-bottom: .75rem;
+        margin-bottom: 0.35rem;
+        color: var(--app-text-secondary);
       }
+    }
 
-      .resumeDownload {
-        margin-top: 2rem;
-        //a{
-        //    padding: .9rem 1rem;
-        //    text-transform: uppercase;
-        //    background-color: #304CFD;
-        //    border-radius: 28px;
-        //    //color: #fff;
-        //}
-      }
+    .resumeDownload {
+      margin-top: 2rem;
+      color: var(--app-text-primary);
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
+      //a{
+      //    padding: .9rem 1rem;
+      //    text-transform: uppercase;
+      //    background-color: #304CFD;
+      //    border-radius: 28px;
+      //    //color: #fff;
+      //}
     }
   }
 }
 
-.background {
-  //.whiteBg()
+.socialIcons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 48px));
+  justify-content: center;
+  justify-items: center;
+  gap: 0.35rem 0.6rem;
+  margin: 0.5rem auto 0;
+  width: 100%;
+  max-width: 240px;
+}
+
+.socialIcons :global(.rs-flex-box-grid-item) {
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+}
+
+.contactDetails {
+  max-width: 220px;
+  margin: 0.75rem auto 0;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--app-text-secondary);
+}
+
+.contactDetails :global(.rs-flex-box-grid) {
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.45rem;
+}
+
+.contactDetails :global(.rs-flex-box-grid-item:first-child) {
+  min-width: 28px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.contactDetails span {
+  font-size: 0.72rem;
+  color: inherit;
+}
+
+.contactDetails a {
+  font-size: inherit;
 }
 
 .boxContent {
   padding: @padding-margin-val;
   padding-left: 0;
+  color: var(--app-text-secondary);
   @media screen and (max-width: 767px) {
     padding: @padding-margin-val;
     padding-top: 0;
@@ -170,5 +257,5 @@
 }
 
 .sideBar404Radius {
-  border-radius: 3rem 0 3rem 3rem;
+  border-radius: var(--app-radius);
 }

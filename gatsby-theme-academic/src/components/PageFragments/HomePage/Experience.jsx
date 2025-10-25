@@ -26,7 +26,11 @@ const Experience = () => {
           <h2 style={{ marginBottom: '0' }}>Education</h2>
           {siteMetadata.education.length > 1
             ? (
-              <Timeline lineStyle={{ top: '20px' }} lineColor="#44566C" style={{ width: '100%' }}>
+              <Timeline
+                lineStyle={{ top: '20px' }}
+                lineColor="rgba(31, 31, 31, 0.18)"
+                style={{ width: '100%' }}
+              >
                 {previousTimeLineData.map(TimelineItem)}
               </Timeline>
             ) : null}

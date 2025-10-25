@@ -23,14 +23,13 @@
   position: relative;
   break-inside: avoid;
   margin: 0 0 1rem;
-  border-radius: @border-radius-base;
+  border-radius: var(--app-radius);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
   cursor: pointer;
   background: var(--rs-bg-card);
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -55,7 +54,7 @@
   color: #fff;
   font-size: 12px;
   padding: 2px 6px;
-  border-radius: 8px;
+  border-radius: var(--app-radius-xs);
 }
 
 .metaOverlay {
@@ -80,10 +79,9 @@
 .tag {
   margin-right: .25rem;
   cursor: pointer;
-  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+  transition: transform .15s ease, background-color .15s ease;
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
   }
   &:active {
     transform: translateY(0);
@@ -94,7 +92,7 @@
 .modalImage {
   width: 100%;
   height: auto;
-  border-radius: @border-radius-base;
+  border-radius: var(--app-radius);
 }
 
 

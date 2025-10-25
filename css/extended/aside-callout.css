@@ -1,0 +1,243 @@
+/* Aside Block Styles */
+.aside-block {
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f4ff; /* Light purple background */
+  border: 1px solid #e6d9ff;
+}
+
+.aside-header {
+  padding: 12px 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.aside-header:hover {
+  background: #f0e6ff;
+}
+
+.aside-icon {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 12px;
+  color: #6b46c1; /* Dark purple */
+  transition: transform 0.2s ease;
+}
+
+.aside-title {
+  color: #6b46c1; /* Dark purple */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.aside-content {
+  padding: 16px;
+  border-top: 1px solid #e6d9ff;
+  color: var(--content);
+  line-height: 1.6;
+}
+
+/* Callout Block Styles */
+.callout-block {
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid;
+}
+
+.callout-header {
+  padding: 10px 16px;
+  border-bottom: 1px solid;
+}
+
+.callout-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.callout-content {
+  padding: 16px;
+  line-height: 1.6;
+  color: var(--content);
+}
+
+/* Callout Color Variants */
+.callout-green {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.callout-green .callout-header {
+  background: #dcfce7;
+  border-bottom-color: #bbf7d0;
+}
+
+.callout-green .callout-title {
+  color: #166534;
+}
+
+.callout-red {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.callout-red .callout-header {
+  background: #fee2e2;
+  border-bottom-color: #fecaca;
+}
+
+.callout-red .callout-title {
+  color: #991b1b;
+}
+
+.callout-blue {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.callout-blue .callout-header {
+  background: #dbeafe;
+  border-bottom-color: #bfdbfe;
+}
+
+.callout-blue .callout-title {
+  color: #1e40af;
+}
+
+.callout-yellow {
+  background: #fffbeb;
+  border-color: #fed7aa;
+}
+
+.callout-yellow .callout-header {
+  background: #fef3c7;
+  border-bottom-color: #fed7aa;
+}
+
+.callout-yellow .callout-title {
+  color: #92400e;
+}
+
+.callout-purple {
+  background: #faf5ff;
+  border-color: #c4b5fd;
+}
+
+.callout-purple .callout-header {
+  background: #ede9fe;
+  border-bottom-color: #c4b5fd;
+}
+
+.callout-purple .callout-title {
+  color: #5b21b6;
+}
+
+/* Dark theme adjustments */
+.dark .aside-block {
+  background: #2d1b69;
+  border-color: #4c1d95;
+}
+
+.dark .aside-header:hover {
+  background: #3b1f5e;
+}
+
+.dark .aside-title {
+  color: #c4b5fd;
+}
+
+.dark .aside-content {
+  border-top-color: #4c1d95;
+}
+
+.dark .callout-green {
+  background: #064e3b;
+  border-color: #065f46;
+}
+
+.dark .callout-green .callout-header {
+  background: #065f46;
+  border-bottom-color: #047857;
+}
+
+.dark .callout-green .callout-title {
+  color: #6ee7b7;
+}
+
+.dark .callout-red {
+  background: #450a0a;
+  border-color: #7f1d1d;
+}
+
+.dark .callout-red .callout-header {
+  background: #7f1d1d;
+  border-bottom-color: #991b1b;
+}
+
+.dark .callout-red .callout-title {
+  color: #fca5a5;
+}
+
+.dark .callout-blue {
+  background: #1e3a8a;
+  border-color: #1e40af;
+}
+
+.dark .callout-blue .callout-header {
+  background: #1e40af;
+  border-bottom-color: #2563eb;
+}
+
+.dark .callout-blue .callout-title {
+  color: #93c5fd;
+}
+
+.dark .callout-yellow {
+  background: #451a03;
+  border-color: #78350f;
+}
+
+.dark .callout-yellow .callout-header {
+  background: #78350f;
+  border-bottom-color: #92400e;
+}
+
+.dark .callout-yellow .callout-title {
+  color: #fbbf24;
+}
+
+.dark .callout-purple {
+  background: #2e1065;
+  border-color: #4c1d95;
+}
+
+.dark .callout-purple .callout-header {
+  background: #4c1d95;
+  border-bottom-color: #5b21b6;
+}
+
+.dark .callout-purple .callout-title {
+  color: #c4b5fd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .aside-block,
+  .callout-block {
+    margin: 16px 0;
+  }
+  
+  .aside-content,
+  .callout-content {
+    padding: 12px;
+  }
+  
+  .aside-header,
+  .callout-header {
+    padding: 10px 12px;
+  }
+}

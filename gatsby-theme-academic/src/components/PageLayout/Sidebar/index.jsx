@@ -74,7 +74,7 @@ const UserInfo = () => {
         })}
       </Row>
         <div className="centerAlign box" style={{ marginTop: '0.5rem' }}>
-          <FlexboxGrid>
+          <FlexboxGrid className={style.socialIcons}>
             {siteMetadata.social.map((social) => (
               <FlexboxGrid.Item as={Col} key={social.url} className={style.iconButtonCol}>
                 <IconButton
@@ -96,12 +96,7 @@ const UserInfo = () => {
             ))}
           </FlexboxGrid>
         </div>
-        <div
-          style={{
-            width: '200px',
-            marginBottom: '-0.5rem',
-          }}
-        >
+        <div className={style.contactDetails}>
           {siteMetadata.birthday
             ? (
               <IconListItem icon="calendar" title={siteMetadata.birthday} />
@@ -176,8 +171,8 @@ const SidebarWrapper = (props) => {
   }
   return (
     <>
-      <Container className={`${style.content}`}>
-        <Content className={`${style.content}`}>
+      <Container className={style.content}>
+        <Content className={style.content}>
           <FlexboxGrid style={{ marginBottom: '4rem' }}>
             <FlexboxGrid.Item as={Col} xs={24} sm={24} md={8} lg={7} className={style.sidebarContent}>
               {domContent}

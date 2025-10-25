@@ -1,0 +1,100 @@
+/* References Section Styling */
+.references-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 40px 0 30px 0;
+  opacity: 0.6;
+}
+
+.hugo-cite-bibliography {
+  margin-top: 0;
+}
+
+.references-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.references-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+  align-items: start;
+}
+
+.reference-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.reference-number {
+  color: var(--primary);
+  font-weight: 500;
+  min-width: 28px;
+  flex-shrink: 0;
+}
+
+.reference-content {
+  flex: 1;
+}
+
+.reference-content strong {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 13px;
+}
+
+.reference-content a {
+  color: var(--tertiary);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.reference-content a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .references-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .reference-item {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+  
+  .reference-content strong {
+    font-size: 12px;
+  }
+  
+  .reference-content a {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .references-grid {
+    gap: 16px 24px;
+  }
+}
+
+/* Hide the original ## Reference heading from markdown */
+.post-content h2:last-of-type {
+  display: none;
+}
+
+/* Dark theme adjustments */
+.dark .references-divider {
+  background: var(--border);
+  opacity: 0.4;
+}
