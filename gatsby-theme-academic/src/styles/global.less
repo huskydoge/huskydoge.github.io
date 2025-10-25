@@ -118,6 +118,7 @@ body {
 
 .markdown-body a {
   color: var(--app-accent);
+  font-family: inherit;
 }
 
 .markdown-body strong,
@@ -128,6 +129,12 @@ body {
 .markdown-body h5,
 .markdown-body h6 {
   color: var(--app-text-primary);
+  font-family: inherit;
+}
+
+.markdown-body li::marker {
+  font-family: inherit;
+  color: var(--app-text-secondary);
 }
 
 .markdown-body h1,

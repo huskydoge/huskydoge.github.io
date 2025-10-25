@@ -198,20 +198,22 @@
 }
 
 .socialIcons {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 48px));
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  justify-items: center;
+  align-items: center;
   gap: 0.35rem 0.6rem;
   margin: 0.5rem auto 0;
   width: 100%;
-  max-width: 240px;
+  max-width: 260px;
 }
 
 .socialIcons :global(.rs-flex-box-grid-item) {
   padding: 0 !important;
   display: flex;
   justify-content: center;
+  flex: 0 0 auto;
+  min-width: 40px;
 }
 
 .contactDetails {
