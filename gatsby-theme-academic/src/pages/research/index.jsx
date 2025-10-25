@@ -1,85 +1,189 @@
-import { Container, Button, ButtonGroup, FlexboxGrid, Col } from 'rsuite';
+import { Button, FlexboxGrid, Col, Stack } from 'rsuite';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import React, { useState, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import _ from 'lodash';
 
-import Footer from '../../components/PageLayout/Footer';
-import Header from '../../components/PageLayout/Header';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
-import Panel from '../../components/Panel';
 import SEO from '../../components/Seo';
 import ResearchCard from '../../components/ResearchCard';
 
 const Research = ({ data }) => {
-  const [viewMode, setViewMode] = useState('date'); // 'date' or 'tag'
-  
-  // Define the specific tags to display in tag view (in preferred order)
-  const displayTags = [
-    'World Model',
-    'LLM Agent',
-    'AI Interpretability',
-    'Benchmark',
-  ];
-  
-  // Create tagsMap like Panel component does
+  const [selectedYears, setSelectedYears] = useState(new Set());
+  const [selectedTags, setSelectedTags] = useState(new Set());
+
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
-  
-  // Process research data
-  const researchData = useMemo(() => {
-    const research = data.allMdx.edges; // Keep the full edge structure
-    
-    if (viewMode === 'date') {
-      // Group by year
-      const groupedByYear = research.reduce((acc, edge) => {
-        const year = new Date(edge.node.frontmatter.date).getFullYear();
-        if (!acc[year]) {
-          acc[year] = [];
-        }
-        acc[year].push(edge);
-        return acc;
-      }, {});
-      
-      // Sort by year (descending) and within each year by date (descending)
-      const sortedYears = Object.keys(groupedByYear)
-        .sort((a, b) => parseInt(b) - parseInt(a));
-      
-      sortedYears.forEach(year => {
-        groupedByYear[year].sort((a, b) => 
-          new Date(b.node.frontmatter.date) - new Date(a.node.frontmatter.date)
-        );
-      });
-      
-      return { type: 'date', groups: groupedByYear, sortedKeys: sortedYears };
-    } else {
-      // Group by tags - only include specified display tags
-      const groupedByTag = research.reduce((acc, edge) => {
-        const tags = edge.node.frontmatter.tags || [];
-        tags.forEach(tag => {
-          // Only include tags that are in our displayTags list
-          if (displayTags.includes(tag)) {
-            if (!acc[tag]) {
-              acc[tag] = [];
-            }
-            acc[tag].push(edge);
-          }
-        });
-        return acc;
-      }, {});
-      
-      // Use displayTags order instead of alphabetical, but only include tags that have research
-      const sortedTags = displayTags.filter(tag => groupedByTag[tag] && groupedByTag[tag].length > 0);
-      
-      sortedTags.forEach(tag => {
-        groupedByTag[tag].sort((a, b) => 
-          new Date(b.node.frontmatter.date) - new Date(a.node.frontmatter.date)
-        );
-      });
-      
-      return { type: 'tag', groups: groupedByTag, sortedKeys: sortedTags };
+  const researchEdges = data.allMdx.edges;
+
+  const parseYear = (value) => {
+    if (value === null || value === undefined) {
+      return 'Unknown';
     }
-  }, [data.allMdx.edges, viewMode]);
+
+    if (typeof value === 'number') {
+      return value.toString();
+    }
+
+    const numericFromString = Number(value);
+    if (!Number.isNaN(numericFromString) && value.toString().length <= 4) {
+      return numericFromString.toString();
+    }
+
+    const parsedDate = new Date(value);
+    if (!Number.isNaN(parsedDate.getTime())) {
+      return parsedDate.getFullYear().toString();
+    }
+
+    return 'Unknown';
+  };
+
+  const getComparableDate = (value) => {
+    if (value === null || value === undefined) {
+      return new Date(0);
+    }
+
+    if (typeof value === 'number') {
+      return new Date(`${value}-01-01T00:00:00Z`);
+    }
+
+    const parsedDate = new Date(value);
+    if (!Number.isNaN(parsedDate.getTime())) {
+      return parsedDate;
+    }
+
+    const numericFromString = Number(value);
+    if (!Number.isNaN(numericFromString)) {
+      return new Date(`${numericFromString}-01-01T00:00:00Z`);
+    }
+
+    return new Date(0);
+  };
+
+  const availableYears = useMemo(() => {
+    const yearSet = new Set();
+    researchEdges.forEach((edge) => {
+      yearSet.add(parseYear(edge.node.frontmatter.date));
+    });
+    const years = Array.from(yearSet).filter((year) => year !== 'Unknown');
+    years.sort((a, b) => Number(b) - Number(a));
+    if (yearSet.has('Unknown')) {
+      years.push('Unknown');
+    }
+    return years;
+  }, [researchEdges]);
+
+  const availableTags = useMemo(() => (
+    tags.map((tag) => tag.node.name)
+  ), [tags]);
+
+  const filteredResearch = useMemo(() => {
+    const yearFilterActive = selectedYears.size > 0;
+    const tagFilterActive = selectedTags.size > 0;
+
+    return researchEdges
+      .filter((edge) => {
+        const { frontmatter } = edge.node;
+        const year = parseYear(frontmatter.date);
+        const entryTags = frontmatter.tags || [];
+
+        if (yearFilterActive && !selectedYears.has(year)) {
+          return false;
+        }
+
+        if (tagFilterActive) {
+          for (const tag of selectedTags) {
+            if (!entryTags.includes(tag)) {
+              return false;
+            }
+          }
+        }
+
+        return true;
+      })
+      .sort((a, b) => getComparableDate(b.node.frontmatter.date) - getComparableDate(a.node.frontmatter.date));
+  }, [researchEdges, selectedYears, selectedTags]);
+
+  const groupedResearch = useMemo(() => {
+    const groups = filteredResearch.reduce((acc, edge) => {
+      const year = parseYear(edge.node.frontmatter.date);
+      if (!acc[year]) {
+        acc[year] = [];
+      }
+      acc[year].push(edge);
+      return acc;
+    }, {});
+
+    const sortedKeys = Object.keys(groups).sort((a, b) => {
+      if (a === 'Unknown') return 1;
+      if (b === 'Unknown') return -1;
+      return Number(b) - Number(a);
+    });
+
+    return { groups, sortedKeys };
+  }, [filteredResearch]);
+
+  const handleYearToggle = (year) => {
+    if (year === 'All') {
+      setSelectedYears(new Set());
+      return;
+    }
+
+    setSelectedYears((prev) => {
+      const next = new Set(prev);
+      if (next.has(year)) {
+        next.delete(year);
+      } else {
+        next.add(year);
+      }
+      return next;
+    });
+  };
+
+  const handleTagToggle = (tag) => {
+    if (tag === 'All') {
+      setSelectedTags(new Set());
+      return;
+    }
+
+    setSelectedTags((prev) => {
+      const next = new Set(prev);
+      if (next.has(tag)) {
+        next.delete(tag);
+      } else {
+        next.add(tag);
+      }
+      return next;
+    });
+  };
+
+  const renderFilterRow = (label, options, selectedSet, onToggle, includeAll = true) => (
+    <div style={{ marginBottom: '1rem' }}>
+      <Stack spacing={12} alignItems="center" wrap>
+        <strong style={{ minWidth: '3.5rem' }}>{label}</strong>
+        <Stack spacing={8} wrap>
+          {includeAll && (
+            <Button
+              appearance={selectedSet.size === 0 ? 'primary' : 'ghost'}
+              size="sm"
+              onClick={() => onToggle('All')}
+            >
+              All
+            </Button>
+          )}
+          {options.map((option) => (
+            <Button
+              key={option}
+              appearance={selectedSet.has(option) ? 'primary' : 'ghost'}
+              size="sm"
+              onClick={() => onToggle(option)}
+            >
+              {option}
+            </Button>
+          ))}
+        </Stack>
+      </Stack>
+    </div>
+  );
 
   return (
     <>
@@ -90,47 +194,55 @@ const Research = ({ data }) => {
       />
       <div className="marginTopTitle">
         <h1 className="titleSeparate">Research</h1>
-        
-        {/* View mode toggle */}
-        <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
-          <ButtonGroup>
-            <Button
-              appearance={viewMode === 'date' ? 'primary' : 'default'}
-              onClick={() => setViewMode('date')}
-            >
-              By Year
-            </Button>
-            <Button
-              appearance={viewMode === 'tag' ? 'primary' : 'default'}
-              onClick={() => setViewMode('tag')}
-            >
-              By Tag
-            </Button>
-          </ButtonGroup>
+
+        <div style={{ marginBottom: '2rem' }}>
+          {renderFilterRow('Year', availableYears, selectedYears, handleYearToggle)}
+          {renderFilterRow('Tag', availableTags, selectedTags, handleTagToggle)}
         </div>
-        
-        {/* Render grouped content */}
-        <FlexboxGrid>
-          {researchData.sortedKeys.map(key => (
-            <FlexboxGrid.Item key={key} colspan={24} style={{ marginBottom: '3rem' }}>
-              <h2 style={{ 
-                fontSize: '1.5rem', 
-                marginBottom: '1.5rem',
-                borderBottom: '2px solid #e0e0e0',
-                paddingBottom: '0.5rem'
-              }}>
-                {researchData.type === 'date' ? key : key}
-              </h2>
-              <FlexboxGrid>
-                {researchData.groups[key].map((edge, index) => (
-                  <FlexboxGrid.Item as={Col} key={index} xs={24} sm={24} md={24} lg={24} style={{ marginBottom: '1rem' }}>
-                    <ResearchCard data={edge} tagsMap={tagsMap} enableHighlight={true} />
-                  </FlexboxGrid.Item>
-                ))}
-              </FlexboxGrid>
-            </FlexboxGrid.Item>
-          ))}
-        </FlexboxGrid>
+
+        {groupedResearch.sortedKeys.length === 0 ? (
+          <div style={{
+            textAlign: 'center',
+            marginTop: '3rem',
+            padding: '2rem',
+            borderRadius: 'var(--app-radius, 12px)',
+            border: '1px solid var(--app-border, #e0e0e0)',
+            background: 'var(--app-panel-bg, #f9f9f9)',
+            color: 'var(--app-text-secondary, #777)',
+          }}>
+            No research entries match the selected filters yet. Try adjusting the year or tag filters to explore more work.
+          </div>
+        ) : (
+          <FlexboxGrid>
+            {groupedResearch.sortedKeys.map((key) => (
+              <FlexboxGrid.Item key={key} colspan={24} style={{ marginBottom: '3rem' }}>
+                <h2 style={{
+                  fontSize: '1.5rem',
+                  marginBottom: '1.5rem',
+                  borderBottom: '2px solid #e0e0e0',
+                  paddingBottom: '0.5rem',
+                }}>
+                  {key}
+                </h2>
+                <FlexboxGrid>
+                  {groupedResearch.groups[key].map((edge, index) => (
+                    <FlexboxGrid.Item
+                      as={Col}
+                      key={`${key}-${index}`}
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      style={{ marginBottom: '1rem' }}
+                    >
+                      <ResearchCard data={edge} tagsMap={tagsMap} enableHighlight />
+                    </FlexboxGrid.Item>
+                  ))}
+                </FlexboxGrid>
+              </FlexboxGrid.Item>
+            ))}
+          </FlexboxGrid>
+        )}
       </div>
     </>
   );
