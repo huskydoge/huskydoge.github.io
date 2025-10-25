@@ -153,7 +153,7 @@ const ResearchCard = (props) => {
       <FlexboxGrid gutter={8} align="middle">
         <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={16}>
           <h5><a href={Utils.generateFullUrl(siteMetadata, url)}>{title}</a></h5>
-          <FlexboxGrid>
+          <FlexboxGrid className={style.authorsRow}>
             {authors ? authors.map(generateAuthor) : null}
           </FlexboxGrid>
           <Stack wrap divider={<Divider vertical className={style.divider} />} style={{ marginTop: '0.5rem'}}>
