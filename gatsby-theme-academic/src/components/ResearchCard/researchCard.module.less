@@ -9,14 +9,14 @@
     font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
 
     :global(.rs-panel-body) {
-        padding: 1.6rem !important;
+        padding: 0.8rem !important;
         background: transparent !important;
         font-family: inherit !important;
     }
 
     h5 {
-        font-size: 1.35rem;
-        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
         font-weight: 600;
         color: var(--app-text-primary);
         font-family: inherit;
@@ -34,17 +34,19 @@
     p {
         color: var(--app-text-secondary);
         font-family: inherit;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
     }
 
     .postCardImg {
         width: 100%;
-        padding-top: 56.25%;
+        padding-top: 70%;
         background-repeat: no-repeat;
         background-size: cover;
     }
 
     .mrTp20 {
-        margin-top: 20px;
+        margin-top: 12px;
     }
 
     .divider {
@@ -56,7 +58,7 @@
     }
 
     .title {
-        font-size: 1.25rem;
+        font-size: 1rem;
         white-space: normal;
         line-height: 80%;
     }
@@ -69,18 +71,18 @@
     .dateHolder {
         background: rgba(232, 166, 139, 0.2);
         color: var(--app-text-primary);
-        padding: 6px;
+        padding: 4px 6px;
         border-radius: var(--app-radius-xs);
-        font-size: @font-size-small;
+        font-size: 0.8rem;
         margin-right: 8px;
         border: 1px solid rgba(232, 166, 139, 0.42);
         font-family: inherit;
     }
 
     .authorsRow {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         color: var(--app-text-secondary);
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.3rem;
 
         :global(.rs-flex-box-grid-item) {
             padding-left: 0 !important;
@@ -89,6 +91,13 @@
 
         span {
             font-family: inherit;
+        }
+    }
+
+    :global(.rs-stack) {
+        > div {
+            font-size: 0.8rem;
+            color: var(--app-text-secondary);
         }
     }
 }
