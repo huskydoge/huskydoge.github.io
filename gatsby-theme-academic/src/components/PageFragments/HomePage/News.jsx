@@ -9,7 +9,7 @@ const News = () => (
         <Row gutter={[20, 20]} type="flex">
             <Col xs={24}>
                 <ul style={{ 
-                    paddingLeft: '1.2em', 
+                    paddingLeft: '0.4em', 
                     fontSize: '1rem',
                     lineHeight: '1.8',
                     listStyle: 'none'

@@ -3,10 +3,12 @@ import {
 } from 'rsuite';
 import _ from 'lodash';
 import React from 'react';
+import { Timeline } from 'react-event-timeline';
 
 import SEO from '../../components/Seo';
 import { useSiteMetadata } from '../../utils/hooks';
 import Utils from '../../utils/pageUtils';
+import TimelineItem from '../../components/TimelineItem';
 
 const generateListItem = (data) => {
   const title = Utils.parseMarkDown(data.title, true);
@@ -38,6 +40,9 @@ const Experience = () => {
   const siteMetadata = useSiteMetadata();
   const leftColumn = _.filter(siteMetadata.experience, (value) => value.position === 'left');
   const rightColumn = _.filter(siteMetadata.experience, (value) => value.position === 'right');
+  const previousTimeLineData = siteMetadata.education.slice(0, siteMetadata.education.length - 1);
+  const lastTimeLineData = siteMetadata.education.slice(siteMetadata.education.length - 1);
+
   return (
     <>
       <SEO
@@ -57,6 +62,34 @@ const Experience = () => {
           {rightColumn.map(generateExperience)}
         </FlexboxGrid.Item>
       </FlexboxGrid>
+
+      <div className="marginTopTitle" style={{ marginTop: '3rem' }}>
+        <h1 className="titleSeparate">Education</h1>
+      </div>
+      <div>
+        {siteMetadata.education.length > 1
+          ? (
+            <Timeline
+              lineStyle={{ top: '20px' }}
+              lineColor="rgba(31, 31, 31, 0.18)"
+              style={{ width: '100%' }}
+            >
+              {previousTimeLineData.map(TimelineItem)}
+            </Timeline>
+          ) : null}
+        {siteMetadata.education.length > 0
+          ? (
+            <Timeline
+              lineStyle={{ display: 'none' }}
+              style={{
+                top: '-30px',
+                width: '100%',
+              }}
+            >
+              {lastTimeLineData.map(TimelineItem)}
+            </Timeline>
+          ) : null}
+      </div>
     </>
   );
 };
