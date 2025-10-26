@@ -56,7 +56,7 @@ module.exports = {
       icon: ["fab", "github"],
     },
     {
-      url: "https://twitter.com/intent/follow?&region=follow_link&screen_name=huskydogewoof",
+      url: "https://twitter.com/huskydogewoof",
       icon: ["fab", "twitter"],
     },
     {
@@ -74,6 +74,10 @@ module.exports = {
     {
       url: "https://www.xiaohongshu.com/user/profile/614a97f000000000020250c8",
       icon: ["custom", "xiaohongshu"],
+    },
+    {
+      url: "https://www.zhihu.com/people/huskydoge",
+      icon: ["fab", "zhihu"],
     }
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
