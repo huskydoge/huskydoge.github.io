@@ -776,7 +776,19 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
           case 'title':
             return prop.title?.[0]?.plain_text || '';
           case 'rich_text':
-            return prop.rich_text?.[0]?.plain_text || '';
+            if (!prop.rich_text || prop.rich_text.length === 0) {
+              return '';
+            }
+            const text = prop.rich_text
+              .map((segment) => {
+                if (!segment) return '';
+                if (segment.type === 'equation') {
+                  return segment.equation?.expression || segment.plain_text || '';
+                }
+                return segment.plain_text || '';
+              })
+              .join('');
+            return text.trim();
           case 'select':
             return prop.select?.name || null;
           case 'multi_select':

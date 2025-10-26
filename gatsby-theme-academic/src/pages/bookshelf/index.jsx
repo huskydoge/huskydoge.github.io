@@ -4,7 +4,15 @@ import { Input, InputGroup, Stack, Button, Drawer, Modal } from 'rsuite';
 import SearchIcon from '@rsuite/icons/Search';
 import ExpandOutlineIcon from '@rsuite/icons/ExpandOutline';
 import SEO from '../../components/Seo';
+import 'katex/dist/katex.min.css';
 import './bookshelf.css';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import remarkRehype from 'remark-rehype';
+import rehypeKatex from 'rehype-katex';
+import rehypeStringify from 'rehype-stringify';
 
 const TAG_COLORS = [
   { bg: '#FDF2F8', color: '#AD1A72' },
@@ -93,6 +101,57 @@ const formatDate = (value) => {
     month: 'short',
     day: 'numeric',
   });
+};
+
+const truncateText = (text, maxLength = 160) => {
+  if (!text) return '';
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength).trim()}…`;
+};
+
+const escapeHtml = (value) =>
+  (typeof value === 'string' ? value : String(value))
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+const markdownProcessor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkMath)
+  .use(remarkRehype, { allowDangerousHtml: false })
+  .use(rehypeKatex)
+  .use(rehypeStringify)
+  .freeze();
+
+const renderMarkdownToHtml = (value) => {
+  if (!value) return '';
+  const normalized = typeof value === 'string' ? value : String(value);
+  try {
+    return String(markdownProcessor.processSync(normalized));
+  } catch (error) {
+    if (typeof console !== 'undefined' && console.error) {
+      console.error('Failed to render markdown content', error);
+    }
+    return escapeHtml(normalized);
+  }
+};
+
+const MarkdownBlock = ({ content, className }) => {
+  const html = useMemo(() => renderMarkdownToHtml(content), [content]);
+
+  if (!content || !html) {
+    return null;
+  }
+
+  return (
+    <div
+      className={className}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
 };
 
 const coerceFilterValue = (type, rawValue) => {
@@ -460,6 +519,7 @@ const BookshelfPage = ({ data }) => {
   const [selectedMedium, setSelectedMedium] = useState('All');
   const [filters, setFilters] = useState([]);
   const [sorts, setSorts] = useState([{ column: 'dateSaved', order: 'desc' }]);
+  const [viewMode, setViewMode] = useState('table');
   const filterButtonRef = useRef(null);
   const sortButtonRef = useRef(null);
   const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
@@ -592,20 +652,30 @@ const BookshelfPage = ({ data }) => {
     </div>
   );
 
+  const ScoreBadge = ({ label, value }) => (
+    <div className="score-badge">
+      <span className="score-badge-label">{label}</span>
+      <span className="score-badge-value">{value ?? '—'}</span>
+    </div>
+  );
+
   const DetailContent = ({ book }) => {
     if (!book) return null;
+    const hasNotes = !!book.notes?.trim();
+    const hasTwoCents = !!book.twoCents?.trim();
     return (
       <div className="detail-content">
-        <div className="detail-title">{book.title}</div>
-        {book.link && (
+        {book.link ? (
           <a
             href={book.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="detail-link"
+            className="detail-title detail-title-link"
           >
-            🔗 Open original ↗
+            {book.title}
           </a>
+        ) : (
+          <div className="detail-title">{book.title}</div>
         )}
 
         <div className="detail-meta-grid">
@@ -637,17 +707,17 @@ const BookshelfPage = ({ data }) => {
           </div>
         </div>
 
-        {book.notes && (
+        {hasNotes && (
           <div className="detail-section">
             <h4>TLDR</h4>
-            <p>{book.notes}</p>
+            <MarkdownBlock content={book.notes} className="detail-markdown" />
           </div>
         )}
 
-        {book.twoCents && (
+        {hasTwoCents && (
           <div className="detail-section">
             <h4>2¢</h4>
-            <p>{book.twoCents}</p>
+            <MarkdownBlock content={book.twoCents} className="detail-markdown" />
           </div>
         )}
 
@@ -674,7 +744,7 @@ const BookshelfPage = ({ data }) => {
             </div>
           </div>
         )}
-        {!book.notes && !book.twoCents && (
+        {!hasNotes && !hasTwoCents && (
           <div className="detail-section">
             <p className="bookshelf-muted">No summary yet.</p>
           </div>
@@ -736,21 +806,42 @@ const BookshelfPage = ({ data }) => {
           </div>
         </div>
 
-        <Stack spacing={10} className="bookshelf-medium-tabs" wrap alignItems="center">
-          {mediums.map((medium) => (
-            <Button
-              key={medium}
-              size="xs"
-              appearance={selectedMedium === medium ? 'primary' : 'ghost'}
-              onClick={() => setSelectedMedium(medium)}
+        <div className="bookshelf-subtoolbar">
+          <Stack spacing={10} className="bookshelf-medium-tabs" wrap alignItems="center">
+            {mediums.map((medium) => (
+              <Button
+                key={medium}
+                size="xs"
+                appearance={selectedMedium === medium ? 'primary' : 'ghost'}
+                onClick={() => setSelectedMedium(medium)}
+              >
+                {medium}
+              </Button>
+            ))}
+            <span className="bookshelf-count">
+              {filteredBooks.length} / {allBooks.length}
+            </span>
+          </Stack>
+
+          <div className="view-toggle" role="radiogroup" aria-label="View mode">
+            <button
+              type="button"
+              className={`view-button ${viewMode === 'table' ? 'is-active' : ''}`}
+              onClick={() => setViewMode('table')}
+              aria-pressed={viewMode === 'table'}
             >
-              {medium}
-            </Button>
-          ))}
-          <span className="bookshelf-count">
-            {filteredBooks.length} / {allBooks.length}
-          </span>
-        </Stack>
+              Table
+            </button>
+            <button
+              type="button"
+              className={`view-button ${viewMode === 'gallery' ? 'is-active' : ''}`}
+              onClick={() => setViewMode('gallery')}
+              aria-pressed={viewMode === 'gallery'}
+            >
+              Gallery
+            </button>
+          </div>
+        </div>
 
         <FilterPanel
           open={isFilterPanelOpen}
@@ -773,67 +864,162 @@ const BookshelfPage = ({ data }) => {
           onClose={() => setIsSortPanelOpen(false)}
         />
 
-        <div className="bookshelf-table">
-          <div className="bookshelf-header-row">
-            <div>Title</div>
-            <div>Medium</div>
-            <div>Enjoy</div>
-            <div>Importance</div>
-            <div>Tags</div>
+        {viewMode === 'table' ? (
+          <div className="bookshelf-table">
+            <div className="bookshelf-header-row">
+              <div>Title</div>
+              <div>Medium</div>
+              <div>Enjoy</div>
+              <div>Importance</div>
+              <div>Tags</div>
+            </div>
+            <div>
+              {filteredBooks.length === 0 && (
+                <div className="bookshelf-table-empty">No matching entries</div>
+              )}
+              {filteredBooks.map((book) => {
+                const isActive = selectedBook?.notionId === book.notionId;
+                const mediumStyle = getMediumStyle(book.medium || '');
+                return (
+                  <div
+                    key={book.notionId}
+                    className={`bookshelf-row ${isActive ? 'is-active' : ''}`}
+                    onClick={() => handleRowClick(book)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyPress={(event) => {
+                      if (event.key === 'Enter') handleRowClick(book);
+                    }}
+                  >
+                    <div className="bookshelf-cell-title">
+                      {book.link ? (
+                        <a
+                          href={book.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bookshelf-link"
+                        >
+                          {book.title}
+                        </a>
+                      ) : (
+                        <span className="bookshelf-title-text">{book.title}</span>
+                      )}
+                      {book.author && <span className="bookshelf-author">{book.author}</span>}
+                    </div>
+                    <div>
+                      {book.medium && (
+                        <span
+                          className="medium-chip"
+                          style={mediumStyle || {}}
+                        >
+                          {book.medium}
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      <ScorePill value={book.enjoyment} />
+                    </div>
+                    <div>
+                      <ScorePill value={book.importance} />
+                    </div>
+                    <div className="tag-collection">
+                      {book.keywords?.length ? (
+                        <>
+                          {book.keywords.slice(0, 6).map((keyword) => {
+                            const style = getTagStyle(keyword);
+                            return (
+                              <span
+                                key={keyword}
+                                className="tag-chip"
+                                style={{
+                                  background: style.bg,
+                                  color: style.color,
+                                  borderColor: style.color,
+                                }}
+                              >
+                                {keyword}
+                              </span>
+                            );
+                          })}
+                          {book.keywords.length > 6 && (
+                            <span className="tag-chip" style={{ background: 'transparent', color: '#7a7061' }}>
+                              +{book.keywords.length - 6}
+                            </span>
+                          )}
+                        </>
+                      ) : (
+                        <span className="bookshelf-muted">—</span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div>
-            {filteredBooks.length === 0 && (
-              <div className="bookshelf-table-empty">No matching entries</div>
-            )}
-            {filteredBooks.map((book) => {
-              const isActive = selectedBook?.notionId === book.notionId;
-              const mediumStyle = getMediumStyle(book.medium || '');
-              return (
-                <div
-                  key={book.notionId}
-                  className={`bookshelf-row ${isActive ? 'is-active' : ''}`}
-                  onClick={() => handleRowClick(book)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyPress={(event) => {
-                    if (event.key === 'Enter') handleRowClick(book);
-                  }}
-                >
-                  <div className="bookshelf-cell-title">
-                    {book.link ? (
-                      <a
-                        href={book.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bookshelf-link"
-                      >
-                        {book.title}
-                      </a>
+        ) : (
+          <div className="bookshelf-gallery">
+            {filteredBooks.length === 0 ? (
+              <div className="bookshelf-gallery-empty">No matching entries</div>
+            ) : (
+              filteredBooks.map((book) => {
+                const isActive = selectedBook?.notionId === book.notionId;
+                const mediumStyle = getMediumStyle(book.medium || '');
+                const primarySummary = book.notes?.trim();
+                const secondarySummary = book.twoCents?.trim();
+                const summary = primarySummary || secondarySummary || '';
+                return (
+                  <div
+                    key={book.notionId}
+                    className={`gallery-card ${isActive ? 'is-active' : ''}`}
+                    onClick={() => handleRowClick(book)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        handleRowClick(book);
+                      }
+                    }}
+                  >
+                    <div className="gallery-card-top">
+                      {book.medium && (
+                        <span className="medium-chip" style={mediumStyle || {}}>
+                          {book.medium}
+                        </span>
+                      )}
+                      {book.dateSaved && (
+                        <span className="gallery-date">{formatDate(book.dateSaved)}</span>
+                      )}
+                    </div>
+                    <div className="gallery-card-title">
+                      {book.link ? (
+                        <a
+                          href={book.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="gallery-card-link"
+                        >
+                          {book.title}
+                        </a>
+                      ) : (
+                        <span>{book.title}</span>
+                      )}
+                    </div>
+                    {book.author && <div className="gallery-card-author">{book.author}</div>}
+                    <div className="gallery-card-metrics">
+                      <ScoreBadge label="Enjoy" value={book.enjoyment} />
+                      <ScoreBadge label="Importance" value={book.importance} />
+                    </div>
+                    {summary ? (
+                      <p className="gallery-card-summary">
+                        {truncateText(summary, 180)}
+                      </p>
                     ) : (
-                      <span className="bookshelf-title-text">{book.title}</span>
+                      <p className="gallery-card-summary is-empty">No summary yet.</p>
                     )}
-                    {book.author && <span className="bookshelf-author">{book.author}</span>}
-                  </div>
-                  <div>
-                    {book.medium && (
-                      <span
-                        className="medium-chip"
-                        style={mediumStyle || {}}
-                      >
-                        {book.medium}
-                      </span>
-                    )}
-                  </div>
-                  <div>
-                    <ScorePill value={book.enjoyment} />
-                  </div>
-                  <div>
-                    <ScorePill value={book.importance} />
-                  </div>
-                  <div className="tag-collection">
                     {book.keywords?.length ? (
-                      <>
-                        {book.keywords.slice(0, 6).map((keyword) => {
+                      <div className="gallery-tags">
+                        {book.keywords.slice(0, 4).map((keyword) => {
                           const style = getTagStyle(keyword);
                           return (
                             <span
@@ -849,21 +1035,19 @@ const BookshelfPage = ({ data }) => {
                             </span>
                           );
                         })}
-                        {book.keywords.length > 6 && (
-                          <span className="tag-chip" style={{ background: 'transparent', color: '#7a7061' }}>
-                            +{book.keywords.length - 6}
+                        {book.keywords.length > 4 && (
+                          <span className="tag-chip gallery-tag-more" style={{ background: 'transparent', color: '#7a7061' }}>
+                            +{book.keywords.length - 4}
                           </span>
                         )}
-                      </>
-                    ) : (
-                      <span className="bookshelf-muted">—</span>
-                    )}
+                      </div>
+                    ) : null}
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
-        </div>
+        )}
 
         <Drawer
           placement="right"

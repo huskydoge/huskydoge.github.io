@@ -22,7 +22,19 @@ function transformNotionPage(page) {
       case 'title':
         return prop.title?.[0]?.plain_text || '';
       case 'rich_text':
-        return prop.rich_text?.[0]?.plain_text || '';
+        if (!prop.rich_text || prop.rich_text.length === 0) {
+          return '';
+        }
+        const text = prop.rich_text
+          .map((segment) => {
+            if (!segment) return '';
+            if (segment.type === 'equation') {
+              return segment.equation?.expression || segment.plain_text || '';
+            }
+            return segment.plain_text || '';
+          })
+          .join('');
+        return text.trim();
       case 'select':
         return prop.select?.name || null;
       case 'multi_select':
@@ -52,7 +64,8 @@ function transformNotionPage(page) {
     rating: getProp('Rating', 'number') || getProp('importance', 'select'),
     cover: getProp('Cover', 'files') || page.cover?.external?.url || page.cover?.file?.url,
     link: getProp('Link', 'url') || getProp('URL', 'url'),
-    notes: getProp('Notes', 'rich_text') || getProp('TLDR', 'rich_text') || getProp('Key Takeaways', 'rich_text'),
+  notes: getProp('Notes', 'rich_text') || getProp('TLDR', 'rich_text') || getProp('Key Takeaways', 'rich_text'),
+  twoCents: getProp('2 cents', 'rich_text') || getProp('2 Cents', 'rich_text'),
     keywords: getProp('Keywords', 'multi_select'),
     dateSaved: getProp('Date Saved', 'date'),
     createdTime: page.created_time,
