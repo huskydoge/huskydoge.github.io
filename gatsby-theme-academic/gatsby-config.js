@@ -1,4 +1,10 @@
 /* eslint-disable global-require */
+
+// Load environment variables from .env file
+require('dotenv').config({
+  path: `${__dirname}/../.env`,
+});
+
 module.exports = ({
   contentPath = 'content',
   author = '',

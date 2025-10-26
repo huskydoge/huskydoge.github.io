@@ -14,8 +14,38 @@ const nacl = require('tweetnacl');
 nacl.util = require('tweetnacl-util');
 // const isRelativeUrl = require('is-relative-url');
 
+try {
+  // Force Gatsby's legacy source-map consumer to load the WASM so dev server doesn't crash on Node 20.
+  const { SourceMapConsumer } = require('gatsby/node_modules/source-map');
+  const wasmCandidates = [
+    'gatsby/node_modules/source-map/lib/mappings.wasm',
+    'source-map/lib/mappings.wasm',
+  ];
+  const resolvedWasm = wasmCandidates
+    .map((candidate) => {
+      try {
+        return require.resolve(candidate);
+      } catch (resolveError) {
+        return null;
+      }
+    })
+    .find(Boolean);
+  if (resolvedWasm) {
+    const wasmBinary = fs.readFileSync(resolvedWasm);
+    const wasmDataUrl = `data:application/wasm;base64,${wasmBinary.toString('base64')}`;
+    SourceMapConsumer.initialize({ 'lib/mappings.wasm': wasmDataUrl });
+  } else {
+    console.warn('SourceMapConsumer WASM file not found in known locations');
+  }
+} catch (sourceMapInitError) {
+  console.warn('SourceMapConsumer WASM init failed:', sourceMapInitError);
+}
+
 /* App imports */
 const utils = require('./src/utils/pageUtils');
+
+// Notion client for fetching library data at build time
+const { Client } = require('@notionhq/client');
 
 const getGitInfo = () => {
   const gitHash = execa.sync('git', ['rev-parse', '--short', 'HEAD']).stdout;
@@ -502,6 +532,25 @@ exports.createSchemaCustomization = async (
       url: String
       file: String
     }
+    type NotionBook implements Node {
+      notionId: String!
+      title: String!
+      author: String
+      category: String
+      medium: String
+      enjoyment: Int
+      importance: Int
+      cover: String
+      link: String
+      notes: String
+  twoCents: String
+  abbreviation: String
+      keywords: [String]
+      dateSaved: String
+  display: Boolean
+      createdTime: String
+      lastEditedTime: String
+    }
     type Tag implements Node {
       name: String
       description: String
@@ -667,5 +716,133 @@ exports.onCreateWebpackConfig = ({
       miniCssExtractPlugin.options.ignoreOrder = true;
     }
     actions.replaceWebpackConfig(config);
+  }
+};
+
+// Fetch Notion data at BUILD TIME for static generation
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions;
+
+  // Only run if Notion credentials are available
+  if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {
+    console.warn('⚠️  Notion credentials not found. Skipping library data fetch.');
+    return;
+  }
+
+  try {
+    // Use the Client imported at the top of the file
+    const notion = new Client({
+      auth: process.env.NOTION_API_KEY,
+    });
+
+    console.log('📚 Fetching library data from Notion...');
+
+    // Query the database - using dataSources.query (v5.x API)
+    const response = await notion.dataSources.query({
+      data_source_id: process.env.NOTION_DATABASE_ID,
+      sorts: [
+        {
+          property: 'Date Saved',
+          direction: 'descending',
+        },
+      ],
+    }).catch(err => {
+      console.error('Notion API Error:', err);
+      throw err;
+    });
+
+    console.log(`✅ Fetched ${response.results.length} papers from Notion`);
+
+    // Transform and create nodes for each paper
+    response.results.forEach((page) => {
+      const properties = page.properties;
+
+      const findPropertyKey = (name) => {
+        if (!name) return null;
+        if (Object.prototype.hasOwnProperty.call(properties, name)) {
+          return name;
+        }
+        const lower = name.toLowerCase();
+        return (
+          Object.keys(properties).find((key) => key.toLowerCase() === lower) || null
+        );
+      };
+
+      const getProp = (name, type) => {
+        const key = findPropertyKey(name);
+        if (!key) return null;
+        const prop = properties[key];
+        if (!prop) return null;
+
+        switch (type) {
+          case 'title':
+            return prop.title?.[0]?.plain_text || '';
+          case 'rich_text':
+            return prop.rich_text?.[0]?.plain_text || '';
+          case 'select':
+            return prop.select?.name || null;
+          case 'multi_select':
+            return prop.multi_select?.map(item => item.name) || [];
+          case 'number':
+            return prop.number || null;
+          case 'url':
+            return prop.url || null;
+          case 'checkbox':
+            return Boolean(prop.checkbox);
+          case 'date':
+            return prop.date?.start || null;
+          case 'files':
+            if (prop.files?.[0]) {
+              return prop.files[0].file?.url || prop.files[0].external?.url || null;
+            }
+            return null;
+          default:
+            return null;
+        }
+      };
+
+      const bookData = {
+        notionId: page.id,
+        title: getProp('Title', 'title') || getProp('Name', 'title') || 'Untitled',
+        author: getProp('Author', 'rich_text') || getProp('Authors', 'rich_text'),
+        category: getProp('Category', 'select'),
+        medium: getProp('Medium', 'select'),
+        enjoyment: getProp('Enjoyment', 'number'),
+        importance: getProp('Importance', 'number'),
+        cover: getProp('Cover', 'files') || page.cover?.external?.url || page.cover?.file?.url,
+        link: getProp('Link', 'url') || getProp('URL', 'url'),
+        notes: getProp('Notes', 'rich_text') || getProp('TLDR', 'rich_text') || getProp('Key Takeaways', 'rich_text'),
+        twoCents: getProp('2 cents', 'rich_text') || getProp('2 Cents', 'rich_text'),
+        abbreviation: getProp('Abbreviation', 'rich_text'),
+        keywords: getProp('Tags', 'multi_select') || getProp('Keywords', 'multi_select') || [],
+        dateSaved: getProp('Date Saved', 'date'),
+        display: (() => {
+          const displayValue = getProp('Display', 'checkbox');
+          return displayValue === null ? true : displayValue;
+        })(),
+        createdTime: page.created_time,
+        lastEditedTime: page.last_edited_time,
+      };
+
+      // Create Gatsby node
+      const nodeContent = JSON.stringify(bookData);
+      const nodeMeta = {
+        id: createNodeId(`notion-book-${page.id}`),
+        parent: null,
+        children: [],
+        internal: {
+          type: 'NotionBook',
+          content: nodeContent,
+          contentDigest: createContentDigest(bookData),
+        },
+      };
+
+      createNode({ ...bookData, ...nodeMeta });
+    });
+
+    console.log('✅ Library data processed successfully');
+  } catch (error) {
+    console.error('❌ Error fetching from Notion:', error.message);
+    // Don't fail the build, just warn
   }
 };

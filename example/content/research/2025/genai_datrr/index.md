@@ -5,8 +5,8 @@ tags:
   - "Data Attribution"
   - "Survey"
   - "GenAI"
+  - "Data-centric AI"
 
-# venue: a very very very very long long long long long long venue
 authors:
   - name: "Junwei Deng"
   - name: "Yuzheng Hu"

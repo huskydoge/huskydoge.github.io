@@ -6,7 +6,9 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+*.md
+*.pdf
+test-*
 # Runtime data
 pids
 *.pid

@@ -43,6 +43,7 @@ module.exports = {
     tags: "tags",
     research: "research",
     project: "project",
+    bookshelf: "bookshelf",
     contact: "contact",
   },
   social: [
