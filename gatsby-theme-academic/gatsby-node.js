@@ -536,7 +536,6 @@ exports.createSchemaCustomization = async (
       notionId: String!
       title: String!
       author: String
-      category: String
       medium: String
       enjoyment: Int
       importance: Int
@@ -544,7 +543,6 @@ exports.createSchemaCustomization = async (
       link: String
       notes: String
   twoCents: String
-  abbreviation: String
       keywords: [String]
       dateSaved: String
   display: Boolean
@@ -801,19 +799,30 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
         }
       };
 
+      const parseRating = (fieldName) => {
+        const numeric = getProp(fieldName, 'number');
+        if (numeric != null) return numeric;
+        const selectValue = getProp(fieldName, 'select');
+        if (selectValue) {
+          const parsed = Number(selectValue);
+          if (!Number.isNaN(parsed)) {
+            return parsed;
+          }
+        }
+        return null;
+      };
+
       const bookData = {
         notionId: page.id,
         title: getProp('Title', 'title') || getProp('Name', 'title') || 'Untitled',
         author: getProp('Author', 'rich_text') || getProp('Authors', 'rich_text'),
-        category: getProp('Category', 'select'),
         medium: getProp('Medium', 'select'),
-        enjoyment: getProp('Enjoyment', 'number'),
-        importance: getProp('Importance', 'number'),
+        enjoyment: parseRating('Enjoyment'),
+        importance: parseRating('Importance'),
         cover: getProp('Cover', 'files') || page.cover?.external?.url || page.cover?.file?.url,
         link: getProp('Link', 'url') || getProp('URL', 'url'),
         notes: getProp('Notes', 'rich_text') || getProp('TLDR', 'rich_text') || getProp('Key Takeaways', 'rich_text'),
         twoCents: getProp('2 cents', 'rich_text') || getProp('2 Cents', 'rich_text'),
-        abbreviation: getProp('Abbreviation', 'rich_text'),
         keywords: getProp('Tags', 'multi_select') || getProp('Keywords', 'multi_select') || [],
         dateSaved: getProp('Date Saved', 'date'),
         display: (() => {
