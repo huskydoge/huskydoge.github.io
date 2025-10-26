@@ -45,7 +45,7 @@ jobs:
         env:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-        run: yarn workspace example build
+        run: yarn workspace example build:github
       - name: Deploy to GitHub Pages
         if: success() && github.ref == 'refs/heads/master'
         uses: crazy-max/ghaction-github-pages@v2

@@ -1,0 +1,12 @@
+{
+  "buildCommand": "yarn workspace example build",
+  "outputDirectory": "example/public",
+  "installCommand": "yarn install",
+  "framework": "gatsby",
+  "build": {
+    "env": {
+      "NODE_VERSION": "18.x"
+    }
+  }
+}
+

@@ -6,13 +6,9 @@ import ExpandOutlineIcon from '@rsuite/icons/ExpandOutline';
 import SEO from '../../components/Seo';
 import 'katex/dist/katex.min.css';
 import './bookshelf.css';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
+import remark from 'remark';
 import remarkGfm from 'remark-gfm';
-import remarkMath from 'remark-math';
-import remarkRehype from 'remark-rehype';
-import rehypeKatex from 'rehype-katex';
-import rehypeStringify from 'rehype-stringify';
+import remarkHtml from 'remark-html';
 
 const TAG_COLORS = [
   { bg: '#FDF2F8', color: '#AD1A72' },
@@ -117,13 +113,9 @@ const escapeHtml = (value) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
-const markdownProcessor = unified()
-  .use(remarkParse)
+const markdownProcessor = remark()
   .use(remarkGfm)
-  .use(remarkMath)
-  .use(remarkRehype, { allowDangerousHtml: false })
-  .use(rehypeKatex)
-  .use(rehypeStringify)
+  .use(remarkHtml, { sanitize: false })
   .freeze();
 
 const renderMarkdownToHtml = (value) => {
@@ -140,14 +132,49 @@ const renderMarkdownToHtml = (value) => {
 };
 
 const MarkdownBlock = ({ content, className }) => {
+  const containerRef = useRef(null);
   const html = useMemo(() => renderMarkdownToHtml(content), [content]);
 
   if (!content || !html) {
     return null;
   }
 
+  useEffect(() => {
+    let isCancelled = false;
+    const node = containerRef.current;
+    if (!node) return;
+
+    const mountMath = async () => {
+      try {
+        const module = await import('katex/contrib/auto-render');
+        if (isCancelled || !containerRef.current) return;
+        const renderMathInElement = module.default || module;
+        renderMathInElement(node, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+          ],
+          throwOnError: false,
+        });
+      } catch (error) {
+        if (typeof console !== 'undefined' && console.error) {
+          console.error('Failed to render math content', error);
+        }
+      }
+    };
+
+    mountMath();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [html]);
+
   return (
     <div
+      ref={containerRef}
       className={className}
       dangerouslySetInnerHTML={{ __html: html }}
     />
@@ -510,6 +537,30 @@ const SortPanel = ({ open, anchorRef, sorts, onApply, onClose }) => {
 };
 
 const BookshelfPage = ({ data }) => {
+  // Debug log
+  if (typeof window !== 'undefined') {
+    console.log('BookshelfPage data:', data);
+  }
+
+  // Early return if data is not available
+  if (!data || !data.allNotionBook || !data.allNotionBook.nodes) {
+    return (
+      <>
+        <SEO
+          title="Bookshelf"
+          description="A collection of reading notes synced with my Notion database."
+          path="/bookshelf/"
+        />
+        <div className="bookshelf-wrapper">
+          <div className="bookshelf-hero">
+            <h1>📚 Bookshelf</h1>
+            <p>Loading your library...</p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   const allBooks = useMemo(
     () => data.allNotionBook.nodes.filter((book) => book.display !== false),
     [data],
@@ -1091,7 +1142,7 @@ const BookshelfPage = ({ data }) => {
 };
 
 export const query = graphql`
-  query {
+  query BookshelfQuery {
     allNotionBook(sort: { fields: dateSaved, order: DESC }) {
       nodes {
         notionId

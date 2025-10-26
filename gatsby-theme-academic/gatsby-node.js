@@ -783,7 +783,9 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
               .map((segment) => {
                 if (!segment) return '';
                 if (segment.type === 'equation') {
-                  return segment.equation?.expression || segment.plain_text || '';
+                  const expression = segment.equation?.expression || segment.plain_text || '';
+                  if (!expression) return '';
+                  return `$${expression}$`;
                 }
                 return segment.plain_text || '';
               })

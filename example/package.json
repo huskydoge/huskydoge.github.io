@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-  "build": "gatsby build --prefix-paths",
+  "build": "gatsby build",
+  "build:github": "gatsby build --prefix-paths",
   "develop": "NODE_ENV=development gatsby develop",
     "clean": "gatsby clean",
     "deploy": "gatsby build --prefix-paths && gh-pages -f -d public"
