@@ -135,7 +135,7 @@ module.exports = {
       data: [
         {
           date: "Sept. 2025 - Present",
-          title: "[LocusLab](https://zicokolter.com/), CMU",
+          title: "[Locus Lab](https://zicokolter.com/), CMU",
           location: "Pittsburgh, PA, USA",
         },
         {

@@ -19,7 +19,7 @@ const News = () => (
                             2025/07
                         </span>
                         <span className={styles.newsContent}>
-                            <strong><a href="https://blog.dynamicslab.ai/">Miraca</a>, a Generative World Engine, </strong> is now available online! 🎉
+                            <strong><a href="https://blog.dynamicslab.ai/">Magica</a>, a Generative World Engine, </strong> is now available online! 🎉
                         </span>
                     </li>
                     <li className={styles.newsItem}>
