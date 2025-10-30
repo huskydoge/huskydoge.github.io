@@ -170,3 +170,45 @@
 :global(.timeline-event-subtitle) {
   color: var(--app-text-secondary);
 }
+
+/* About Me section markdown styling */
+.homepageSection :global(.markdown-body) {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.homepageSection :global(.markdown-body) * {
+  font-family: inherit !important;
+}
+
+.homepageSection :global(.markdown-body) p {
+  color: var(--app-text-secondary);
+  margin-bottom: 1em;
+}
+
+.homepageSection :global(.markdown-body) strong {
+  color: var(--app-text-primary);
+  font-weight: 600;
+  background: none !important;
+  padding: 0 !important;
+}
+
+.homepageSection :global(.markdown-body) code {
+  font-family: inherit !important;
+  font-size: inherit;
+  background: none !important;
+  padding: 0 !important;
+  margin: 0;
+  border-radius: 0;
+}
+
+.homepageSection :global(.markdown-body) ul,
+.homepageSection :global(.markdown-body) ol {
+  padding-left: 1.5em;
+}
+
+.homepageSection :global(.markdown-body) li {
+  line-height: 1.8;
+  margin-bottom: 0.5em;
+}

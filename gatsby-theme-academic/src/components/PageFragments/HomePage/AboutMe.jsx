@@ -3,6 +3,7 @@ import React from 'react';
 import { useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
 import SEO from '../../Seo';
+import * as styles from './homePage.module.less';
 
 const AboutMe = () => {
   const siteMetadata = useSiteMetadata();
@@ -10,8 +11,8 @@ const AboutMe = () => {
   const markdown = Utils.parseMarkDown(description);
   // console.log(markdown);
   return (
-    <div>
-      <h1 className="titleSeparate">About Me</h1>
+    <div className={styles.homepageSection}>
+      <h2>About Me</h2>
       <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdown }} />
       {/*      <Row gutter={[20, 20]}>
         <Col xs={24} sm={24} md={12} lg={8}>
