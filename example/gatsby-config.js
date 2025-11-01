@@ -11,7 +11,7 @@ module.exports = {
         pages: config.pages,
         tagColors: config.tagColors,
         author: config.author,
-        icon: './static/knight.png',
+        icon: './static/avatar.png',
       },
     },
   ],
