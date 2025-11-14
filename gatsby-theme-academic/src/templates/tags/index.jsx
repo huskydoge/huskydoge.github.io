@@ -152,7 +152,7 @@ export const pageQuery = graphql`
     }
     allMdx(
       filter: {
-        frontmatter: { tags: { in: [$tag] } } 
+        frontmatter: { tags: { in: [$tag] }, draft: { ne: true } } 
         fileAbsolutePath: { regex: "/index.mdx?$/" }
       }
       sort: { fields: [frontmatter___date], order: DESC }

@@ -51,6 +51,7 @@ export const query = graphql`
     allMdx(
       filter: { 
         fileAbsolutePath: { regex: "/project\/.*\/index\\.mdx?$/" }
+        frontmatter: { draft: { ne: true } }
       }
       sort: { fields: [frontmatter___priority, frontmatter___title], order: ASC }
     ) {

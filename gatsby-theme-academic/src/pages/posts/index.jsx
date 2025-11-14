@@ -51,6 +51,7 @@ export const query = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/posts\/.*\/index\\.mdx?$/" }
+        frontmatter: { draft: { ne: true } }
       }
     ) {
       edges {

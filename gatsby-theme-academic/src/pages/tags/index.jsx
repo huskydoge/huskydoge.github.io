@@ -82,7 +82,12 @@ Tags.propTypes = {
 
 export const query = graphql`
   {
-    allMdx(filter: { fileAbsolutePath: { regex: "/index.mdx?$/" } }) {
+    allMdx(
+      filter: {
+        fileAbsolutePath: { regex: "/index.mdx?$/" }
+        frontmatter: { draft: { ne: true } }
+      }
+    ) {
       edges {
         node {
           frontmatter {

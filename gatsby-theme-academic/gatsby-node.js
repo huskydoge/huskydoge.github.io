@@ -50,6 +50,16 @@ const utils = require('./src/utils/pageUtils');
 // Notion client for fetching library data at build time
 const { Client } = require('@notionhq/client');
 
+const isDraftEntry = (frontmatter = {}) => {
+  if (typeof frontmatter.draft === 'boolean') {
+    return frontmatter.draft;
+  }
+  if (typeof frontmatter.draft === 'string') {
+    return frontmatter.draft.toLowerCase() === 'true';
+  }
+  return false;
+};
+
 const getGitInfo = () => {
   const gitHash = execa.sync('git', ['rev-parse', '--short', 'HEAD']).stdout;
   const gitNumCommits = Number(
@@ -198,6 +208,10 @@ exports.createPages = async ({
   /* Post Project, and Research pages */
   allMdx.edges.forEach(({ node }) => {
     const { frontmatter } = node;
+
+    if (isDraftEntry(frontmatter)) {
+      return;
+    }
 
     // console.log(frontmatter);
 

@@ -24,6 +24,7 @@ const SelectedResearch = () => {
         fileAbsolutePath: { regex: "/research\/.*\/index\\.mdx?$/" }
         frontmatter: { 
           selected: { eq: true } 
+          draft: { ne: true }
         }
       }
       sort: { fields: [frontmatter___priority, frontmatter___title], order: ASC }

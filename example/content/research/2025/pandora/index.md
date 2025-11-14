@@ -1,5 +1,5 @@
 ---
-title: "PAN: Towards General World Model with Natural Language Actions and Video States"
+title: "Pandora: Towards General World Model with Natural Language Actions and Video States"
 date: "2024-12-01"
 tags:
   - "World Model"
@@ -11,7 +11,7 @@ authors:
   - name: "Pandora Team"
     url:  "https://maitrix.org/"
 path: "research/2025/pandora"
-excerpt: "A step towards a General World Model (GWM) that can simulate complex video scenarios with natural language actions."
+excerpt: "A step towards a General World Model (GWM) that can simulate complex video scenarios with natural language actions. "
 selected: false
 cover: "./pandora.gif"
 links:
@@ -22,6 +22,7 @@ links:
   - name: "Website"
     url: "https://world-model.maitrix.org/"
 priority: 0
+draft: true
 ---
 
 - **Diffusion Game Engine:** Built an auto-regressive Image-to-Video (I2V) model capable of simulating 2D platformer games (e.g., Mario), allowing control of both characters and environmental elements using text inputs on the fly. Proposed and implemented window-slide conditioning to support the generation of game videos lasting longer than one minute.
