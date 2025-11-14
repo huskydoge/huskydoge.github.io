@@ -16,6 +16,14 @@ const News = () => (
                 }}>
                     <li className={styles.newsItem}>
                         <span className={styles.newsDate}>
+                            2025/11
+                        </span>
+                        <span className={styles.newsContent}>
+                            Tech report of <strong><a href="https://panworld.ai/">PAN World Model</a></strong> is released! 🎉
+                        </span>
+                    </li>
+                    <li className={styles.newsItem}>
+                        <span className={styles.newsDate}>
                             2025/07
                         </span>
                         <span className={styles.newsContent}>
