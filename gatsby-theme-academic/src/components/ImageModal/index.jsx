@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import * as style from './imageModal.module.less';
 
-const ImageModal = ({ open, onClose, fluid, title }) => {
+const ImageModal = ({ open, onClose, fluid, publicURL, title }) => {
   const escListener = useCallback((event) => {
     if (event.key === 'Escape') {
       onClose();
@@ -19,7 +19,7 @@ const ImageModal = ({ open, onClose, fluid, title }) => {
     };
   }, [open, escListener]);
 
-  if (!open || !fluid) return null;
+  if (!open || (!fluid && !publicURL)) return null;
 
   return (
     <div
@@ -44,13 +44,22 @@ const ImageModal = ({ open, onClose, fluid, title }) => {
           ×
         </button>
         <div className={style.imageContainer}>
-          <img
-            src={fluid.src}
-            srcSet={fluid.srcSet}
-            sizes={fluid.sizes}
-            alt={title}
-            loading="lazy"
-          />
+          {fluid ? (
+            <img
+              src={fluid.src}
+              srcSet={fluid.srcSet}
+              sizes={fluid.sizes}
+              alt={title}
+              loading="lazy"
+            />
+          ) : (
+            <img
+              src={publicURL}
+              alt={title}
+              loading="lazy"
+              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+            />
+          )}
         </div>
       </div>
     </div>

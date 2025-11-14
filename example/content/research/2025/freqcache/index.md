@@ -25,6 +25,6 @@ cover: "./preview.png"
 links:
   - name: "paper"
     url: "https://arxiv.org/abs/2510.08669"
-priority: 0
+priority: 3
 ---
 

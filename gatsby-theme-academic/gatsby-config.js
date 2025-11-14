@@ -38,7 +38,13 @@ module.exports = ({
       },
       'gatsby-plugin-react-helmet',
       'gatsby-transformer-sharp',
-      'gatsby-plugin-sharp',
+      {
+        resolve: 'gatsby-plugin-sharp',
+        options: {
+          // Skip processing GIF files to preserve animation
+          failOnError: false,
+        },
+      },
       {
         resolve: 'gatsby-plugin-less',
         options: {

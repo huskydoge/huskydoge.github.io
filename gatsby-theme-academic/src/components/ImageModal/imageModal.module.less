@@ -34,6 +34,9 @@
     display: block;
     border-radius: var(--app-radius, 8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    // Ensure GIF animations are not prevented
+    image-rendering: auto;
+    animation-play-state: running;
   }
 }
 

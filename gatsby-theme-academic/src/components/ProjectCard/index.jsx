@@ -37,8 +37,11 @@ const ProjectCard = (props) => {
       links,
     },
   } = node;
-  const fluid = cover ? cover.childImageSharp.fluid : null;
-  const largeFluid = cover && cover.childImageSharp.large ? cover.childImageSharp.large : fluid;
+  const publicURL = cover && cover.publicURL ? cover.publicURL : null;
+  const isGif = publicURL && publicURL.toLowerCase().endsWith('.gif');
+  const hasImageSharp = cover && cover.childImageSharp && !isGif;
+  const fluid = hasImageSharp ? cover.childImageSharp.fluid : null;
+  const largeFluid = hasImageSharp && cover.childImageSharp.large ? cover.childImageSharp.large : fluid;
   // console.log(fluid);
 
   const siteMetadata = useSiteMetadata();
@@ -183,12 +186,27 @@ const ProjectCard = (props) => {
             role="button"
             tabIndex={0}
           >
-            {fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
+            {fluid ? (
+              <Img fluid={fluid} />
+            ) : publicURL ? (
+              <img
+                src={publicURL}
+                alt={title}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                  objectFit: 'contain',
+                }}
+                loading="lazy"
+              />
+            ) : <div className={style.postCardImg} />}
           </div>
           <ImageModal 
             open={imageModalOpen}
             onClose={() => setImageModalOpen(false)}
             fluid={largeFluid}
+            publicURL={publicURL}
             title={title}
           />
         </FlexboxGrid.Item>

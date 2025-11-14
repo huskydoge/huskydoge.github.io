@@ -39,9 +39,19 @@ const ResearchCard = (props) => {
       highlight,
     },
   } = node;
-  const fluid = cover ? cover.childImageSharp.fluid : null;
-  const largeFluid = cover && cover.childImageSharp.large ? cover.childImageSharp.large : fluid;
-  // console.log(fluid);
+  // Check if cover has childImageSharp (processed images) or publicURL (GIFs and other non-processed files)
+  const publicURL = cover && cover.publicURL ? cover.publicURL : null;
+  const isGif = publicURL && publicURL.toLowerCase().endsWith('.gif');
+  // For GIFs, always use publicURL to preserve animation
+  // For other images, use childImageSharp if available
+  const hasImageSharp = cover && cover.childImageSharp && !isGif;
+  const fluid = hasImageSharp ? cover.childImageSharp.fluid : null;
+  const largeFluid = hasImageSharp && cover.childImageSharp.large ? cover.childImageSharp.large : fluid;
+  
+  // Debug: log GIF detection
+  // if (isGif) {
+  //   console.log('GIF detected:', { publicURL, hasImageSharp, title });
+  // }
 
   const siteMetadata = useSiteMetadata();
   const url = Utils.resolvePageUrl(path);
@@ -186,12 +196,29 @@ const ResearchCard = (props) => {
             role="button"
             tabIndex={0}
           >
-            {fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
+            {fluid ? (
+              <Img fluid={fluid} />
+            ) : publicURL ? (
+              <img 
+                src={publicURL} 
+                alt={title}
+                style={{ 
+                  width: '100%', 
+                  height: 'auto', 
+                  display: 'block',
+                  objectFit: 'contain'
+                }}
+                loading="lazy"
+              />
+            ) : (
+              <div className={style.postCardImg} />
+            )}
           </div>
           <ImageModal 
             open={imageModalOpen}
             onClose={() => setImageModalOpen(false)}
             fluid={largeFluid}
+            publicURL={publicURL}
             title={title}
           />
         </FlexboxGrid.Item>

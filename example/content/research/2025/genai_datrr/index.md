@@ -43,6 +43,6 @@ cover: "./preview.png"
 links:
   - name: "paper"
     url: "https://hal.science/hal-05230469v1/file/Data_Attribution_Survey__HAL.pdf"
-priority: 0
+priority: 3
 ---
 

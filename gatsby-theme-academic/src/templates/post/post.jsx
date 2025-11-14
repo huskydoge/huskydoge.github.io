@@ -45,7 +45,11 @@ const Post = ({ data }) => {
     .format('MMM Do YYYY');
   const postTime = Utils.formatDate(date);
 
-  const fluid = cover ? cover.childImageSharp.fluid : null;
+  const publicURL = cover && cover.publicURL ? cover.publicURL : null;
+  const isGif = publicURL && publicURL.toLowerCase().endsWith('.gif');
+  const hasImageSharp = cover && cover.childImageSharp && !isGif;
+  const fluid = hasImageSharp ? cover.childImageSharp.fluid : null;
+  const hasCover = Boolean(fluid || publicURL);
 
   const siteMetadata = useSiteMetadata();
   const canonicalUrl = Utils.generateFullUrl(siteMetadata, path);
@@ -123,7 +127,7 @@ const Post = ({ data }) => {
           {time.join(', ')}
         </div>
         <FlexboxGrid style={{ marginBottom: '1rem' }}>
-          <FlexboxGrid.Item as={Col} xs={24} sm={24} md={fluid ? 12 : 24} lg={fluid ? 16 : 24}>
+          <FlexboxGrid.Item as={Col} xs={24} sm={24} md={hasCover ? 12 : 24} lg={hasCover ? 16 : 24}>
             <CodeBox
                 title={<span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}> TL;DR </span>}
                 style={{ height: '100%' }}
@@ -135,10 +139,20 @@ const Post = ({ data }) => {
               />
             </CodeBox>
           </FlexboxGrid.Item>
-          {fluid ? (
+          {hasCover ? (
             <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={8}>
               <div style={{ height: '100%' }}>
-                <Img fluid={fluid} title={title} alt={title} />
+                {fluid ? (
+                  <Img fluid={fluid} title={title} alt={title} />
+                ) : (
+                  <img
+                    src={publicURL}
+                    alt={title}
+                    title={title}
+                    style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
+                    loading="lazy"
+                  />
+                )}
               </div>
             </FlexboxGrid.Item>
           ) : null}
@@ -196,6 +210,7 @@ export const pageQuery = graphql`
       tableOfContents
       frontmatter {
         cover {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 1000) {
               ...GatsbyImageSharpFluid_tracedSVG
