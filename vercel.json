@@ -1,6 +1,6 @@
 {
-  "buildCommand": "yarn workspace example build",
-  "outputDirectory": "example/public",
+  "buildCommand": "yarn build:vercel",
+  "outputDirectory": "public",
   "installCommand": "yarn install",
   "framework": "gatsby",
   "build": {
