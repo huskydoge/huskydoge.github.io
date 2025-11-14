@@ -77,7 +77,7 @@
     "remark": "^13.0.0",
     "remark-abbr": "^1.4.1",
     "remark-external-links": "^8.0.0",
-  "remark-gfm": "^3.0.1",
+  "remark-gfm": "1.0.0",
     "remark-html": "^13.0.1",
     "remark-math": "^3.0.1",
     "rsuite": "^5.6.4",

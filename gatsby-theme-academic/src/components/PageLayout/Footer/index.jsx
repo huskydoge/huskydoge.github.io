@@ -6,13 +6,13 @@ import React from 'react';
 export default () => {
   const data = useStaticQuery(graphql`
   query {
-    currentBuildDate {
-      currentDate
+    site {
+      buildTime
     }
   }
 `);
-  const { currentBuildDate: { currentDate } } = data;
-  const buildTime = moment(currentDate).format('MMM Do YYYY');
+  const buildTimeRaw = data?.site?.buildTime;
+  const buildTime = buildTimeRaw ? moment(buildTimeRaw).format('MMM Do YYYY') : null;
   return (
     <>
       <Divider style={{ color: 'var(--rs-text-tertiary)', marginTop: '3rem', marginBottom: '-3rem' }}>

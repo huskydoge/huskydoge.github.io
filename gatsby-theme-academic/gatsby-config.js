@@ -5,6 +5,9 @@ require('dotenv').config({
   path: `${__dirname}/../.env`,
 });
 
+const requireEsm = require('esm')(module);
+const remarkGfm = requireEsm('remark-gfm').default || requireEsm('remark-gfm');
+
 module.exports = ({
   contentPath = 'content',
   author = '',
@@ -89,7 +92,7 @@ module.exports = ({
           extensions: ['.mdx', '.md'],
           remarkPlugins: [
             require('remark-math'),
-            require('remark-gfm'),
+            remarkGfm,
             require('remark-abbr'),
             [
               require('remark-external-links'),

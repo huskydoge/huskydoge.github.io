@@ -33,14 +33,6 @@ const SelectedResearch = () => {
           frontmatter {
             cover {
               publicURL
-              childImageSharp {
-                fluid(maxWidth: 320, maxHeight: 180, fit: CONTAIN, background: "rgba(0,0,0,0)") {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-                large: fluid(maxWidth: 1920, maxHeight: 1080, quality: 95, fit: CONTAIN, background: "rgba(0,0,0,0)") {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-              }
             }
             date
             venue
