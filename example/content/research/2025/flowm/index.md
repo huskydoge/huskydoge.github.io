@@ -19,7 +19,7 @@ authors:
     url: "https://akandykeller.github.io/about/"
 
 path: "research/2025/flowm"
-excerpt: "The World's First Al-Native UGC Game Engine Powered by Real-Time World Model"
+excerpt: "On World Modeling the partially observable dynamics in the environment."
 selected: true
 cover: "./flowm_preview.gif"
 links:
