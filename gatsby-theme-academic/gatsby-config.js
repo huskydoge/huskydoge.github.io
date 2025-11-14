@@ -238,12 +238,6 @@ module.exports = ({
           },
         },
       },
-      {
-        resolve: 'gatsby-plugin-build-date',
-        options: {
-          formatAsDateString: false,
-        },
-      },
     ],
     siteMetadata: {
       pathPrefix: '/',

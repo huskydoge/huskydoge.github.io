@@ -5,6 +5,9 @@
 /* Vendor imports */
 const crypto = require('crypto');
 const path = require('path');
+const { EventEmitter } = require('events');
+
+EventEmitter.defaultMaxListeners = Math.max(EventEmitter.defaultMaxListeners || 10, 25);
 
 const execa = require('execa');
 const fs = require('fs-extra');
