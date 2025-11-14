@@ -697,9 +697,13 @@ exports.onCreateWebpackConfig = ({
     },
     plugins: [plugins.provide({ process: 'process/browser' })],
     resolve: {
+      alias: {
+        canvas: false,
+      },
       fallback: {
         fs: false,
         path: require.resolve('path-browserify'),
+        canvas: false,
       },
     },
   });
