@@ -13,7 +13,7 @@ const shortcodes = { Gist };
 
 export const wrapPageElement = ({ element, props }) => {
   const pathname = props?.location?.pathname || '';
-  const isFullWidth = pathname.startsWith('/misc') || pathname.startsWith('/bookshelf');
+  const isFullWidth = pathname.startsWith('/misc') || pathname.startsWith('/bookshelf') || pathname.startsWith('/calendar');
 
   return (
     <ContextProvider>
