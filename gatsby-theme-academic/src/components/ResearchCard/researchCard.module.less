@@ -72,6 +72,16 @@
             image-rendering: auto;
             animation-play-state: running;
         }
+
+        // Mobile: smaller image container
+        @media screen and (max-width: 767px) {
+            max-height: 140px;
+            
+            img, :global(.gatsby-image-wrapper) {
+                max-height: 140px;
+                object-fit: contain;
+            }
+        }
     }
 
     .mrTp20 {
@@ -127,6 +137,97 @@
         > div {
             font-size: 0.8rem;
             color: var(--app-text-secondary);
+        }
+    }
+
+    // Mobile-specific styles
+    @media screen and (max-width: 767px) {
+        padding: 0.5rem !important;
+
+        :global(.rs-panel-body) {
+            padding: 0.5rem !important;
+        }
+
+        h5 {
+            font-size: 0.95rem;
+            line-height: 1.35;
+            margin-bottom: 0.25rem;
+        }
+
+        p {
+            font-size: 0.82rem;
+            line-height: 1.5;
+            margin-top: 0.4rem !important;
+            // Limit excerpt on mobile to 3 lines
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .authorsRow {
+            font-size: 0.75rem;
+            margin-bottom: 0.2rem;
+
+            :global(.rs-flex-box-grid-item) {
+                padding-right: 0.2rem !important;
+            }
+        }
+
+        .divider {
+            height: 1em;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+        // Smaller info line on mobile
+        :global(.rs-stack) {
+            > div {
+                font-size: 0.72rem;
+            }
+        }
+
+        // Fix button styling on mobile
+        :global(.rs-btn-ghost) {
+            font-size: 0.72rem;
+            padding: 4px 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+            min-height: 26px;
+        }
+
+        // Add margin between links and image when image is below
+        .imageWrapper {
+            margin-top: 0.75rem;
+        }
+    }
+
+    // Mobile image section - ensure gap between links and image
+    .mobileImageSection {
+        margin-top: 1rem !important;
+        padding-top: 0.5rem;
+    }
+
+    // Links container styling
+    .linksContainer {
+        margin-bottom: 0;
+    }
+
+    // Tablet adjustments
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        h5 {
+            font-size: 1rem;
+        }
+
+        p {
+            font-size: 0.85rem;
+        }
+
+        .authorsRow {
+            font-size: 0.8rem;
         }
     }
 }

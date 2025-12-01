@@ -157,15 +157,16 @@ const Research = ({ data }) => {
   };
 
   const renderFilterRow = (label, options, selectedSet, onToggle, includeAll = true) => (
-    <div style={{ marginBottom: '1rem' }}>
-      <Stack spacing={12} alignItems="center" wrap>
-        <strong style={{ minWidth: '3.5rem' }}>{label}</strong>
-        <Stack spacing={8} wrap>
+    <div style={{ marginBottom: '0.75rem' }}>
+      <Stack spacing={8} alignItems="flex-start" wrap>
+        <strong style={{ minWidth: '2.5rem', fontSize: '0.9rem' }}>{label}</strong>
+        <Stack spacing={6} wrap style={{ flex: 1 }}>
           {includeAll && (
             <Button
               appearance={selectedSet.size === 0 ? 'primary' : 'ghost'}
-              size="sm"
+              size="xs"
               onClick={() => onToggle('All')}
+              style={{ fontSize: '0.75rem', padding: '3px 8px' }}
             >
               All
             </Button>
@@ -174,8 +175,9 @@ const Research = ({ data }) => {
             <Button
               key={option}
               appearance={selectedSet.has(option) ? 'primary' : 'ghost'}
-              size="sm"
+              size="xs"
               onClick={() => onToggle(option)}
+              style={{ fontSize: '0.75rem', padding: '3px 8px' }}
             >
               {option}
             </Button>

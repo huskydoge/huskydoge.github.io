@@ -88,11 +88,25 @@ const Search = (props) => {
   }; */
 
   const style = {
-    position: 'absolute',
-    right: '50px',
+    position: 'fixed',
+    right: '15px',
+    left: '15px',
     top: '70px',
-    width: '80%',
+    width: 'auto',
+    maxWidth: '400px',
+    zIndex: 9999,
+    margin: '0 auto',
   };
+  
+  // Check if on mobile - use fixed positioning relative to viewport
+  if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+    style.top = '60px';
+    style.left = '15px';
+    style.right = '15px';
+    style.maxWidth = 'none';
+    style.width = 'auto';
+  }
+  
   if (!isSearchBarExpanded) {
     style.display = 'none';
   }

@@ -14,8 +14,8 @@
 }
 
 .circleMenu {
-    background: #304CFD;
-    border-radius: var(--app-radius-lg);
+    background: var(--app-accent);
+    border-radius: var(--app-radius);
     box-shadow: none;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -25,13 +25,13 @@
     -ms-flex-align: center;
     align-items: center;
     justify-content: center;
-    height: 3.75rem;
+    height: 3rem;
     pointer-events: none;
     visibility: hidden;
     position: fixed;
-    top: 0;
-    right: 0;
-    width: 3.75rem;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 3rem;
     z-index: 1101;
     @media only screen and (max-width: 768px){
         pointer-events: all;
@@ -39,14 +39,15 @@
     }
     .hamburger {
         cursor: pointer;
-        //color: #fff;
+        color: var(--app-text-primary);
         text-align: center;
         .hamburgerText {
             position: absolute;
             width: 100%;
             top: 33%;
             left: 0;
-            font-size: .75rem;
+            font-size: .65rem;
+            color: var(--app-text-primary);
         }
     }
     &:focus{
@@ -58,7 +59,7 @@
         opacity: 0;
     }
     .line{
-        //background-color: #fff;
+        background-color: var(--app-text-primary);
         border-radius: var(--app-radius-xs);
         display: block;
         margin: 4px 0;
@@ -99,6 +100,19 @@
     border: none;
     align-items: center;
     min-height: 56px;
+
+    @media screen and (max-width: 767px) {
+        min-height: 48px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        
+        // Hide scrollbar but keep functionality
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
 
 .backgroundDiv {
@@ -142,6 +156,15 @@
         margin-right: .4rem;
     }
 
+    @media screen and (max-width: 767px) {
+        height: 48px;
+        gap: 0.2rem;
+        flex-wrap: nowrap;
+        
+        .navItem {
+            margin-right: 0.15rem;
+        }
+    }
 }
 
 .nav :global(.rs-btn) {
@@ -156,6 +179,12 @@
     padding: 0.45rem 0.85rem;
     font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
     font-size: 16px;
+
+    @media screen and (max-width: 767px) {
+        padding: 0.35rem 0.55rem;
+        font-size: 13px;
+        letter-spacing: 0.02em;
+    }
 }
 
 .nav :global(.rs-btn-subtle:hover) {
@@ -179,40 +208,46 @@
         display: block;
         margin: 0;
         position: absolute;
-        top: (50% - 5rem);
+        top: 50%;
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-        transition: all 2s;
+        transition: all 0.3s ease;
         li{
             margin-bottom: 1rem;
+            text-align: center;
         }
     }
     .nav{
-        background-color: #304CFD;
+        background-color: var(--app-bg);
         &:before {
             background-image: none;
         }
         .navItem{
             a{
-                color: white;
+                color: var(--app-text-primary);
                 margin-right: 0;
+                font-size: 1.1rem;
+                padding: 0.6rem 1.2rem;
             }
             .anchorActive{
-                background-color: #304CFD;
+                background-color: var(--app-accent);
                 border-radius: var(--app-radius);
-                color: white
+                color: var(--app-text-primary);
             }
         }
     }
     .backgroundDiv{
         position: fixed;
-        background-color: #304CFD;
+        background-color: var(--app-bg);
         width: 100%;
         height: 100%;
         z-index: 100;
         right: 0;
         top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 .backgroundDiv {

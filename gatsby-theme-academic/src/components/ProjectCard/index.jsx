@@ -9,7 +9,7 @@ import {
   Row, Col, Panel, Button, FlexboxGrid, Divider, Stack,
 } from 'rsuite';
 
-import { useSiteMetadata } from '../../utils/hooks';
+import { useSiteMetadata, useWindowSize } from '../../utils/hooks';
 import Utils from '../../utils/pageUtils';
 import PostTag from '../PostTag';
 import Icon from '../Icon';
@@ -23,6 +23,8 @@ const ProjectCard = (props) => {
     tagsMap,
   } = props;
   const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [width] = useWindowSize();
+  const isMobile = width < 768;
   
   const {
     frontmatter: {
@@ -139,7 +141,7 @@ const ProjectCard = (props) => {
   }
   if (tags) {
     infoLine = infoLine.concat([
-      <Stack wrap>
+      <Stack wrap key="tags">
         {tags.map(
           (tag) => (tagsMap[tag] ? <PostTag key={`tag-${tag}`} tag={tagsMap[tag]} /> : null),
         )}
@@ -149,67 +151,85 @@ const ProjectCard = (props) => {
 
   const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt), true);
 
+  // Image component
+  const imageSection = (fluid || publicURL) ? (
+    <FlexboxGrid.Item 
+      as={Col} 
+      xs={24} 
+      sm={24} 
+      md={12} 
+      lg={8} 
+      style={isMobile ? { marginTop: '1rem', paddingTop: '0.5rem' } : {}}
+    >
+      <div 
+        className={style.imageWrapper}
+        onClick={() => setImageModalOpen(true)}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setImageModalOpen(true);
+          }
+        }}
+        role="button"
+        tabIndex={0}
+      >
+        {fluid ? (
+          <Img fluid={fluid} />
+        ) : publicURL ? (
+          <img
+            src={publicURL}
+            alt={title}
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              objectFit: 'contain',
+            }}
+            loading="lazy"
+          />
+        ) : <div className={style.postCardImg} />}
+      </div>
+      <ImageModal 
+        open={imageModalOpen}
+        onClose={() => setImageModalOpen(false)}
+        fluid={largeFluid}
+        publicURL={publicURL}
+        title={title}
+      />
+    </FlexboxGrid.Item>
+  ) : null;
+
+  // Content section
+  const contentSection = (
+    <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={16}>
+      <h5><a href={Utils.generateFullUrl(siteMetadata, url)}>{title}</a></h5>
+      <FlexboxGrid>
+        {authors ? authors.map(generateAuthor) : null}
+      </FlexboxGrid>
+      <Stack wrap divider={<Divider vertical className={style.divider} />} style={{ marginTop: '0.5rem'}}>
+        {infoLine}
+      </Stack>
+      <a href={Utils.generateFullUrl(siteMetadata, url)}>
+        <p style={{ marginTop: isMobile ? '0.5rem' : '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
+      </a>
+      {links && links.length ? (
+        <Stack wrap spacing={6} style={{ marginTop: isMobile ? '0.5rem' : '1rem', marginBottom: isMobile ? '0.5rem' : '0' }}>
+          {links.map(generateLink) }
+        </Stack>
+      ) : null}
+    </FlexboxGrid.Item>
+  );
+
   return (
     <Panel
       className={classnames(style.projectCard, 'cursor-default')}
-      style={{ padding: '0.8rem' }}
+      style={{ padding: isMobile ? '0.5rem' : '0.8rem' }}
       // hoverable
       bordered
     >
       <FlexboxGrid gutter={8} align="middle">
-        <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={16}>
-          <h5><a href={Utils.generateFullUrl(siteMetadata, url)}>{title}</a></h5>
-          <FlexboxGrid>
-            {authors ? authors.map(generateAuthor) : null}
-          </FlexboxGrid>
-          <Stack wrap divider={<Divider vertical className={style.divider} />} style={{ marginTop: '0.5rem'}}>
-            {infoLine}
-          </Stack>
-          <a href={Utils.generateFullUrl(siteMetadata, url)}>
-            <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
-          </a>
-          {links && links.length ? (
-            <Stack wrap spacing={6} style={{ marginTop: '1rem'}}>
-              {links.map(generateLink) }
-            </Stack>
-          ) : null}
-        </FlexboxGrid.Item>
-        <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={8}>
-          <div 
-            className={style.imageWrapper}
-            onClick={() => setImageModalOpen(true)}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                setImageModalOpen(true);
-              }
-            }}
-            role="button"
-            tabIndex={0}
-          >
-            {fluid ? (
-              <Img fluid={fluid} />
-            ) : publicURL ? (
-              <img
-                src={publicURL}
-                alt={title}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  display: 'block',
-                  objectFit: 'contain',
-                }}
-                loading="lazy"
-              />
-            ) : <div className={style.postCardImg} />}
-          </div>
-          <ImageModal 
-            open={imageModalOpen}
-            onClose={() => setImageModalOpen(false)}
-            fluid={largeFluid}
-            publicURL={publicURL}
-            title={title}
-          />
-        </FlexboxGrid.Item>
+        {/* On mobile: content first (title, links), then image below. On desktop: content left, image right */}
+        {contentSection}
+        {imageSection}
       </FlexboxGrid>
     </Panel>
   );

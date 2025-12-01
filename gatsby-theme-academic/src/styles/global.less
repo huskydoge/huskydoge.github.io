@@ -363,6 +363,119 @@ ul {
   }
 }
 
+// Mobile-first responsive improvements
+@media screen and (max-width: 767px) {
+  // Reduce base font size on mobile
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  // Tighter spacing on mobile
+  .outerPadding {
+    padding: 0.5rem;
+  }
+
+  // Smaller headings on mobile
+  h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.8rem;
+  }
+
+  h2 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.7rem;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.6rem;
+  }
+
+  h4, h5, h6 {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem;
+  }
+
+  // Paragraphs more compact on mobile
+  p {
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+
+  // Better touch targets for buttons
+  .rs-btn {
+    min-height: 36px;
+    padding: 6px 12px;
+  }
+
+  .rs-btn-ghost {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.4;
+    min-height: 28px;
+  }
+
+  // Stack spacing tighter on mobile
+  .rs-stack {
+    gap: 4px;
+  }
+
+  // Tags smaller on mobile
+  .rs-tag {
+    font-size: 0.7rem !important;
+    padding: 2px 6px !important;
+  }
+
+  // Dividers thinner on mobile
+  .rs-divider-vertical {
+    margin-left: 4px !important;
+    margin-right: 4px !important;
+  }
+
+  // Panels with less padding on mobile
+  .rs-panel {
+    padding: 0.5rem;
+  }
+
+  .rs-panel-body {
+    padding: 0.5rem !important;
+  }
+
+  // Title separator smaller on mobile
+  .titleSeparate {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem !important;
+
+    &::before,
+    &::after {
+      bottom: -0.8rem;
+      height: 4px;
+      width: 2.5rem;
+    }
+
+    &::after {
+      width: 0.8rem;
+    }
+  }
+
+  // Grid spacing adjustment
+  .spacing-grid [class*=rs-col-] {
+    margin-bottom: 8px;
+    margin-top: 4px;
+  }
+
+  // FlexboxGrid item padding adjustment
+  .rs-flex-box-grid-item {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+}
+
 .widthFull {
   width: 100%;
 }

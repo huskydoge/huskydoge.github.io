@@ -8,10 +8,16 @@
 }
 
 .bookshelf-wrapper {
-  padding: 2.5rem 0 4rem;
+  padding: 2.5rem 1rem 4rem;
   max-width: 1400px;
   margin: 0 auto;
   color: var(--bookshelf-text);
+}
+
+@media (max-width: 768px) {
+  .bookshelf-wrapper {
+    padding: 1.5rem 0.75rem 3rem;
+  }
 }
 
 .bookshelf-hero h1 {

@@ -32,6 +32,16 @@
             outline: 2px solid var(--app-accent);
             outline-offset: 2px;
         }
+
+        // Mobile: smaller image container
+        @media screen and (max-width: 767px) {
+            max-height: 160px;
+            
+            img, :global(.gatsby-image-wrapper) {
+                max-height: 160px;
+                object-fit: contain;
+            }
+        }
     }
 
     .mrTp20{
@@ -68,4 +78,76 @@
         line-height: 80%;
     }
 
+    // Mobile-specific styles
+    @media screen and (max-width: 767px) {
+        padding: 0.5rem !important;
+
+        h5 {
+            font-size: 1rem;
+            line-height: 1.4;
+            margin-bottom: 0.3rem;
+        }
+
+        p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-top: 0.5rem !important;
+            // Limit excerpt on mobile
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        // Authors row compact
+        :global(.rs-flex-box-grid) {
+            font-size: 0.8rem;
+        }
+
+        // Stack divider
+        .divider {
+            height: 1em;
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+
+        // Fix button styling on mobile
+        :global(.rs-btn-ghost) {
+            font-size: 0.72rem;
+            padding: 4px 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+            min-height: 26px;
+        }
+
+        // Add margin between links and image when image is below
+        .imageWrapper {
+            margin-top: 0.75rem;
+        }
+    }
+
+    // Mobile image section - ensure gap between links and image
+    .mobileImageSection {
+        margin-top: 1rem !important;
+        padding-top: 0.5rem;
+    }
+
+    // Links container styling
+    .linksContainer {
+        margin-bottom: 0;
+    }
+
+    // Tablet adjustments
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        h5 {
+            font-size: 1.05rem;
+        }
+
+        p {
+            font-size: 0.88rem;
+        }
+    }
 }

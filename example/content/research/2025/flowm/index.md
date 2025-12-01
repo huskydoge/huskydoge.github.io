@@ -6,7 +6,7 @@ tags:
   - "Equivariant Models"
   - "Long-term Consistency"
 highlight: true
-# venue: 4th NeurReps Workshop @ NeurIPS, SpaVLE Workshop @ NeurIPS, 2025
+venue: "[NeurReps Workshop](https://www.neurreps.org/), [SpaVLE Workshop](https://space-in-vision-language-embodied-ai.github.io/) @ NeurIPS 2025"
 authors:
   - name: "Hansen Lillemark*"
     url: "https://hlillemark.github.io/"

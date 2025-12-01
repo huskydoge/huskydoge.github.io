@@ -252,7 +252,7 @@
   padding-left: 0;
   color: var(--app-text-secondary);
   @media screen and (max-width: 767px) {
-    padding: @padding-margin-val;
+    padding: 0.8rem;
     padding-top: 0;
   }
   //width: 100%;
@@ -260,4 +260,52 @@
 
 .sideBar404Radius {
   border-radius: var(--app-radius);
+}
+
+// Mobile sidebar improvements
+@media screen and (max-width: 767px) {
+  .sidebarContent {
+    aside {
+      padding: 0.5rem 0;
+
+      .profileAvatar {
+        height: 120px;
+        border-radius: var(--app-radius);
+      }
+
+      .name {
+        margin-top: 0.6rem;
+
+        h2 {
+          font-size: 1.4rem;
+          margin-bottom: 4px;
+        }
+
+        h3 {
+          font-size: 1rem;
+        }
+
+        .badgeContainer {
+          gap: 0.3rem;
+          padding: 0.3rem;
+        }
+
+        .badge {
+          font-size: 0.68rem;
+          padding: 0.2rem 0.5rem;
+        }
+      }
+    }
+  }
+
+  .socialIcons {
+    gap: 0.25rem 0.4rem;
+    max-width: 220px;
+  }
+
+  .contactDetails {
+    font-size: 0.68rem;
+    max-width: 200px;
+    margin-top: 0.5rem;
+  }
 }

@@ -35,4 +35,29 @@
         white-space: normal;
         line-height: 80%;
     }
+
+    // Mobile-specific styles
+    @media screen and (max-width: 767px) {
+        h5 {
+            font-size: 0.95rem;
+            line-height: 1.35;
+            margin-bottom: 0.3rem;
+        }
+
+        p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            // Limit excerpt on mobile
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .dateHolder {
+            font-size: 0.7rem;
+            padding: 4px;
+        }
+    }
 }
