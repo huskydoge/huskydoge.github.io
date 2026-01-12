@@ -24,9 +24,11 @@ selected: true
 cover: "./flowm_preview.gif"
 links:
   - name: "paper"
-    url: "https://openreview.net/pdf?id=WLxwYlkPHp"
+    url: "https://arxiv.org/abs/2601.01075"
   - name: "code"
     url: "https://github.com/AnonFloWM/Flow-Equivariant-World-Modeling"
+  - name: "website"
+    url: "https://flowequivariantworldmodels.github.io/"
 priority: 0
 ---
 
