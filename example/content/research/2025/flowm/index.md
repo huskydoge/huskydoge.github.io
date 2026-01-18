@@ -26,7 +26,7 @@ links:
   - name: "paper"
     url: "https://arxiv.org/abs/2601.01075"
   - name: "code"
-    url: "https://github.com/AnonFloWM/Flow-Equivariant-World-Modeling"
+    url: "https://github.com/hlillemark/flowm"
   - name: "website"
     url: "https://flowequivariantworldmodels.github.io/"
 priority: 0

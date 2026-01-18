@@ -16,6 +16,14 @@ const News = () => (
                 }}>
                     <li className={styles.newsItem}>
                         <span className={styles.newsDate}>
+                            2026/01
+                        </span>
+                        <span className={styles.newsContent}>
+                            The code of <strong><a href="https://github.com/hlillemark/flowm">Flow Equivariant World Models</a></strong> is released! Welcome to drop by! 🎉
+                        </span>
+                    </li>
+                    <li className={styles.newsItem}>
+                        <span className={styles.newsDate}>
                             2025/11
                         </span>
                         <span className={styles.newsContent}>
