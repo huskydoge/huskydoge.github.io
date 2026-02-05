@@ -8,8 +8,7 @@ module.exports = {
   introduction: [
     "Hello! Husky here! I'm a MSML student at CMU [Locus Lab](https://github.com/locuslab). Throughout my research journey, I've explored a variety of topics. Currently, my primary focus is on generative world modeling,  where I have been fortunate to work closely with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) and Professor [Yilun Du](https://yilundu.github.io/) on advancing the capabilities of world models. Previously, I collaborated with my amazing advisor [Jiaqi W. Ma](https://jiaqima.github.io/) at the [TRAIS Lab](https://github.com/TRAIS-Lab), focusing on dataset curation using LLM agents. I also gained valuable research experience in AI interpretability under Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
     
-    "Within world modeling, I'm particularly(currently) interested in the following directions: \n - How can we enable world models to operate effectively in **long-sequence scenarios**? This includes both looking ahead (simulating long trajectories) and looking back (designing effective memory mechanisms).\n - How can we make world models **real-time interactive**? This is especially crucial for real world applications, and I find both the mathematical and ML systems perspectives fascinating.\n - How can we make world models more **physically grounded**? I'm excited to explore data-driven approaches, RLHF, and other emerging methods.",
-    
+    "My primary research goal is to build autonomous AI agents with human-level reasoning, planning, and memory that can flexibly allocate computation under varying budget constraints and adapt to evolving environments through closed-loop interaction. Currently, I am particularly interested in: \n - **Scalable Reasoning** (methods that improve both capability and efficiency). \n - **World Modeling** (video generative models for long horizon prediction, control, and planning)."    
   ],
   avatar: "/avatar.png",
   professions: [
@@ -48,7 +47,7 @@ module.exports = {
   },
   social: [
     {
-      url: "/resume.pdf",
+      url: "https://docs.google.com/document/d/17Plv8CVYGSZ-8BX4-iFgNfxreOb0WJPD3kCndufbyMo/edit?tab=t.0",
       icon: ["ai", "cv"],
     },
     {
