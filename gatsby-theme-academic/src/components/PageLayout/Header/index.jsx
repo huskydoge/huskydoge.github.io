@@ -130,7 +130,7 @@ export default () => {
               <NavButton to="/research/" onClick={toggleMenu} partiallyActive>Research</NavButton>
               <NavButton to="/project/" onClick={toggleMenu} partiallyActive>Project</NavButton>
               <NavButton to="/bookshelf/" onClick={toggleMenu} partiallyActive>Bookshelf</NavButton>
-              <NavButton to="https://husky-blog-six.vercel.app/" onClick={toggleMenu} partiallyActive>Blogs</NavButton>
+              <NavButton to="https://huskydoge.github.io/husky-blog" onClick={toggleMenu} partiallyActive>Blogs</NavButton>
               <NavButton to="/misc/" onClick={toggleMenu} partiallyActive>Misc</NavButton>
               {/* <li className={style.navItem}>
                 <ThemeModeSwitch />
