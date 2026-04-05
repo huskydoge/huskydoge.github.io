@@ -8,7 +8,7 @@ module.exports = {
   introduction: [
     "Hello! Husky here! I'm a MSML student at CMU [Locus Lab](https://github.com/locuslab). Throughout my research journey, I've explored a variety of topics. Currently, my primary focus is on generative world modeling,  where I have been fortunate to work closely with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) and Professor [Yilun Du](https://yilundu.github.io/) on advancing the capabilities of world models. Previously, I collaborated with my amazing advisor [Jiaqi W. Ma](https://jiaqima.github.io/) at the [TRAIS Lab](https://github.com/TRAIS-Lab), focusing on dataset curation using LLM agents. I also gained valuable research experience in AI interpretability under Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
     
-    "My primary research goal is to build autonomous AI agents with human-level reasoning, planning, and memory that can flexibly allocate computation under varying budget constraints and adapt to evolving environments through closed-loop interaction. Currently, I am particularly interested in: \n - **Scalable Reasoning** (methods that improve both capability and efficiency). \n - **World Modeling** (video generative models for long horizon prediction, control, and planning)."    
+    "My primary research goal is to build autonomous AI agents with human-level reasoning, planning, and memory that can flexibly allocate computation under varying budget constraints and adapt to evolving environments through closed-loop interaction. Currently, I am particularly interested in: \n - **Scalable Reasoning** - methods that improve both capability and efficiency. \n - **World Modeling** - video generative models for long horizon prediction, control, and planning."    
   ],
   avatar: "/avatar.png",
   professions: [
@@ -165,31 +165,25 @@ module.exports = {
       ],
     },
     {
-      title: "Teaching & Tutoring",
-      position: "right",
-      data: [
-        {
-          date: "June 2024",
-          title: " Group Tutor of Advanced Mathematics",
-          location: "Shanghai Jiao Tong University, China",
-        },
-        {
-          date: "Dec 2023",
-          title:
-            "Personal Tutor of CS2612, Programming Languages and Compilers ",
-          location: "Shanghai Jiao Tong University, China",
-        },
-      ],
-    },
-    {
-      title: "Volunteer",
+      title: "Service",
       position: "left",
       data: [
-        {
-          date: "2022 ~ 2024",
-          title: "Volunteer of Shanghai Marathon",
-          location: "Shanghai, China",
-        },
+        // {
+        //   date: "June 2024",
+        //   title: "Group Tutor of Advanced Mathematics",
+        //   location: "Shanghai Jiao Tong University, China",
+        // },
+        // {
+        //   date: "Dec 2023",
+        //   title:
+        //     "Personal Tutor of CS2612, Programming Languages and Compilers",
+        //   location: "Shanghai Jiao Tong University, China",
+        // },
+        // {
+        //   date: "2022 ~ 2024",
+        //   title: "Volunteer of Shanghai Marathon",
+        //   location: "Shanghai, China",
+        // },
       ],
     },
   ],

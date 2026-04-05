@@ -5,8 +5,10 @@ require('dotenv').config({
   path: `${__dirname}/../.env`,
 });
 
-const requireEsm = require('esm')(module);
-const remarkGfm = requireEsm('remark-gfm').default || requireEsm('remark-gfm');
+// NOTE: Avoid the `esm` package here. It's not needed for this theme and can break
+// on newer Node.js versions when Gatsby loads config synchronously.
+const remarkGfmModule = require('remark-gfm');
+const remarkGfm = remarkGfmModule.default || remarkGfmModule;
 
 module.exports = ({
   contentPath = 'content',

@@ -5,6 +5,38 @@
     //margin-top: 20px;
     font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
 
+    h5 {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+        color: var(--app-text-primary);
+        font-family: inherit;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                color: var(--app-accent-strong);
+            }
+        }
+    }
+
+    .authorsRow {
+        font-size: 0.85rem;
+        color: var(--app-text-secondary);
+        margin-bottom: 0.3rem;
+
+        :global(.rs-flex-box-grid-item) {
+            padding-left: 0 !important;
+            padding-right: 0.35rem !important;
+        }
+
+        span {
+            font-family: inherit;
+        }
+    }
+
     .postCardImg{
         width: 100%;
         padding-top: 56.25%;
@@ -101,8 +133,13 @@
         }
 
         // Authors row compact
-        :global(.rs-flex-box-grid) {
-            font-size: 0.8rem;
+        .authorsRow {
+            font-size: 0.75rem;
+            margin-bottom: 0.2rem;
+
+            :global(.rs-flex-box-grid-item) {
+                padding-right: 0.2rem !important;
+            }
         }
 
         // Stack divider
@@ -148,6 +185,10 @@
 
         p {
             font-size: 0.88rem;
+        }
+
+        .authorsRow {
+            font-size: 0.8rem;
         }
     }
 }

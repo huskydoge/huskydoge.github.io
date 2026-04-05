@@ -1,0 +1,123 @@
+.timeline {
+  width: 100%;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 170px 26px 1fr;
+  column-gap: 18px;
+  padding: 12px 0;
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+}
+
+.date {
+  color: var(--app-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding-top: 2px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.92rem;
+    padding-top: 0;
+  }
+}
+
+.axis {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+/* Draw the vertical line using two segments so we can hide the ends. */
+.axis::before,
+.axis::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--app-border-strong);
+}
+
+.axis::before {
+  top: 0;
+  height: 8px;
+}
+
+.axis::after {
+  top: 16px;
+  bottom: 0;
+}
+
+.item:first-child .axis::before {
+  display: none;
+}
+
+.item:last-child .axis::after {
+  display: none;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: var(--app-accent);
+  box-shadow: 0 0 0 5px rgba(214, 141, 107, 0.14);
+}
+
+.content {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--app-border);
+
+  @media screen and (max-width: 767px) {
+    padding-bottom: 12px;
+  }
+}
+
+.item:last-child .content {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.title {
+  color: var(--app-text-primary);
+  font-weight: 700;
+  font-size: 1.06rem;
+  line-height: 1.35;
+}
+
+.title :global(a) {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(214, 141, 107, 0.35);
+}
+
+.title :global(a:hover) {
+  border-bottom-color: rgba(214, 141, 107, 0.7);
+}
+
+.meta {
+  color: var(--app-accent);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.description {
+  color: var(--app-text-secondary);
+  font-size: 0.98rem;
+  margin-top: 6px;
+}
+
+.description :global(p) {
+  margin: 0;
+}
