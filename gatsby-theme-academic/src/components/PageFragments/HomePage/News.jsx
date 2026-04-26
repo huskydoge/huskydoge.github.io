@@ -3,6 +3,7 @@ import React from 'react';
 import * as styles from './homePage.module.less';
 
 
+/** Render the home page news feed. */
 const News = () => (
     <div className={styles.homepageSection}>
         <h2>News</h2>
@@ -14,6 +15,14 @@ const News = () => (
                     lineHeight: '1.8',
                     listStyle: 'none'
                 }}>
+                    <li className={styles.newsItem}>
+                        <span className={styles.newsDate}>
+                            2026/04
+                        </span>
+                        <span className={styles.newsContent}>
+                            <strong><a href="https://github.com/huskydoge/Awesome-Loop-Models">🔁 Awesome Loop Models</a></strong> is released: a curated list and interactive browser for loop-model papers and technical blogs. Welcome to explore and contribute! 🎉
+                        </span>
+                    </li>
                     <li className={styles.newsItem}>
                         <span className={styles.newsDate}>
                             2026/01
