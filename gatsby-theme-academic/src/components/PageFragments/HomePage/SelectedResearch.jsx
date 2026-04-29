@@ -1,3 +1,4 @@
+/** Home page list of selected research works. */
 import { Col, FlexboxGrid } from 'rsuite';
 import { useStaticQuery, graphql } from 'gatsby';
 import _ from 'lodash';
@@ -7,6 +8,7 @@ import ResearchCard from '../../ResearchCard';
 
 import * as styles from './homePage.module.less';
 
+/** Query and render highlighted research cards in priority order. */
 const SelectedResearch = () => {
   const data = useStaticQuery(graphql`
   {
@@ -61,13 +63,21 @@ const SelectedResearch = () => {
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
   return (data.allMdx && data.allMdx.edges && data.allMdx.edges.length) ? (
     <div className={styles.homepageSection}>
-      <h2 style={{ marginBottom: '1rem' }}>Selected Works</h2>
-      <p style={{ marginBottom: '1rem' }}>Refer to <a href="/research">Research page</a> for complete list.</p>
+      <div className={styles.sectionHeading}>
+        <h2>Selected Works</h2>
+        <p>See the <a href="/research">Research page</a> for the complete list.</p>
+      </div>
       <FlexboxGrid className="spacing-grid">
         {data.allMdx &&
           data.allMdx.edges.map((val, key) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <FlexboxGrid.Item as={Col} xs={24} sm={24} md={24} lg={24}>
+            <FlexboxGrid.Item
+              key={val.node.frontmatter.path || key}
+              as={Col}
+              xs={24}
+              sm={24}
+              md={24}
+              lg={24}
+            >
               <ResearchCard data={val} tagsMap={tagsMap} />
             </FlexboxGrid.Item>
           ))}

@@ -1,3 +1,4 @@
+/** Gatsby home page composition for the personal site. */
 import React from "react";
 
 import AboutMe from "../components/PageFragments/HomePage/AboutMe";
@@ -7,18 +8,22 @@ import SelectedResearch from "../components/PageFragments/HomePage/SelectedResea
 import SkillProgress from "../components/PageFragments/HomePage/SkillProgress";
 import News from "../components/PageFragments/HomePage/News";
 import SEO from "../components/Seo";
+import * as styles from "../components/PageFragments/HomePage/homePage.module.less";
 
+/** Render the home page sections in a compact editorial rhythm. */
 export default () => (
   <>
     <SEO title="About" description="" path="" keywords={["NodeJS", "Gatsby"]} />
-    <AboutMe />
-    <News />
-    <Experience />
-    <SelectedResearch />
-    <Awards />
-    <a href='https://clustrmaps.com/site/1bx0x'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=000000&w=a&t=n&d=KsX45ylDjq2_61A1AolUOdbXxnUJf4u2QvsJIkBT68U&co=ffffff'/></a>
-    {/* <SkillProgress/> */}
-    <img src="https://ghchart.rshah.org/huskydoge" alt="GitHub Commit Chart" />
-
+    <div className={styles.homePageBody}>
+      <AboutMe />
+      <News />
+      <SelectedResearch />
+      <Experience />
+      <Awards />
+      {/* <SkillProgress/> */}
+      <div className={styles.activityStrip}>
+        <img src="https://ghchart.rshah.org/huskydoge" alt="GitHub Commit Chart" />
+      </div>
+    </div>
   </>
 );

@@ -1,3 +1,4 @@
+/** Research publication card used on research index and selected works. */
 // import moment from 'moment';
 // import { Link } from 'gatsby';
 // import { navigate } from '@reach/router';
@@ -17,11 +18,13 @@ import ImageModal from '../ImageModal';
 
 import * as style from './researchCard.module.less';
 
+/** Render a publication card with metadata, links, tags, and preview media. */
 const ResearchCard = (props) => {
   const {
     data: { node },
     tagsMap,
     enableHighlight = false,
+    compact = false,
   } = props;
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const [width] = useWindowSize();
@@ -65,7 +68,8 @@ const ResearchCard = (props) => {
   //   }
   // };
 
-  const generateLink = (link) => {
+  /** Build an external action button from the research link metadata. */
+  const generateLink = (link, index) => {
     let href = '#';
     if (link.url) {
       if (isRelativeUrl(link.url)) {
@@ -115,21 +119,22 @@ const ResearchCard = (props) => {
     }
     
     return (
-      <Button appearance="ghost" href={href} target="_blank" size="xs">
+      <Button key={`${displayName}-${index}`} appearance="ghost" href={href} target="_blank" size="xs">
         {iconElement}{displayName}
       </Button>
     );
   };
 
+  /** Render one author token while preserving markdown formatting. */
   const generateAuthor = (author, index) => {
     let markdown = Utils.parseMarkDown(author, true);
     if (index >= 0 && index !== authors.length - 1) {
       markdown += ',&nbsp;';
     }
     return (
-      <FlexboxGrid.Item key={index} xs>
+      <span key={`${author}-${index}`} className={style.authorName}>
         <span dangerouslySetInnerHTML={{ __html: markdown }} />
-      </FlexboxGrid.Item>
+      </span>
     );
   };
 
@@ -162,16 +167,16 @@ const ResearchCard = (props) => {
   const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt), true);
 
   // Image component
-  const imageSection = (fluid || publicURL) ? (
-    <FlexboxGrid.Item 
-      as={Col} 
-      xs={24} 
-      sm={24} 
-      md={12} 
-      lg={8} 
-      style={isMobile ? { marginTop: '1rem', paddingTop: '0.5rem' } : {}}
+  const imageSection = (!compact && (fluid || publicURL)) ? (
+    <FlexboxGrid.Item
+      as={Col}
+      className={style.imageColumn}
+      xs={24}
+      sm={24}
+      md={9}
+      lg={8}
     >
-      <div 
+      <div
         className={style.imageWrapper}
         onClick={() => setImageModalOpen(true)}
         onKeyPress={(e) => {
@@ -185,8 +190,8 @@ const ResearchCard = (props) => {
         {fluid ? (
           <Img fluid={fluid} />
         ) : publicURL ? (
-          <img 
-            src={publicURL} 
+          <img
+            src={publicURL}
             alt={title}
             style={{ 
               width: '100%', 
@@ -212,7 +217,7 @@ const ResearchCard = (props) => {
 
   // Content section
   const contentSection = (
-    <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={16}>
+    <FlexboxGrid.Item as={Col} xs={24} sm={24} md={compact ? 24 : 15} lg={compact ? 24 : 16}>
       <h5><a href={Utils.generateFullUrl(siteMetadata, url)}>{title}</a></h5>
       <FlexboxGrid className={style.authorsRow}>
         {authors ? authors.map(generateAuthor) : null}
@@ -221,10 +226,19 @@ const ResearchCard = (props) => {
         {infoLine}
       </Stack>
       <a href={Utils.generateFullUrl(siteMetadata, url)}>
-        <p style={{ marginTop: isMobile ? '0.5rem' : '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
+        <p
+          className={compact ? style.compactExcerpt : undefined}
+          style={{ marginTop: isMobile || compact ? '0.5rem' : '1rem' }}
+          dangerouslySetInnerHTML={{ __html: excerptHTML }}
+        />
       </a>
       {links && links.length ? (
-        <Stack wrap spacing={6} style={{ marginTop: isMobile ? '0.5rem' : '1rem', marginBottom: isMobile ? '0.5rem' : '0' }}>
+        <Stack
+          wrap
+          spacing={6}
+          className={style.linksContainer}
+          style={{ marginTop: isMobile ? '0.5rem' : '1rem' }}
+        >
           {links.map(generateLink) }
         </Stack>
       ) : null}
@@ -234,7 +248,7 @@ const ResearchCard = (props) => {
   return (
     <Panel
       className={classnames(style.researchCard, { [style.highlighted]: highlight && enableHighlight }, 'cursor-default')}
-      style={{ padding: isMobile ? '0.5rem' : '0.8rem' }}
+      style={{ padding: 0 }}
       // hoverable
       bordered
     >

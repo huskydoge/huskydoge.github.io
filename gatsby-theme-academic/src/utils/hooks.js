@@ -59,6 +59,7 @@ export const useSiteMetadata = () => {
           authorAlternative
           introduction
           avatar
+          avatarBack
           professions {
             name
             url

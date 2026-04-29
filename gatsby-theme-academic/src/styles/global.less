@@ -1,25 +1,35 @@
+/* Global visual tokens and base typography for the academic site. */
 @import (reference) './mixins.less';
 @import (reference) './theme.less';
 
 :root {
   --app-bg: #ffffff;
   --app-surface: #ffffff;
-  --app-panel-bg: #ffffff;
+  --app-panel-bg: transparent;
   --app-card-bg: #ffffff;
-  --app-text-primary: #1e1e1e;
-  --app-text-secondary: #6c6c6c;
-  --app-text-muted: rgba(30, 30, 30, 0.48);
-  --app-card-text: #1e1e1e;
-  --app-card-muted: #6c6c6c;
-  --app-border: rgba(30, 30, 30, 0.08);
-  --app-border-strong: rgba(30, 30, 30, 0.14);
-  --app-border-card: rgba(30, 30, 30, 0.12);
-  --app-accent: #d68d6b;
-  --app-accent-strong: #c47957;
-  --app-radius-xs: 4px;
-  --app-radius-sm: 6px;
-  --app-radius: 8px;
-  --app-radius-lg: 12px;
+  --app-text-primary: #111111;
+  --app-text-secondary: #555555;
+  --app-text-muted: rgba(17, 17, 17, 0.46);
+  --app-card-text: #111111;
+  --app-card-muted: #5f5f5f;
+  --app-border: rgba(17, 17, 17, 0.1);
+  --app-border-strong: rgba(17, 17, 17, 0.22);
+  --app-border-card: rgba(17, 17, 17, 0.12);
+  --app-accent: #111111;
+  --app-accent-strong: #111111;
+  --app-accent-soft: rgba(17, 17, 17, 0.05);
+  --app-link-bg: rgba(17, 17, 17, 0.04);
+  --app-link: #315f78;
+  --app-link-strong: #174257;
+  --app-radius-xs: 2px;
+  --app-radius-sm: 3px;
+  --app-radius: 4px;
+  --app-radius-lg: 4px;
+  --app-shadow-card: none;
+  --app-shadow-card-hover: none;
+  --font-sans: Charter, Georgia, "Times New Roman", "Songti SC", STSong, serif;
+  --font-serif: Charter, Georgia, "Times New Roman", "Songti SC", STSong, serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
   --rs-bg-card: var(--app-panel-bg);
   --rs-bg-surface: var(--app-panel-bg);
   --rs-bg-well: var(--app-panel-bg);
@@ -33,8 +43,8 @@
 }
 
 .rs-panel {
-  background: var(--app-panel-bg);
-  border-radius: var(--app-radius);
+  background: transparent;
+  border-radius: 0;
   border: 1px solid var(--app-border);
   box-shadow: none;
 }
@@ -94,9 +104,9 @@ body {
   background: var(--app-bg);
   overflow-y: scroll;
   color: var(--app-text-primary);
-  font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
+  font-family: var(--font-sans);
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1.68;
   font-feature-settings: 'liga' 1;
   -webkit-font-smoothing: antialiased;
 }
@@ -106,9 +116,9 @@ body {
 .markdown-body {
   background-color: transparent !important;
   color: var(--app-text-secondary);
-  font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
-  font-size: 1.05rem;
-  line-height: 1.85;
+  font-family: var(--font-sans);
+  font-size: 1.04rem;
+  line-height: 1.76;
 }
 
 .markdown-body * {
@@ -129,7 +139,7 @@ body {
 .markdown-body h5,
 .markdown-body h6 {
   color: var(--app-text-primary);
-  font-family: inherit;
+  font-family: var(--font-serif);
 }
 
 .markdown-body li::marker {
@@ -158,25 +168,25 @@ html {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--app-text-primary);
-  font-weight: 600;
-  line-height: 1.3;
+  font-weight: 700;
+  line-height: 1.22;
   margin-top: 0;
   margin-bottom: 0.5em;
-  letter-spacing: 0.01em;
-  font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
+  letter-spacing: 0;
+  font-family: var(--font-serif);
 }
 
 p {
   color: var(--app-text-secondary);
-  font-size: 1.02rem;
-  line-height: 1.75;
-  font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
+  font-size: 1.04rem;
+  line-height: 1.72;
+  font-family: var(--font-sans);
 }
 
 small,
 .text-muted {
   color: var(--app-text-muted);
-  font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
+  font-family: var(--font-sans);
 }
 
 button,
@@ -186,7 +196,7 @@ button,
 input,
 textarea,
 select {
-  font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
+  font-family: var(--font-sans);
 }
 
 :global(.rs-btn),
@@ -232,7 +242,7 @@ select {
 //}
 
 h1 {
-  font-size: 1.875rem;
+  font-size: 2.05rem;
   //margin-bottom: 1.2rem;
 
   @media only screen and (max-width: 767px) {
@@ -241,7 +251,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.562rem;
+  font-size: 1.66rem;
   //margin-bottom: 1.4rem;
 
   @media only screen and (max-width: 767px) {
@@ -251,7 +261,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.125rem;
+  font-size: 1.22rem;
   //margin-bottom: .85rem;
 
   @media only screen and (max-width: 767px) {
@@ -334,16 +344,16 @@ ul {
 }
 
 .outerPadding {
-  padding: 1.87rem 1.87rem 1.87rem;
+  padding: 2.4rem 1.5rem 2rem;
   @media screen and (max-width: 768px) {
-    padding: 0.6rem;
+    padding: 0.8rem;
   }
 }
 
 .container {
-  max-width: 1264px;
+  max-width: 1180px;
   @media screen and (min-width: 2045px) {
-    max-width: 61.8vw;
+    max-width: 1180px;
   }
   width: 100%;
   margin-left: auto;

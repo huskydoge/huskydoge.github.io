@@ -11,6 +11,7 @@ module.exports = {
     "My primary research goal is to build autonomous AI agents with human-level reasoning, planning, and memory that can flexibly allocate computation under varying budget constraints and adapt to evolving environments through closed-loop interaction. Currently, I am particularly interested in: \n - **Scalable Reasoning** - methods that improve both capability and efficiency. \n - **World Modeling** - video generative models for long horizon prediction, control, and planning."    
   ],
   avatar: "/avatar.png",
+  avatarBack: "/avatar-back.jpeg",
   professions: [
     {
       name: "Locus",
@@ -103,14 +104,8 @@ module.exports = {
     {
       date: "Sept 2021 - July 2025",
       icon: "university",
-      title: "B.S.E. in Computer Science",
+      title: "B.E. in Computer Science",
       location: "Shanghai Jiao Tong University",
-    },
-    {
-      date: "Sept 2018 - June 2021",
-      icon: "school",
-      title: "High School",
-      location: "Zhejiang Ruian High School",
     },
   ],
   interests: [
@@ -136,16 +131,19 @@ module.exports = {
           date: "Sept. 2025 - Present",
           title: "[Locus Lab](https://zicokolter.com/), CMU",
           location: "Pittsburgh, PA, USA",
+          description: "Studying scalable equilibrium models.",
         },
         {
           date: "Mar. 2025 - Aug. 2025",
           title: "[VCG Group](https://vcg.seas.harvard.edu/), Harvard",
           location: "Cambridge, MA, USA",
+          description: "Developed **Flow Equivariant World Models**, studying structured dynamics outside the visible field of view.",
         },
         {
           date: "Jun. 2024 - Mar. 2025",
           title: "[Maitrix.org](https://github.com/maitrix-org), UCSD",
           location: "San Diego, CA, USA",
+          description: "Core contributor to **PAN World Models**, previously leading the data and game-generation components.",
         },
         {
           date: "Mar. 2024 - Jun. 2024",
@@ -156,11 +154,13 @@ module.exports = {
           date: "Nov. 2023 - Sept. 2024",
           title: "[TRAIS Lab](https://github.com/TRAIS-Lab), UIUC",
           location: "remote",
+          description: "Developed **DCA-Bench**, a benchmark for evaluating LLM agents on dataset issue detection and dataset curation.",
         },
         {
           date: "Feb. 2023 - Jan. 2024",
           title: "[XAI Lab](https://sjtu-xai-lab.github.io/), SJTU",
           location: "Shanghai, China",
+          description: "Studied AI interpretability and safety using Shapley-value theory to explore generalizable interaction primitives in DNNs.",
         },
       ],
     },

@@ -1,5 +1,25 @@
 .timeline {
+  position: relative;
   width: 100%;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 201px;
+  width: 2px;
+  background: var(--app-border-strong);
+  transform: translateX(-50%);
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.singleTimeline::before {
+  display: none;
 }
 
 .item {
@@ -31,39 +51,11 @@
   display: flex;
   justify-content: center;
   padding-top: 0;
+  z-index: 1;
 
   @media screen and (max-width: 767px) {
     display: none;
   }
-}
-
-/* Draw the vertical line using two segments so we can hide the ends. */
-.axis::before,
-.axis::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: 2px;
-  transform: translateX(-50%);
-  background: var(--app-border-strong);
-}
-
-.axis::before {
-  top: 0;
-  height: 8px;
-}
-
-.axis::after {
-  top: 16px;
-  bottom: 0;
-}
-
-.item:first-child .axis::before {
-  display: none;
-}
-
-.item:last-child .axis::after {
-  display: none;
 }
 
 .dot {

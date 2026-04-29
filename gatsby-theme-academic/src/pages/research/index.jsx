@@ -1,3 +1,4 @@
+/** Research index with filter controls and single/double-column modes. */
 import { Button, FlexboxGrid, Col, Stack } from 'rsuite';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -6,10 +7,13 @@ import _ from 'lodash';
 
 import SEO from '../../components/Seo';
 import ResearchCard from '../../components/ResearchCard';
+import * as styles from './research.module.less';
 
+/** Render the research archive with year/tag filters and layout controls. */
 const Research = ({ data }) => {
   const [selectedYears, setSelectedYears] = useState(new Set());
   const [selectedTags, setSelectedTags] = useState(new Set());
+  const [layoutMode, setLayoutMode] = useState('single');
 
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
@@ -159,14 +163,14 @@ const Research = ({ data }) => {
   const renderFilterRow = (label, options, selectedSet, onToggle, includeAll = true) => (
     <div style={{ marginBottom: '0.75rem' }}>
       <Stack spacing={8} alignItems="flex-start" wrap>
-        <strong style={{ minWidth: '2.5rem', fontSize: '0.9rem' }}>{label}</strong>
+        <strong style={{ minWidth: '2.5rem', fontSize: '1rem' }}>{label}</strong>
         <Stack spacing={6} wrap style={{ flex: 1 }}>
           {includeAll && (
             <Button
               appearance={selectedSet.size === 0 ? 'primary' : 'ghost'}
               size="xs"
               onClick={() => onToggle('All')}
-              style={{ fontSize: '0.75rem', padding: '3px 8px' }}
+              style={{ fontSize: '0.84rem', padding: '4px 9px' }}
             >
               All
             </Button>
@@ -177,13 +181,37 @@ const Research = ({ data }) => {
               appearance={selectedSet.has(option) ? 'primary' : 'ghost'}
               size="xs"
               onClick={() => onToggle(option)}
-              style={{ fontSize: '0.75rem', padding: '3px 8px' }}
+              style={{ fontSize: '0.84rem', padding: '4px 9px' }}
             >
               {option}
             </Button>
           ))}
         </Stack>
       </Stack>
+    </div>
+  );
+
+  const isDoubleColumn = layoutMode === 'double';
+
+  const renderLayoutSwitch = () => (
+    <div className={styles.layoutSwitch} aria-label="Research layout mode">
+      <span className={styles.layoutLabel}>Layout</span>
+      <Button
+        appearance={!isDoubleColumn ? 'primary' : 'ghost'}
+        size="xs"
+        className={styles.layoutButton}
+        onClick={() => setLayoutMode('single')}
+      >
+        Single
+      </Button>
+      <Button
+        appearance={isDoubleColumn ? 'primary' : 'ghost'}
+        size="xs"
+        className={styles.layoutButton}
+        onClick={() => setLayoutMode('double')}
+      >
+        Double
+      </Button>
     </div>
   );
 
@@ -197,9 +225,12 @@ const Research = ({ data }) => {
       <div className="marginTopTitle">
         <h1 className="titleSeparate">Research</h1>
 
-        <div style={{ marginBottom: '2rem' }}>
-          {renderFilterRow('Year', availableYears, selectedYears, handleYearToggle)}
-          {renderFilterRow('Tag', availableTags, selectedTags, handleTagToggle)}
+        <div className={styles.filterHeader}>
+          <div className={styles.filterRows}>
+            {renderFilterRow('Year', availableYears, selectedYears, handleYearToggle)}
+            {renderFilterRow('Tag', availableTags, selectedTags, handleTagToggle)}
+          </div>
+          {renderLayoutSwitch()}
         </div>
 
         {groupedResearch.sortedKeys.length === 0 ? (
@@ -219,25 +250,30 @@ const Research = ({ data }) => {
             {groupedResearch.sortedKeys.map((key) => (
               <FlexboxGrid.Item key={key} colspan={24} style={{ marginBottom: '3rem' }}>
                 <h2 style={{
-                  fontSize: '1.5rem',
+                  fontSize: '1.7rem',
                   marginBottom: '1.5rem',
                   borderBottom: '2px solid #e0e0e0',
                   paddingBottom: '0.5rem',
                 }}>
                   {key}
                 </h2>
-                <FlexboxGrid>
+                <FlexboxGrid className={styles.publicationGrid} gutter={isDoubleColumn ? 20 : 0}>
                   {groupedResearch.groups[key].map((edge, index) => (
                     <FlexboxGrid.Item
                       as={Col}
-                      key={`${key}-${index}`}
+                      key={edge.node.frontmatter.path || `${key}-${index}`}
                       xs={24}
                       sm={24}
                       md={24}
-                      lg={24}
-                      style={{ marginBottom: '1rem' }}
+                      lg={isDoubleColumn ? 12 : 24}
+                      style={{ marginBottom: isDoubleColumn ? '1.3rem' : '1rem' }}
                     >
-                      <ResearchCard data={edge} tagsMap={tagsMap} enableHighlight />
+                      <ResearchCard
+                        data={edge}
+                        tagsMap={tagsMap}
+                        enableHighlight
+                        compact={isDoubleColumn}
+                      />
                     </FlexboxGrid.Item>
                   ))}
                 </FlexboxGrid>

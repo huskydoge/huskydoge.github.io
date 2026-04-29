@@ -22,7 +22,7 @@ const ExperienceTimeline = ({ items = [], metaJoiner = defaultJoin }) => {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className={styles.timeline}>
+    <div className={`${styles.timeline} ${items.length === 1 ? styles.singleTimeline : ''}`}>
       {items.map((item, idx) => {
         const titleHtml = Utils.parseMarkDown((item.title || '').trim(), true);
         const descriptionHtml = item.description

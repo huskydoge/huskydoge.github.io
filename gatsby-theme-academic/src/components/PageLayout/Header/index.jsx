@@ -1,3 +1,4 @@
+/** Site navigation shell shared by every Gatsby page. */
 import 'rsuite/dist/rsuite.min.css';
 import '@/styles/global.less';
 import '@/styles/github-markdown.less';
@@ -11,17 +12,19 @@ import 'katex/dist/katex.min.css';
 import { useLocation } from '@gatsbyjs/reach-router';
 import { Link, withPrefix } from 'gatsby';
 import { startsWith } from 'lodash';
-import React, { useRef, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
-  IconButton, Button, Tooltip, Container, Header, Whisper,
+  IconButton, Tooltip, Header, Whisper,
 } from 'rsuite';
 
+import Context from '../../../utils/context';
 import { useWindowSize, useTheme } from '@/utils/hooks';
 import Icon from '../../Icon';
 import LoadableSearch from '../../SearchBar/loadable';
 
 import * as style from './header.module.less';
 
+/** Render the optional light/dark mode toggle control. */
 const ThemeModeSwitch = () => {
   const [themeMode, setThemeMode] = useTheme();
   const nextThemeMode = themeMode === 'light' ? 'dark' : 'light';
@@ -48,6 +51,7 @@ const ThemeModeSwitch = () => {
   );
 };
 
+/** Render one navigation item with current-route styling. */
 const NavButton = (props) => {
   const {
     onClick,
@@ -57,17 +61,33 @@ const NavButton = (props) => {
   } = props;
 
   const location = useLocation();
+  const isExternal = /^https?:\/\//.test(to);
   const prefixedTo = withPrefix(to);
   const encodedHref = encodeURI(prefixedTo);
   const isCurrent = location.pathname === encodedHref;
   const isPartiallyCurrent = startsWith(location.pathname, encodedHref);
-  const showPrimary = partiallyActive ? isPartiallyCurrent : isCurrent;
+  const showPrimary = !isExternal && (partiallyActive ? isPartiallyCurrent : isCurrent);
   const appearance = showPrimary ? 'primary' : 'subtle';
+  const className = `rs-btn rs-btn-lg rs-btn-${appearance}`;
+
+  if (isExternal) {
+    return (
+      <li className={style.navItem}>
+        <a
+          className={className}
+          href={to}
+          onClick={onClick}
+        >
+          {children}
+        </a>
+      </li>
+    );
+  }
 
   return (
     <li className={style.navItem}>
       <Link
-        className={`rs-btn rs-btn-lg rs-btn-${appearance}`}
+        className={className}
         to={to}
         onClick={onClick}
       >
@@ -77,6 +97,48 @@ const NavButton = (props) => {
   );
 };
 
+/** Render icon-only controls for the global profile/content layout. */
+const PageLayoutSwitch = () => {
+  const context = useContext(Context);
+  const layoutMode = context?.state?.pageLayoutMode || 'single';
+
+  const setLayoutMode = (nextLayoutMode) => {
+    if (context?.setState) {
+      context.setState({ pageLayoutMode: nextLayoutMode });
+    }
+  };
+
+  const renderButton = ({ mode, label, icon }) => {
+    const isActive = layoutMode === mode;
+    return (
+      <Whisper
+        placement="bottom"
+        trigger="hover"
+        speaker={<Tooltip>{label}</Tooltip>}
+      >
+        <IconButton
+          aria-label={label}
+          appearance="subtle"
+          className={`${style.layoutIconButton} ${isActive ? style.layoutIconButtonActive : ''}`}
+          icon={<Icon icon={icon} fixedWidth />}
+          size="xs"
+          onClick={() => setLayoutMode(mode)}
+        />
+      </Whisper>
+    );
+  };
+
+  return (
+    <li className={`${style.navItem} ${style.layoutNavItem}`}>
+      <div className={style.layoutIconGroup} aria-label="Page layout mode">
+        {renderButton({ mode: 'single', label: 'Single column', icon: 'bars' })}
+        {renderButton({ mode: 'double', label: 'Double column', icon: 'columns' })}
+      </div>
+    </li>
+  );
+};
+
+/** Render the sticky top navigation bar and mobile menu. */
 export default () => {
   const [menu, setMenu] = useState(false);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
@@ -124,14 +186,20 @@ export default () => {
         className={`${style.navWrap} ${menu ? null : style.hidden} ${menu ? style.openMenu : null}`}
       >
         <div className={style.backgroundDiv}>
+          <Link className={style.brandLink} to="/" onClick={toggleMenu}>
+            <span className={style.brandMark}>
+              <span className={style.brandMarkText}>HD</span>
+            </span>
+            <span className={style.brandText}>HuskyDoge</span>
+          </Link>
           <ul className={style.nav}>
               <NavButton to="/" onClick={toggleMenu}>About</NavButton>
-              <NavButton to="/experience/" onClick={toggleMenu} partiallyActive>Experience</NavButton>
               <NavButton to="/research/" onClick={toggleMenu} partiallyActive>Research</NavButton>
               <NavButton to="/project/" onClick={toggleMenu} partiallyActive>Project</NavButton>
               <NavButton to="/bookshelf/" onClick={toggleMenu} partiallyActive>Bookshelf</NavButton>
               <NavButton to="https://huskydoge.github.io/husky-blog" onClick={toggleMenu} partiallyActive>Blogs</NavButton>
               <NavButton to="/misc/" onClick={toggleMenu} partiallyActive>Misc</NavButton>
+              <PageLayoutSwitch />
               {/* <li className={style.navItem}>
                 <ThemeModeSwitch />
               </li> */}

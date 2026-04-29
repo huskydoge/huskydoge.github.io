@@ -1,29 +1,42 @@
+/* Compact publication card styling for research lists. */
 @import (reference) '../../styles/index.less';
 
 .researchCard {
-    background: var(--app-panel-bg);
-    border-radius: var(--app-radius) !important;
-    border: 1px solid var(--app-border) !important;
+    background: transparent;
+    border-radius: 0 !important;
+    border: none !important;
+    border-top: 1px solid var(--app-border) !important;
     box-shadow: none !important;
     color: var(--app-text-secondary);
-    font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Songti SC', 'STSong', 'Noto Serif SC', 'Georgia', serif;
+    font-family: var(--font-sans);
+    transition: border-color 0.2s ease;
+
+    &:hover {
+        border-color: var(--app-border-strong) !important;
+        box-shadow: none !important;
+        transform: none;
+    }
 
     &.highlighted {
-        border: 2px solid var(--app-accent) !important;
+        border: none !important;
+        border-top: 1px solid var(--app-border-strong) !important;
+        border-left: 3px solid var(--app-text-primary) !important;
+        padding-left: 0.85rem !important;
     }
 
     :global(.rs-panel-body) {
-        padding: 0.8rem !important;
+        padding: 1.25rem 0 !important;
         background: transparent !important;
         font-family: inherit !important;
     }
 
     h5 {
-        font-size: 1.1rem;
-        margin-bottom: 0.4rem;
-        font-weight: 600;
+        font-family: var(--font-serif);
+        font-size: 1.12rem;
+        line-height: 1.35;
+        margin-bottom: 0.45rem;
+        font-weight: 680;
         color: var(--app-text-primary);
-        font-family: inherit;
 
         a {
             color: inherit;
@@ -38,8 +51,17 @@
     p {
         color: var(--app-text-secondary);
         font-family: inherit;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        line-height: 1.68;
         margin-bottom: 0.3rem;
+    }
+
+    .compactExcerpt {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .postCardImg {
@@ -52,14 +74,23 @@
     .imageWrapper {
         width: 100%;
         cursor: pointer;
-        border-radius: var(--app-radius);
+        border-radius: 0;
         overflow: hidden;
-        transition: all 0.3s ease;
+        transition: opacity 0.18s ease;
         display: block;
+        background: transparent;
+        border: 0;
+        max-height: 230px;
+
+        :global(.gatsby-image-wrapper),
+        img {
+            max-height: 230px;
+            object-fit: cover;
+            width: 100%;
+        }
 
         &:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0.96;
         }
 
         &:focus-visible {
@@ -73,7 +104,7 @@
             animation-play-state: running;
         }
 
-        // Mobile: smaller image container
+        // Mobile: keep preview media compact after the metadata links.
         @media screen and (max-width: 767px) {
             max-height: 140px;
             
@@ -103,25 +134,27 @@
     }
 
     a {
-        color: var(--app-accent);
+        color: var(--app-link);
         font-family: inherit;
     }
 
     .dateHolder {
-        background: rgba(232, 166, 139, 0.2);
-        color: var(--app-text-primary);
+        background: var(--app-accent-soft);
+        color: var(--app-accent-strong);
         padding: 4px 6px;
         border-radius: var(--app-radius-xs);
-        font-size: 0.8rem;
+        font-size: 0.86rem;
         margin-right: 8px;
         border: 1px solid rgba(232, 166, 139, 0.42);
         font-family: inherit;
     }
 
     .authorsRow {
-        font-size: 0.85rem;
+        font-size: 0.92rem;
         color: var(--app-text-secondary);
         margin-bottom: 0.3rem;
+        display: flex;
+        flex-wrap: wrap;
 
         :global(.rs-flex-box-grid-item) {
             padding-left: 0 !important;
@@ -135,9 +168,26 @@
 
     :global(.rs-stack) {
         > div {
-            font-size: 0.8rem;
+            font-size: 0.86rem;
             color: var(--app-text-secondary);
         }
+    }
+
+    :global(.rs-btn-ghost) {
+        background: transparent;
+        border-color: var(--app-border);
+        border-radius: var(--app-radius) !important;
+        color: var(--app-text-secondary);
+        font-size: 0.84rem;
+        font-weight: 650;
+        padding: 0.28rem 0.58rem;
+    }
+
+    :global(.rs-btn-ghost:hover),
+    :global(.rs-btn-ghost:focus) {
+        background: var(--app-accent-soft);
+        border-color: var(--app-border-strong);
+        color: var(--app-text-primary);
     }
 
     // Mobile-specific styles
@@ -145,7 +195,7 @@
         padding: 0.5rem !important;
 
         :global(.rs-panel-body) {
-            padding: 0.5rem !important;
+            padding: 0.65rem !important;
         }
 
         h5 {
@@ -199,21 +249,17 @@
             min-height: 26px;
         }
 
-        // Add margin between links and image when image is below
-        .imageWrapper {
-            margin-top: 0.75rem;
-        }
     }
 
-    // Mobile image section - ensure gap between links and image
-    .mobileImageSection {
-        margin-top: 1rem !important;
-        padding-top: 0.5rem;
-    }
-
-    // Links container styling
     .linksContainer {
         margin-bottom: 0;
+    }
+
+    .imageColumn {
+        @media screen and (max-width: 991px) {
+            margin-top: 1rem;
+            padding-top: 0.15rem;
+        }
     }
 
     // Tablet adjustments
@@ -230,4 +276,8 @@
             font-size: 0.8rem;
         }
     }
+}
+
+.authorName {
+    margin-right: 0.25rem;
 }
