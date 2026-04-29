@@ -58,7 +58,7 @@ module.exports = ({
           },
         },
       },
-      'gatsby-plugin-offline',
+      ...(process.env.NODE_ENV === 'production' ? ['gatsby-plugin-offline'] : []),
       'gatsby-plugin-lodash',
       {
         resolve: 'gatsby-source-filesystem',
