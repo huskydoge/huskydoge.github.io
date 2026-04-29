@@ -26,20 +26,24 @@ const Utils = {
    * @returns {string}
    */
   generateFullUrl: (siteMetaData, ...path) => {
-    let urlPrefix;
+    const firstPath = path[0] ? path[0].toString().trim() : '';
+    if (/^(https?:)?\/\//.test(firstPath) || /^(mailto|tel):/.test(firstPath) || firstPath[0] === '#') {
+      return firstPath;
+    }
     if (process && process.env.NODE_ENV !== 'production') {
-      urlPrefix = 'http://localhost:8000/';
-    } else {
-      urlPrefix = siteMetaData.siteUrl;
-      if (siteMetaData.pathPrefix) {
-        if (
-          urlPrefix[urlPrefix.length - 1] !== '/' &&
-          siteMetaData.pathPrefix[0] !== '/'
-        ) {
-          urlPrefix += '/';
-        }
-        urlPrefix += siteMetaData.pathPrefix;
+      return Utils.resolveUrl(...path);
+    }
+
+    let urlPrefix;
+    urlPrefix = siteMetaData.siteUrl;
+    if (siteMetaData.pathPrefix) {
+      if (
+        urlPrefix[urlPrefix.length - 1] !== '/' &&
+        siteMetaData.pathPrefix[0] !== '/'
+      ) {
+        urlPrefix += '/';
       }
+      urlPrefix += siteMetaData.pathPrefix;
     }
     if (urlPrefix[urlPrefix.length - 1] === '/') {
       urlPrefix = urlPrefix.substring(0, urlPrefix.length - 1);

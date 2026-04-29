@@ -1,14 +1,19 @@
 /* Clickable avatar flip treatment shared by profile surfaces. */
 
 .flipAvatar {
+  -webkit-appearance: none;
+  appearance: none;
   background: transparent;
   border: 0;
   cursor: pointer;
+  display: block;
+  flex: 0 0 auto;
   line-height: 0;
   overflow: hidden;
   padding: 0;
   perspective: 900px;
   position: relative;
+  vertical-align: middle;
 
   &:focus-visible {
     outline: 2px solid var(--app-text-primary);
@@ -20,29 +25,33 @@
   display: block;
   height: 100%;
   position: relative;
+  width: 100%;
+}
+
+.flipImage {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: block;
+  height: 100%;
+  object-fit: cover;
   transform-style: preserve-3d;
   transition: transform 0.48s ease;
   width: 100%;
 }
 
-.flipped .flipInner {
-  transform: rotateY(180deg);
-}
-
-.flipFace {
-  backface-visibility: hidden;
-  display: block;
-  inset: 0;
-  position: absolute;
-}
-
 .flipBack {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   transform: rotateY(180deg);
 }
 
-.flipImage {
-  display: block;
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
+.flipped .flipFront {
+  transform: rotateY(180deg);
+}
+
+.flipped .flipBack {
+  transform: rotateY(360deg);
 }

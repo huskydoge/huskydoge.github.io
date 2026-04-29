@@ -27,12 +27,8 @@ const FlipAvatar = ({
       title="Flip avatar"
     >
       <span className={style.flipInner}>
-        <span className={style.flipFace}>
-          <img className={style.flipImage} src={frontSrc} alt={alt} />
-        </span>
-        <span className={`${style.flipFace} ${style.flipBack}`} aria-hidden="true">
-          <img className={style.flipImage} src={backSrc} alt="" />
-        </span>
+        <img className={`${style.flipImage} ${style.flipFront}`} src={frontSrc} alt={alt} />
+        <img className={`${style.flipImage} ${style.flipBack}`} src={backSrc} alt="" aria-hidden="true" />
       </span>
     </button>
   );
