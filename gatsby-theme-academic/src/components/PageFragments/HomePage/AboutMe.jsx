@@ -1,7 +1,6 @@
 /** Home page biography section with compact profile links. */
-import React, { useContext } from 'react';
+import React from 'react';
 
-import Context from '../../../utils/context';
 import { useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
 import FlipAvatar from '../../FlipAvatar';
@@ -96,13 +95,11 @@ const AboutProfile = ({ siteMetadata }) => (
 /** Render the markdown introduction and primary profile destinations. */
 const AboutMe = () => {
   const siteMetadata = useSiteMetadata();
-  const context = useContext(Context);
-  const isSingleLayout = context?.state?.pageLayoutMode === 'single';
   const description = siteMetadata.introduction.join('\n\n');
   const markdown = Utils.parseMarkDown(description);
   // console.log(markdown);
   const aboutCopy = (
-    <div className={isSingleLayout ? styles.aboutHeroCopy : undefined}>
+    <div className={styles.aboutHeroCopy}>
       <div className={styles.aboutHeader}>
         <h2>About Me</h2>
         <QuickLinks />
@@ -112,13 +109,11 @@ const AboutMe = () => {
   );
 
   return (
-    <div className={`${styles.homepageSection} ${isSingleLayout ? styles.aboutHeroSection : ''}`}>
-      {isSingleLayout ? (
-        <div className={styles.aboutHeroGrid}>
-          <AboutProfile siteMetadata={siteMetadata} />
-          {aboutCopy}
-        </div>
-      ) : aboutCopy}
+    <div className={`${styles.homepageSection} ${styles.aboutHeroSection}`}>
+      <div className={styles.aboutHeroGrid}>
+        <AboutProfile siteMetadata={siteMetadata} />
+        {aboutCopy}
+      </div>
 
       {/*      <Row gutter={[20, 20]}>
         <Col xs={24} sm={24} md={12} lg={8}>

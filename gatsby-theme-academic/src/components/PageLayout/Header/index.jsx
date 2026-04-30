@@ -12,12 +12,11 @@ import 'katex/dist/katex.min.css';
 import { useLocation } from '@gatsbyjs/reach-router';
 import { Link, withPrefix } from 'gatsby';
 import { startsWith } from 'lodash';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import {
   IconButton, Tooltip, Header, Whisper,
 } from 'rsuite';
 
-import Context from '../../../utils/context';
 import { useWindowSize, useTheme } from '@/utils/hooks';
 import Icon from '../../Icon';
 import LoadableSearch from '../../SearchBar/loadable';
@@ -97,47 +96,6 @@ const NavButton = (props) => {
   );
 };
 
-/** Render icon-only controls for the global profile/content layout. */
-const PageLayoutSwitch = () => {
-  const context = useContext(Context);
-  const layoutMode = context?.state?.pageLayoutMode || 'single';
-
-  const setLayoutMode = (nextLayoutMode) => {
-    if (context?.setState) {
-      context.setState({ pageLayoutMode: nextLayoutMode });
-    }
-  };
-
-  const renderButton = ({ mode, label, icon }) => {
-    const isActive = layoutMode === mode;
-    return (
-      <Whisper
-        placement="bottom"
-        trigger="hover"
-        speaker={<Tooltip>{label}</Tooltip>}
-      >
-        <IconButton
-          aria-label={label}
-          appearance="subtle"
-          className={`${style.layoutIconButton} ${isActive ? style.layoutIconButtonActive : ''}`}
-          icon={<Icon icon={icon} fixedWidth />}
-          size="xs"
-          onClick={() => setLayoutMode(mode)}
-        />
-      </Whisper>
-    );
-  };
-
-  return (
-    <li className={`${style.navItem} ${style.layoutNavItem}`}>
-      <div className={style.layoutIconGroup} aria-label="Page layout mode">
-        {renderButton({ mode: 'single', label: 'Single column', icon: 'bars' })}
-        {renderButton({ mode: 'double', label: 'Double column', icon: 'columns' })}
-      </div>
-    </li>
-  );
-};
-
 /** Render the sticky top navigation bar and mobile menu. */
 export default () => {
   const [menu, setMenu] = useState(false);
@@ -199,7 +157,6 @@ export default () => {
               <NavButton to="/bookshelf/" onClick={toggleMenu} partiallyActive>Bookshelf</NavButton>
               <NavButton to="https://huskydoge.github.io/husky-blog" onClick={toggleMenu} partiallyActive>Blogs</NavButton>
               <NavButton to="/misc/" onClick={toggleMenu} partiallyActive>Misc</NavButton>
-              <PageLayoutSwitch />
               {/* <li className={style.navItem}>
                 <ThemeModeSwitch />
               </li> */}

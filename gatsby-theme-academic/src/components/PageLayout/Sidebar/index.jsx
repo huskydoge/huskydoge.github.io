@@ -1,14 +1,13 @@
 /** Responsive profile sidebar and content wrapper for standard pages. */
 // eslint-disable-next-line import/no-unresolved
 import { useLocation } from '@gatsbyjs/reach-router';
-import React, { useRef, useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import {
   Container, Content, Row, Col, Sidebar, FlexboxGrid, Divider, IconButton,
 } from 'rsuite';
 import Context from '../../../utils/context';
-import { useWindowSize, useSiteMetadata } from '../../../utils/hooks';
+import { useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
-import Affix from '../../Affix';
 import FlipAvatar from '../../FlipAvatar';
 import Icon from '../../Icon';
 import IconListItem from '../../IconListItem';
@@ -146,72 +145,14 @@ const DomContent = (props) => {
 
 /** Lay out sidebar content next to the active page body. */
 const SidebarWrapper = (props) => {
-  const [width] = useWindowSize();
   const { children } = props;
-  const context = useContext(Context);
-  const { pathname } = useLocation();
-  const switchableTopLevelPages = new Set([
-    '/',
-    '/experience/',
-    '/research/',
-    '/project/',
-    '/bookshelf/',
-    '/blogs/',
-    '/misc/',
-  ]);
-  const canSwitchLayout = switchableTopLevelPages.has(pathname);
-  const isHomePage = pathname === '/';
-  const isResearchPage = pathname === '/research/';
-  const layoutMode = context?.state?.pageLayoutMode || 'single';
-  const isSingleColumn = canSwitchLayout && layoutMode === 'single';
-  const isSingleHome = isSingleColumn && isHomePage;
-  const suppressGlobalSidebar = isSingleColumn || isResearchPage;
-  let domContent = <DomContent pathname={pathname} />;
-  if (width >= 992 && !isSingleColumn) {
-    domContent = (
-      <Affix top={100}>
-        <DomContent pathname={pathname} />
-      </Affix>
-    );
-  }
-  if (width < 480) {
-    domContent = <></>;
-    if (pathname === '/') {
-      domContent = <DomContent pathname={pathname} />;
-    }
-  }
   return (
     <>
       <Container className={style.content}>
         <Content className={style.content}>
-          <FlexboxGrid
-            className={isSingleColumn ? style.singleColumnGrid : style.doubleColumnGrid}
-            style={{ marginBottom: '4rem' }}
-          >
-            {!suppressGlobalSidebar ? (
-              <FlexboxGrid.Item
-                as={Col}
-                xs={24}
-                sm={isSingleColumn ? 24 : 7}
-                md={isSingleColumn ? 24 : 7}
-                lg={isSingleColumn ? 24 : 6}
-                className={`${style.sidebarContent} ${isSingleColumn ? style.singleSidebarContent : ''}`}
-              >
-                {domContent}
-              </FlexboxGrid.Item>
-            ) : null}
-            <FlexboxGrid.Item
-              as={Col}
-              xs={24}
-              sm={(isSingleColumn || suppressGlobalSidebar) ? 24 : 17}
-              md={(isSingleColumn || suppressGlobalSidebar) ? 24 : 17}
-              lg={(isSingleColumn || suppressGlobalSidebar) ? 24 : 18}
-            >
-              <Container className={`${style.boxContent} ${(isSingleColumn || suppressGlobalSidebar) ? style.singleBoxContent : ''} borderRadiusSection`}>
-                {children}
-              </Container>
-            </FlexboxGrid.Item>
-          </FlexboxGrid>
+          <Container className={`${style.boxContent} ${style.singleBoxContent} borderRadiusSection`}>
+            {children}
+          </Container>
         </Content>
       </Container>
     </>
