@@ -9,9 +9,19 @@ export const onClientEntry = () => {
     return;
   }
 
+  const reloadAfterCleanup = () => {
+    const cleanupKey = 'local-service-worker-cleaned';
+    if (!navigator.serviceWorker?.controller || window.sessionStorage.getItem(cleanupKey) === 'true') {
+      return;
+    }
+    window.sessionStorage.setItem(cleanupKey, 'true');
+    window.location.reload();
+  };
+
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations()
-      .then((registrations) => registrations.forEach((registration) => registration.unregister()))
+      .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister())))
+      .then(reloadAfterCleanup)
       .catch(() => {});
   }
 
