@@ -106,12 +106,16 @@
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.45rem;
   }
 }
 
 .aboutHeroSection {
   padding-top: clamp(2rem, 4vw, 3.6rem);
+
+  @media screen and (max-width: 767px) {
+    padding-top: 1rem;
+  }
 }
 
 .aboutHeroGrid {
@@ -120,6 +124,10 @@
   display: grid;
   grid-template-columns: minmax(190px, 250px) minmax(0, 1fr);
   row-gap: 2.2rem;
+
+  @media screen and (max-width: 767px) {
+    row-gap: 1.25rem;
+  }
 }
 
 .aboutHeroProfile {
@@ -127,6 +135,10 @@
   font-family: var(--font-sans);
   padding-top: 0.15rem;
   text-align: center;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 0;
+  }
 }
 
 .aboutHeroAvatar {
@@ -134,10 +146,24 @@
   height: clamp(148px, 13vw, 186px);
   margin: 0 auto;
   width: clamp(148px, 13vw, 186px);
+
+  @media screen and (max-width: 767px) {
+    height: 96px;
+    width: 96px;
+  }
+
+  @media screen and (max-width: 340px) {
+    height: 84px;
+    width: 84px;
+  }
 }
 
 .aboutHeroIdentity {
   margin-top: 1rem;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 0.55rem;
+  }
 
   h1 {
     color: var(--app-text-primary);
@@ -147,6 +173,11 @@
     letter-spacing: 0;
     line-height: 1.1;
     margin: 0 0 0.35rem;
+
+    @media screen and (max-width: 767px) {
+      font-size: 1.22rem !important;
+      margin-bottom: 0.15rem;
+    }
   }
 
   p {
@@ -169,6 +200,11 @@
   margin-top: 1.15rem;
   width: 100%;
 
+  @media screen and (max-width: 767px) {
+    gap: 0.35rem;
+    margin-top: 0.55rem;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -185,6 +221,11 @@
   letter-spacing: 0;
   line-height: 1;
   padding: 0.4rem 0.62rem;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.62rem;
+    padding: 0.28rem 0.48rem;
+  }
 }
 
 .aboutHeroSocial {
@@ -197,6 +238,12 @@
   max-width: 214px;
   width: 100%;
 
+  @media screen and (max-width: 767px) {
+    gap: 0.4rem 0.58rem;
+    margin-top: 0.75rem;
+    max-width: 184px;
+  }
+
   a {
     color: var(--app-text-secondary);
     flex: 0 0 2rem;
@@ -204,6 +251,11 @@
     line-height: 1;
     text-align: center;
     transition: color 0.18s ease;
+
+    @media screen and (max-width: 767px) {
+      flex-basis: 1.65rem;
+      font-size: 0.92rem;
+    }
 
     &:hover {
       color: var(--app-text-primary);
@@ -223,6 +275,11 @@
   margin-right: auto;
   margin-top: 1.55rem;
   width: fit-content;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.64rem;
+    margin-top: 0.75rem;
+  }
 }
 
 .aboutHeroCopy {
@@ -246,7 +303,12 @@
     .aboutHeader {
       align-items: flex-start;
       flex-direction: column;
-      gap: 0.8rem;
+      gap: 0.45rem;
+      margin-bottom: 0.72rem;
+    }
+
+    .aboutHeader h2 {
+      font-size: 1.16rem !important;
     }
   }
 
@@ -270,7 +332,10 @@
   justify-content: flex-end;
 
   @media screen and (max-width: 767px) {
+    gap: 0.35rem;
     justify-content: flex-start;
+    margin-left: 0;
+    width: 100%;
   }
 }
 
@@ -300,6 +365,24 @@
     border-color: rgba(44, 93, 116, 0.18);
     color: var(--app-link-strong);
     transform: translateY(-1px);
+  }
+
+  @media screen and (max-width: 767px) {
+    flex: 1 1 0;
+    font-size: 0.68rem;
+    gap: 0.26rem;
+    justify-content: center;
+    max-width: 100%;
+    min-height: 1.75rem;
+    min-width: 0;
+    padding: 0.28rem 0.34rem;
+    text-align: center;
+    white-space: nowrap;
+
+    svg {
+      height: 0.78rem;
+      width: 0.78rem;
+    }
   }
 }
 
@@ -388,6 +471,49 @@
   width: 600px;
 
   @media screen and (max-width: 767px) {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.awardTitleGrid {
+  min-width: 0;
+  width: 100%;
+
+  :global(.rs-flex-box-grid-item) {
+    min-width: 0;
+  }
+}
+
+.awardTitleText {
+  min-width: 0;
+
+  h6 {
+    overflow-wrap: anywhere;
+  }
+}
+
+.awardDate {
+  color: var(--app-text-muted);
+  font-size: 0.9rem;
+  min-width: 0;
+  text-align: right;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.82rem;
+    margin-top: 0.15rem;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .awardTitleGrid {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .awardTitleText,
+  .awardDate {
     min-width: 0;
     width: 100%;
   }
@@ -699,8 +825,8 @@
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 0.88rem;
-    line-height: 1.5;
+    font-size: 0.78rem;
+    line-height: 1.45;
     margin-left: 0.2rem;
   }
 }
@@ -774,6 +900,11 @@
   font-family: var(--font-sans);
   font-size: 1.04rem;
   line-height: 1.78;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.875rem;
+    line-height: 1.58;
+  }
 }
 
 .homepageSection :global(.markdown-body) * {
@@ -783,6 +914,10 @@
 .homepageSection :global(.markdown-body) p {
   color: var(--app-text-secondary);
   margin-bottom: 1em;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 0.68rem;
+  }
 }
 
 .homepageSection :global(.markdown-body) strong {
@@ -804,9 +939,18 @@
 .homepageSection :global(.markdown-body) ul,
 .homepageSection :global(.markdown-body) ol {
   padding-left: 1.5em;
+
+  @media screen and (max-width: 767px) {
+    padding-left: 1.2em;
+  }
 }
 
 .homepageSection :global(.markdown-body) li {
   line-height: 1.8;
   margin-bottom: 0.5em;
+
+  @media screen and (max-width: 767px) {
+    line-height: 1.46;
+    margin-bottom: 0.28rem;
+  }
 }

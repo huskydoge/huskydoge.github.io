@@ -34,10 +34,12 @@
     top: 0.5rem;
     right: 0.5rem;
     width: 3rem;
-    z-index: 1101;
+    z-index: 1401;
     @media only screen and (max-width: 768px){
         pointer-events: all;
         visibility: visible;
+        height: 2.75rem;
+        width: 2.75rem;
     }
     .hamburger {
         cursor: pointer;
@@ -178,9 +180,17 @@
     letter-spacing: 0;
 }
 
+.searchNavItem {
+    margin-left: 1rem;
+}
+
 @media screen and (max-width: 767px) {
     .brandText {
         display: none;
+    }
+
+    .searchNavItem {
+        margin-left: 0.35rem;
     }
 }
 
@@ -265,6 +275,18 @@
 
 /** mobile header code */
 .openMenu{
+    @media screen and (max-width: 767px) {
+        background: #ffffff;
+        border-bottom: 0;
+        display: block;
+        height: 100dvh;
+        inset: 0;
+        overflow-y: auto;
+        position: fixed;
+        width: 100vw;
+        z-index: 1300;
+    }
+
     ul{
         display: block;
         margin: 0;
@@ -277,6 +299,27 @@
         li{
             margin-bottom: 1rem;
             text-align: center;
+        }
+
+        @media screen and (max-width: 767px) {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            height: auto;
+            left: auto;
+            margin: 0;
+            max-width: min(19rem, calc(100vw - 3rem));
+            padding: 0;
+            position: static;
+            top: auto;
+            transform: none;
+            width: 100%;
+
+            li {
+                margin: 0;
+                width: 100%;
+            }
         }
     }
     .nav{
@@ -297,10 +340,38 @@
                 color: var(--app-text-primary);
             }
         }
+
+        @media screen and (max-width: 767px) {
+            background: transparent;
+            flex-wrap: nowrap;
+            gap: 0.45rem;
+            height: auto;
+            margin-left: 0;
+
+            .navItem {
+                margin-right: 0;
+            }
+
+            .searchNavItem {
+                display: none;
+            }
+
+            .navItem a,
+            .navItem :global(.rs-btn) {
+                align-items: center;
+                border: 1px solid transparent;
+                display: flex;
+                font-size: 1.1rem;
+                justify-content: center;
+                min-height: 2.75rem;
+                padding: 0.55rem 0.8rem;
+                width: 100%;
+            }
+        }
     }
     .backgroundDiv{
         position: fixed;
-        background-color: rgba(255, 255, 255, 0.98);
+        background-color: #ffffff;
         width: 100%;
         height: 100%;
         z-index: 100;
@@ -309,6 +380,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @media screen and (max-width: 767px) {
+            background: transparent;
+            box-sizing: border-box;
+            flex-direction: column;
+            gap: 1.4rem;
+            height: auto;
+            inset: auto;
+            min-height: 100dvh;
+            padding: 5rem 1.5rem 4rem;
+            position: static;
+            width: 100%;
+        }
     }
 
     .brandLink {

@@ -1,4 +1,5 @@
-import { Col, Row, FlexboxGrid, Button } from 'rsuite';
+/** Home page awards timeline with mobile-safe title rows. */
+import { Col, Row, FlexboxGrid } from 'rsuite';
 import React, { useState } from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
 
@@ -7,14 +8,15 @@ import Icon from '../../Icon';
 
 import * as styles from './homePage.module.less';
 
-const AwardItem = (data) => {
+/** Render one award entry with a wrapping title and date. */
+const AwardItem = ({ title: awardTitle, date, iconSize, icon }) => {
   const title = (
-    <FlexboxGrid justify="space-between">
-      <FlexboxGrid.Item as={Col} md={12} lg={15}>
-        <h6>{data.title}</h6>
+    <FlexboxGrid className={styles.awardTitleGrid} justify="space-between">
+      <FlexboxGrid.Item className={styles.awardTitleText} as={Col} xs={24} sm={17} md={16} lg={17}>
+        <h6>{awardTitle}</h6>
       </FlexboxGrid.Item>
-      <FlexboxGrid.Item as={Col} md={12} lg={9} style={{ fontSize: '12pt' }}>
-        {data.date}
+      <FlexboxGrid.Item className={styles.awardDate} as={Col} xs={24} sm={7} md={8} lg={7}>
+        {date}
       </FlexboxGrid.Item>
     </FlexboxGrid>
   );
@@ -26,7 +28,7 @@ const AwardItem = (data) => {
         paddingTop: '0.3rem',
         color: 'var(--app-text-secondary)',
       }}
-      icon={<Icon size={data.iconSize || 'lg'} fixedWidth icon={data.icon || 'award'} />}
+      icon={<Icon size={iconSize || 'lg'} fixedWidth icon={icon || 'award'} />}
       iconStyle={{ cursor: 'default', background: 'rgba(232, 166, 139, 0.18)', borderRadius: 'var(--app-radius-sm)' }}
       iconColor="#d68d6b"
       // bubbleStyle={{ background: 'none', border: '0' }}
@@ -34,6 +36,10 @@ const AwardItem = (data) => {
   );
 };
 
+/** Build a stable key for awards that do not carry an explicit id. */
+const getAwardKey = award => `${award.date || 'undated'}-${award.title}`;
+
+/** Render visible awards and the optional collapsed older-awards group. */
 const Awards = () => {
   const siteMetadata = useSiteMetadata();
   const [showHidden, setShowHidden] = useState(false);
@@ -54,7 +60,9 @@ const Awards = () => {
 
           
           <Timeline lineStyle={{ display: 'none' }} style={{ width: '100%', marginBottom: '0rem', paddingBottom: '0rem' }}>
-            {visibleAwards.map(AwardItem)}
+            {visibleAwards.map(award => (
+              <AwardItem key={getAwardKey(award)} {...award} />
+            ))}
           </Timeline>
           
           {/* Toggle button for hidden awards */}
@@ -84,7 +92,9 @@ const Awards = () => {
               }}
             >
               <Timeline lineStyle={{ display: 'none' }} style={{ width: '100%' }}>
-                {hiddenAwards.map(AwardItem)}
+                {hiddenAwards.map(award => (
+                  <AwardItem key={getAwardKey(award)} {...award} />
+                ))}
               </Timeline>
             </div>
           )}

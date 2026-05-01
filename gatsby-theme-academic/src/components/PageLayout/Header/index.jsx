@@ -160,7 +160,7 @@ export default () => {
               {/* <li className={style.navItem}>
                 <ThemeModeSwitch />
               </li> */}
-              <li className={style.navItem} style={{ marginLeft: '1rem' }}>
+              <li className={`${style.navItem} ${style.searchNavItem}`}>
                 <LoadableSearch
                   isSearchBarExpanded={isSearchBarExpanded}
                   handleSearchBarToggle={collapseSearch}
