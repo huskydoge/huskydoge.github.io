@@ -6,7 +6,7 @@ tags:
   - "Equivariant Models"
   - "Long-term Consistency"
 highlight: true
-venue: "[NeurReps Workshop](https://www.neurreps.org/), [SpaVLE Workshop](https://space-in-vision-language-embodied-ai.github.io/) @ NeurIPS 2025"
+venue: "ICML 2026; [NeurReps Workshop](https://www.neurreps.org/), [SpaVLE Workshop](https://space-in-vision-language-embodied-ai.github.io/) @ NeurIPS 2025"
 authors:
   - name: "Hansen Lillemark*"
     url: "https://hlillemark.github.io/"
@@ -31,5 +31,3 @@ links:
     url: "https://flowequivariantworldmodels.github.io/"
 priority: 0
 ---
-
-
