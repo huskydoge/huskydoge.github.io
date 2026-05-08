@@ -1,3 +1,4 @@
+/** Site metadata and content configuration for the Gatsby example site. */
 module.exports = {
   // pathPrefix: "/gatsby-theme-academic",
   siteUrl: "https://huskydoge.github.io",
@@ -70,6 +71,11 @@ module.exports = {
     {
       url: "mailto:huskydogewoof@gmail.com",
       icon: ["fas", "envelope"],
+    },
+    {
+      label: "WeChat",
+      icon: ["fab", "weixin"],
+      qrImage: "/qr-code.png",
     },
     {
       url: "https://www.xiaohongshu.com/user/profile/614a97f000000000020250c8",
@@ -189,25 +195,30 @@ module.exports = {
   ],
   awards: [
     {
+      date: "2025",
+      title: "Outstanding Graduate of Shanghai Jiao Tong University",
+      show: false,
+    },
+    {
       date: "2024",
       title: "National Scholarship",
       show: true,
     },
     {
       date: "2023",
-      title: "Rui Yuan Hong Shan Scholarship (Top 2%, SJTU)",
+      title: "Rui Yuan Hong Shan Scholarship, Shanghai Jiao Tong University (RMB 20,000)",
       show: false,
     },
     {
       date: "2022",
-      title: "Shao Qiu Scholarship (Top 4%, SJTU)",
+      title: "Shao Qiu Scholarship, Shanghai Jiao Tong University (RMB 10,000)",
       show: false,
     },
-    {
-      date: "2022",
-      title: "Meritorious Winner of MCM/ICM",
-      show: false,
-    },
+    // {
+    //   date: "2022",
+    //   title: "Meritorious Winner of MCM/ICM",
+    //   show: false,
+    // },
   ],
   tagColors: [
     "magenta",

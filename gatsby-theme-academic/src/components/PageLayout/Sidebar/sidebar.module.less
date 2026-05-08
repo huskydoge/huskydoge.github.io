@@ -2,34 +2,33 @@
 @import (reference) '../../../styles/index.less';
 
 .iconButton {
-  min-height: 38px;
-  min-width: 38px;
-  padding-left: 4px !important;
-  padding-right: 4px !important;
-  border-radius: var(--app-radius) !important;
-  border: none;
+  align-items: center;
   background: transparent !important;
-  transition: all 0.2s ease;
-
-  a {
-    color: var(--app-text-secondary);
-    font-size: 1.08rem;
-    transition: color 0.2s ease;
-    font-family: var(--font-sans);
-  }
+  border: none;
+  border-radius: 50% !important;
+  color: var(--app-text-secondary);
+  display: inline-flex;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  height: 1.7rem;
+  justify-content: center;
+  min-height: 0;
+  min-width: 0;
+  padding: 0 !important;
+  transition: color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
+  width: 1.7rem;
 
   &:hover {
     background: transparent !important;
     box-shadow: none;
-
-    a {
-      color: var(--app-text-primary);
-    }
+    color: var(--app-text-primary);
+    opacity: 0.92;
+    transform: translateY(-1px);
   }
 }
 
 .iconButtonCol {
-  padding: 2px !important;
+  padding: 0 !important;
 }
 
 .content {
@@ -223,22 +222,22 @@
 }
 
 .socialIcons {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
   justify-content: center;
-  align-items: center;
-  gap: 0.45rem 0.62rem;
   margin: 0.5rem auto 0;
-  width: 100%;
-  max-width: 228px;
+  max-width: 100%;
+  width: calc(5 * 1.7rem + 4 * 0.5rem);
 }
 
 .socialIcons :global(.rs-flex-box-grid-item) {
-  padding: 0 !important;
   display: flex;
+  flex: 0 0 1.7rem;
   justify-content: center;
-  flex: 0 0 38px;
-  max-width: 38px;
+  max-width: 1.7rem;
+  padding: 0 !important;
 }
 
 .contactDetails {
@@ -328,8 +327,19 @@
   }
 
   .socialIcons {
-    gap: 0.25rem 0.4rem;
-    max-width: 220px;
+    gap: 0.32rem 0.42rem;
+    width: calc(5 * 1.55rem + 4 * 0.42rem);
+  }
+
+  .iconButton {
+    font-size: 0.86rem;
+    height: 1.55rem;
+    width: 1.55rem;
+  }
+
+  .socialIcons :global(.rs-flex-box-grid-item) {
+    flex-basis: 1.55rem;
+    max-width: 1.55rem;
   }
 
   .contactDetails {

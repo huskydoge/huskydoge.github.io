@@ -232,34 +232,44 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.72rem 0.92rem;
+  gap: 0.46rem 0.52rem;
   justify-content: center;
-  margin: 1.35rem auto 0;
-  max-width: 214px;
-  width: 100%;
+  margin: 1.08rem auto 0;
+  max-width: 100%;
+  width: calc(5 * 1.55rem + 4 * 0.52rem);
 
   @media screen and (max-width: 767px) {
-    gap: 0.4rem 0.58rem;
-    margin-top: 0.75rem;
-    max-width: 184px;
+    gap: 0.38rem 0.46rem;
+    margin-top: 0.68rem;
+    width: calc(5 * 1.42rem + 4 * 0.46rem);
+  }
+}
+
+.aboutHeroSocialAction {
+  align-items: center;
+  border-radius: 50%;
+  color: var(--app-text-secondary);
+  display: inline-flex;
+  flex: 0 0 1.55rem;
+  font-size: 0.92rem;
+  height: 1.55rem;
+  justify-content: center;
+  line-height: 1;
+  text-align: center;
+  transition: color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
+  width: 1.55rem;
+
+  @media screen and (max-width: 767px) {
+    flex-basis: 1.42rem;
+    font-size: 0.86rem;
+    height: 1.42rem;
+    width: 1.42rem;
   }
 
-  a {
-    color: var(--app-text-secondary);
-    flex: 0 0 2rem;
-    font-size: 1.08rem;
-    line-height: 1;
-    text-align: center;
-    transition: color 0.18s ease;
-
-    @media screen and (max-width: 767px) {
-      flex-basis: 1.65rem;
-      font-size: 0.92rem;
-    }
-
-    &:hover {
-      color: var(--app-text-primary);
-    }
+  &:hover {
+    color: var(--app-text-primary);
+    opacity: 0.92;
+    transform: translateY(-1px);
   }
 }
 

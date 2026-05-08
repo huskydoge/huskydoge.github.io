@@ -5,6 +5,8 @@ import { useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
 import FlipAvatar from '../../FlipAvatar';
 import Icon from '../../Icon';
+import SocialIconLink from '../../SocialIconLink';
+
 import * as styles from './homePage.module.less';
 
 /** Render the small action links that sit beside the About heading. */
@@ -50,7 +52,11 @@ const AboutProfile = ({ siteMetadata }) => (
     <FlipAvatar
       className={styles.aboutHeroAvatar}
       frontSrc={Utils.generateFullUrl(siteMetadata, siteMetadata.avatar)}
-      backSrc={siteMetadata.avatarBack ? Utils.generateFullUrl(siteMetadata, siteMetadata.avatarBack) : null}
+      backSrc={
+        siteMetadata.avatarBack
+          ? Utils.generateFullUrl(siteMetadata, siteMetadata.avatarBack)
+          : null
+      }
       alt={siteMetadata.authorAlternative || siteMetadata.author}
     />
     <div className={styles.aboutHeroIdentity}>
@@ -71,16 +77,12 @@ const AboutProfile = ({ siteMetadata }) => (
       })}
     </div>
     <div className={styles.aboutHeroSocial}>
-      {siteMetadata.social.map((social, index) => (
-        <a
-          key={`${social.url}-${index}`}
-          href={social.url}
-          target={social.url.startsWith('mailto:') ? undefined : '_blank'}
-          rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-          aria-label={social.url}
-        >
-          <Icon fixedWidth icon={social.icon} />
-        </a>
+      {siteMetadata.social.map((social) => (
+        <SocialIconLink
+          key={social.label || social.url || social.qrImage}
+          social={social}
+          className={styles.aboutHeroSocialAction}
+        />
       ))}
     </div>
     {siteMetadata.location ? (

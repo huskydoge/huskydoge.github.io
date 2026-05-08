@@ -577,8 +577,10 @@ exports.createSchemaCustomization = async (
       posts: Boolean
     }
     type SiteSiteMetadataSocial @dontInfer {
+      label: String
       url: String
       icon: [String] @fontAwesomeIcon
+      qrImage: String
     }
     type SiteSiteMetadataInterests @dontInfer {
       icon: [String] @fontAwesomeIcon

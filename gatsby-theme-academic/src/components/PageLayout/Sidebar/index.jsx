@@ -1,16 +1,17 @@
 /** Responsive profile sidebar and content wrapper for standard pages. */
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 import { useLocation } from '@gatsbyjs/reach-router';
 import React, { useContext, useRef } from 'react';
 import {
-  Container, Content, Row, Col, Sidebar, FlexboxGrid, Divider, IconButton,
+  Container, Content, Row, Col, Sidebar, FlexboxGrid, Divider,
 } from 'rsuite';
+
 import Context from '../../../utils/context';
 import { useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
 import FlipAvatar from '../../FlipAvatar';
-import Icon from '../../Icon';
 import IconListItem from '../../IconListItem';
+import SocialIconLink from '../../SocialIconLink';
 import LoadableTableOfContents from '../../TableOfContents/loadable';
 
 import * as style from './sidebar.module.less';
@@ -34,53 +35,47 @@ const UserInfo = () => {
   return (
     <>
       <div className={`${style.name} centerAlign`}>
-      <Row type="flex" className={style.badgeContainer}>
-        {siteMetadata.professions.map((profession) => {
-          const name = typeof profession === 'string' ? profession : profession.name;
-          const url = typeof profession === 'string' ? null : profession.url;
-          
-          const BadgeContent = (
-            <span className={`${style.badge} ${style.badgeGray}`}>
-              {name}
-            </span>
-          );
+        <Row type="flex" className={style.badgeContainer}>
+          {siteMetadata.professions.map((profession) => {
+            const name = typeof profession === 'string' ? profession : profession.name;
+            const url = typeof profession === 'string' ? null : profession.url;
 
-          return (
-            <div key={name}>
-              {url ? (
-                <a
-                  href={url}
-                  className={style.badgeLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {BadgeContent}
-                </a>
-              ) : (
-                BadgeContent
-              )}
-            </div>
-          );
-        })}
-      </Row>
+            const BadgeContent = (
+              <span className={`${style.badge} ${style.badgeGray}`}>
+                {name}
+              </span>
+            );
+
+            return (
+              <div key={name}>
+                {url ? (
+                  <a
+                    href={url}
+                    className={style.badgeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {BadgeContent}
+                  </a>
+                ) : (
+                  BadgeContent
+                )}
+              </div>
+            );
+          })}
+        </Row>
         <div className="centerAlign box" style={{ marginTop: '0.5rem' }}>
           <FlexboxGrid className={style.socialIcons}>
             {siteMetadata.social.map((social) => (
-              <FlexboxGrid.Item as={Col} key={social.url} className={style.iconButtonCol}>
-                <IconButton
+              <FlexboxGrid.Item
+                as={Col}
+                key={social.label || social.url || social.qrImage}
+                className={style.iconButtonCol}
+              >
+                <SocialIconLink
+                  social={social}
+                  iconSize="lg"
                   className={style.iconButton}
-                  size="sm"
-                  appearance="subtle"
-                  icon={(
-                    <a
-                      href={social.url}
-                      target="_blank"
-                      label="button"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon size="lg" fixedWidth icon={social.icon} />
-                    </a>
-                  )}
                 />
               </FlexboxGrid.Item>
             ))}
@@ -118,7 +113,11 @@ const DomContent = (props) => {
         <FlipAvatar
           className={`${style.profileAvatar} centerAlign`}
           frontSrc={Utils.generateFullUrl(siteMetadata, siteMetadata.avatar)}
-          backSrc={siteMetadata.avatarBack ? Utils.generateFullUrl(siteMetadata, siteMetadata.avatarBack) : null}
+          backSrc={
+            siteMetadata.avatarBack
+              ? Utils.generateFullUrl(siteMetadata, siteMetadata.avatarBack)
+              : null
+          }
           alt={siteMetadata.authorAlternative || siteMetadata.author}
         />
         <div className={`${style.name} ${style.boxName} centerAlign`}>

@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+/** Shared React hooks for theme, viewport, and site metadata access. */
 import { graphql, useStaticQuery } from 'gatsby';
 import { useState, useEffect } from 'react';
 
@@ -46,6 +47,7 @@ export const useWindowSize = () => {
   return size;
 };
 
+/** Return the complete site metadata queried from Gatsby config. */
 export const useSiteMetadata = () => {
   const data = useStaticQuery(graphql`
     {
@@ -71,8 +73,10 @@ export const useSiteMetadata = () => {
           email
           postsForArchivePage
           social {
+            label
             url
             icon
+            qrImage
           }
           disqusScript
           contactFormUrl
