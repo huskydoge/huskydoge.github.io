@@ -112,12 +112,7 @@ const DomContent = (props) => {
       <div ref={mainSidebar}>
         <FlipAvatar
           className={`${style.profileAvatar} centerAlign`}
-          frontSrc={Utils.generateFullUrl(siteMetadata, siteMetadata.avatar)}
-          backSrc={
-            siteMetadata.avatarBack
-              ? Utils.generateFullUrl(siteMetadata, siteMetadata.avatarBack)
-              : null
-          }
+          imageSrcs={Utils.getAvatarImageUrls(siteMetadata)}
           alt={siteMetadata.authorAlternative || siteMetadata.author}
         />
         <div className={`${style.name} ${style.boxName} centerAlign`}>

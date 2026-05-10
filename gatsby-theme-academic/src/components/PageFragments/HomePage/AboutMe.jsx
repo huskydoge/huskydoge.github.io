@@ -51,12 +51,7 @@ const AboutProfile = ({ siteMetadata }) => (
   <aside className={styles.aboutHeroProfile} aria-label="Profile">
     <FlipAvatar
       className={styles.aboutHeroAvatar}
-      frontSrc={Utils.generateFullUrl(siteMetadata, siteMetadata.avatar)}
-      backSrc={
-        siteMetadata.avatarBack
-          ? Utils.generateFullUrl(siteMetadata, siteMetadata.avatarBack)
-          : null
-      }
+      imageSrcs={Utils.getAvatarImageUrls(siteMetadata)}
       alt={siteMetadata.authorAlternative || siteMetadata.author}
     />
     <div className={styles.aboutHeroIdentity}>

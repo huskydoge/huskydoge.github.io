@@ -1,4 +1,4 @@
-/* Clickable avatar flip treatment shared by profile surfaces. */
+/* Clickable avatar carousel treatment shared by profile surfaces. */
 
 .flipAvatar {
   -webkit-appearance: none;
@@ -29,29 +29,22 @@
 }
 
 .flipImage {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  bottom: 0;
   display: block;
   height: 100%;
-  object-fit: cover;
-  transform-style: preserve-3d;
-  transition: transform 0.48s ease;
-  width: 100%;
-}
-
-.flipBack {
-  bottom: 0;
   left: 0;
+  object-fit: contain;
+  opacity: 0;
   position: absolute;
   right: 0;
   top: 0;
-  transform: rotateY(180deg);
+  transform: scale(0.98) rotateY(8deg);
+  transition: opacity 0.24s ease, transform 0.36s ease;
+  width: 100%;
 }
 
-.flipped .flipFront {
-  transform: rotateY(180deg);
-}
-
-.flipped .flipBack {
-  transform: rotateY(360deg);
+.activeImage {
+  opacity: 1;
+  transform: scale(1) rotateY(0deg);
+  z-index: 1;
 }

@@ -253,6 +253,8 @@ module.exports = ({
       authorAlternative: '',
       introduction: [],
       avatar: '',
+      avatarBack: '',
+      avatarImages: [],
       professions: [],
       tocMaxDepth: 2,
       excerptMaxLength: 100,

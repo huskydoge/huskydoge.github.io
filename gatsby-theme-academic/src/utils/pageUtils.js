@@ -52,6 +52,21 @@ const Utils = {
   },
 
   /**
+   * Resolve the configured avatar carousel sources into full URLs.
+   * @param {Object} siteMetaData Site metadata from Gatsby config.
+   * @return {Array<string>} Ordered avatar image URLs.
+   */
+  getAvatarImageUrls: (siteMetaData) => {
+    const configuredAvatars = Array.isArray(siteMetaData.avatarImages) && siteMetaData.avatarImages.length
+      ? siteMetaData.avatarImages
+      : [siteMetaData.avatar, siteMetaData.avatarBack];
+
+    return configuredAvatars
+      .filter(Boolean)
+      .map((avatarSrc) => Utils.generateFullUrl(siteMetaData, avatarSrc));
+  },
+
+  /**
    * Join provided url paths.
    * @param {...string} paths Provided paths. It doesn't matter if they have trailing slash.
    * @return {string} Resolved url without trailing slash.

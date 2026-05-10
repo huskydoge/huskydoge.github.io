@@ -13,6 +13,7 @@ module.exports = {
   ],
   avatar: "/avatar.png",
   avatarBack: "/avatar-back.jpeg",
+  avatarImages: ["/avatar.png", "/avatar-back.jpeg", "/selfie.jpg"],
   professions: [
     {
       name: "Locus",
