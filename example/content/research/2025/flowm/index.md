@@ -29,5 +29,11 @@ links:
     url: "https://github.com/hlillemark/flowm"
   - name: "website"
     url: "https://flowequivariantworldmodels.github.io/"
+  - name: "twitter"
+    url: "https://x.com/hansenlillemark/status/2011835901408919897?s=20"
 priority: 0
 ---
+
+<blockquote className="twitter-tweet">
+  <a href="https://twitter.com/huskydogewoof/status/2050076231299649879">View this post on X</a>
+</blockquote>

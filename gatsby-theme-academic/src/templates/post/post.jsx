@@ -1,9 +1,12 @@
+/* global document */
 import { useLocation } from '@gatsbyjs/reach-router';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import moment from 'moment';
-import React, { useState, useEffect, useContext } from 'react';
+import React, {
+  useState, useEffect, useContext, useRef,
+} from 'react';
 import {
   Panel, Row, Col, Input, Message, FlexboxGrid,
 } from 'rsuite';
@@ -19,6 +22,8 @@ import Utils from '../../utils/pageUtils';
 import './highlight-syntax.less';
 
 // import * as style from './post.module.less';
+
+const TWITTER_WIDGET_SRC = 'https://platform.twitter.com/widgets.js';
 
 const Post = ({ data }) => {
   // console.log(data.mdx.tableOfContents);
@@ -60,6 +65,7 @@ const Post = ({ data }) => {
     failed: false,
     html,
   });
+  const articleRef = useRef(null);
 
   // encrypted post
 
@@ -104,6 +110,45 @@ const Post = ({ data }) => {
       context.setState({ tableOfContents, pathname: location.pathname });
     }
   }, []);
+
+  // Upgrade MDX tweet blockquotes into embedded Twitter widgets after browser render.
+  useEffect(() => {
+    const article = articleRef.current;
+    if (state.locked || !article || !article.querySelector('.twitter-tweet')) {
+      return undefined;
+    }
+
+    let mounted = true;
+    const renderTweets = () => {
+      if (mounted && window.twttr && window.twttr.widgets) {
+        window.twttr.widgets.load(article);
+      }
+    };
+
+    const existingScript = document.querySelector(
+      `script[src="${TWITTER_WIDGET_SRC}"]`,
+    );
+    if (existingScript) {
+      existingScript.addEventListener('load', renderTweets, { once: true });
+      renderTweets();
+      return () => {
+        mounted = false;
+        existingScript.removeEventListener('load', renderTweets);
+      };
+    }
+
+    const script = document.createElement('script');
+    script.src = TWITTER_WIDGET_SRC;
+    script.async = true;
+    script.charset = 'utf-8';
+    script.onload = renderTweets;
+    document.body.appendChild(script);
+
+    return () => {
+      mounted = false;
+      script.onload = null;
+    };
+  }, [state.html, state.locked]);
 
   return (
     <>
@@ -189,7 +234,7 @@ const Post = ({ data }) => {
             </Panel>
           )
           : (
-            <article className="markdown-body">
+            <article className="markdown-body" ref={articleRef}>
               <MDXRenderer>{state.html}</MDXRenderer>
             </article>
           )}

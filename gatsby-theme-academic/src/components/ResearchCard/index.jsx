@@ -93,12 +93,18 @@ const ResearchCard = (props) => {
       if (lowerName.includes('github')) {
         iconElement = <Icon icon={['fab', 'github']} fixedWidth style={{ marginRight: '0.25rem' }} />;
         displayName = link.name.trim();
+      } else if (lowerName.includes('twitter') || lowerName === 'x' || lowerName.includes('x post')) {
+        iconElement = <Icon icon={['fab', 'twitter']} fixedWidth style={{ marginRight: '0.25rem' }} />;
+        displayName = link.name.trim();
       } else if (lowerName === 'hugging face' || lowerName === 'huggingface' || lowerName === 'hf') {
         // Use a custom emoji or symbol for Hugging Face since FontAwesome doesn't have it
         iconElement = <span style={{ marginRight: '0.25rem', fontSize: '0.9em' }}>🤗</span>;
         displayName = link.name.trim();
-      } else if (lowerName === 'arxiv' || lowerName.includes('paper')) {
+      } else if (lowerName === 'arxiv' || lowerName.includes('paper') || lowerName.includes('report')) {
         iconElement = <Icon icon={['fas', 'file-alt']} fixedWidth style={{ marginRight: '0.25rem' }} />;
+        displayName = link.name.trim();
+      } else if (lowerName.includes('blog')) {
+        iconElement = <Icon icon={['fas', 'rss']} fixedWidth style={{ marginRight: '0.25rem' }} />;
         displayName = link.name.trim();
       } else if (lowerName.includes('code') || lowerName.includes('source')) {
         iconElement = <Icon icon={['fas', 'code']} fixedWidth style={{ marginRight: '0.25rem' }} />;
