@@ -47,6 +47,10 @@ const ResearchCard = (props) => {
   // Check if cover has childImageSharp (processed images) or publicURL (GIFs and other non-processed files)
   const publicURL = cover && cover.publicURL ? cover.publicURL : null;
   const isGif = publicURL && publicURL.toLowerCase().endsWith('.gif');
+  const imageMdColumns = isGif ? 12 : 9;
+  const imageLgColumns = isGif ? 12 : 8;
+  const contentMdColumns = compact ? 24 : 24 - imageMdColumns;
+  const contentLgColumns = compact ? 24 : 24 - imageLgColumns;
   // For GIFs, always use publicURL to preserve animation
   // For other images, use childImageSharp if available
   const hasImageSharp = cover && cover.childImageSharp && !isGif;
@@ -179,11 +183,11 @@ const ResearchCard = (props) => {
       className={style.imageColumn}
       xs={24}
       sm={24}
-      md={9}
-      lg={8}
+      md={imageMdColumns}
+      lg={imageLgColumns}
     >
       <div
-        className={style.imageWrapper}
+        className={classnames(style.imageWrapper, { [style.animatedPreview]: isGif })}
         onClick={() => setImageModalOpen(true)}
         onKeyPress={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
@@ -223,7 +227,7 @@ const ResearchCard = (props) => {
 
   // Content section
   const contentSection = (
-    <FlexboxGrid.Item as={Col} xs={24} sm={24} md={compact ? 24 : 15} lg={compact ? 24 : 16}>
+    <FlexboxGrid.Item as={Col} xs={24} sm={24} md={contentMdColumns} lg={contentLgColumns}>
       <h5><a href={Utils.generateFullUrl(siteMetadata, url)}>{title}</a></h5>
       <FlexboxGrid className={style.authorsRow}>
         {authors ? authors.map(generateAuthor) : null}

@@ -104,6 +104,16 @@
             animation-play-state: running;
         }
 
+        &.animatedPreview {
+            max-height: 24em;
+
+            :global(.gatsby-image-wrapper),
+            img {
+                max-height: 24em;
+                object-fit: contain;
+            }
+        }
+
         // Mobile: keep preview media compact after the metadata links.
         @media screen and (max-width: 767px) {
             max-height: 140px;
@@ -111,6 +121,14 @@
             img, :global(.gatsby-image-wrapper) {
                 max-height: 140px;
                 object-fit: contain;
+            }
+
+            &.animatedPreview {
+                max-height: 14em;
+
+                img, :global(.gatsby-image-wrapper) {
+                    max-height: 14em;
+                }
             }
         }
     }
