@@ -105,11 +105,12 @@
         }
 
         &.animatedPreview {
-            max-height: 24em;
+            // GIF previews carry the paper's main visual, so keep them prominent on research cards.
+            max-height: 34em;
 
             :global(.gatsby-image-wrapper),
             img {
-                max-height: 24em;
+                max-height: 34em;
                 object-fit: contain;
             }
         }
@@ -124,10 +125,10 @@
             }
 
             &.animatedPreview {
-                max-height: 14em;
+                max-height: 18em;
 
                 img, :global(.gatsby-image-wrapper) {
-                    max-height: 14em;
+                    max-height: 18em;
                 }
             }
         }

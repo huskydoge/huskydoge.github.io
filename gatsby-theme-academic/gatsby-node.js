@@ -635,6 +635,12 @@ exports.createSchemaCustomization = async (
         type: 'String',
         resolve: (source) => source.excerpt || '',
       },
+      cover: {
+        type: 'File',
+        extensions: {
+          fileByRelativePath: {},
+        },
+      },
       venue: {
         type: 'String',
         resolve: (source) => source.venue || '',

@@ -141,6 +141,11 @@ module.exports = {
           description: "Studying scalable equilibrium models.",
         },
         {
+          date: "May 2026 - Aug. 2026",
+          title: "[Institute of Foundation Models](https://www.linkedin.com/showcase/institute-of-foundation-models/posts/?feedView=all)",
+          description: "Research internship on **Loop Models on Scale**.",
+        },
+        {
           date: "Mar. 2025 - Aug. 2025",
           title: "[VCG Group](https://vcg.seas.harvard.edu/), Harvard",
           location: "Cambridge, MA, USA",
