@@ -47,8 +47,8 @@ const ResearchCard = (props) => {
   // Check if cover has childImageSharp (processed images) or publicURL (GIFs and other non-processed files)
   const publicURL = cover && cover.publicURL ? cover.publicURL : null;
   const isGif = publicURL && publicURL.toLowerCase().endsWith('.gif');
-  const imageMdColumns = isGif ? 14 : 9;
-  const imageLgColumns = isGif ? 14 : 8;
+  const imageMdColumns = isGif ? 10 : 9;
+  const imageLgColumns = isGif ? 8 : 8;
   const contentMdColumns = compact ? 24 : 24 - imageMdColumns;
   const contentLgColumns = compact ? 24 : 24 - imageLgColumns;
   // For GIFs, always use publicURL to preserve animation

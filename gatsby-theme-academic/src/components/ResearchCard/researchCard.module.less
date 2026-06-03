@@ -105,12 +105,12 @@
         }
 
         &.animatedPreview {
-            // GIF previews carry the paper's main visual, so keep them prominent on research cards.
-            max-height: 34em;
+            // GIF previews carry motion, but should not dominate the publication row.
+            max-height: 18em;
 
             :global(.gatsby-image-wrapper),
             img {
-                max-height: 34em;
+                max-height: 18em;
                 object-fit: contain;
             }
         }
@@ -125,10 +125,10 @@
             }
 
             &.animatedPreview {
-                max-height: 18em;
+                max-height: 13em;
 
                 img, :global(.gatsby-image-wrapper) {
-                    max-height: 18em;
+                    max-height: 13em;
                 }
             }
         }

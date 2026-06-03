@@ -24,9 +24,15 @@ links:
     url: "https://github.com/locuslab/eqr"
   - name: "X thread"
     url: "https://x.com/i/status/2057641657580064941"
+  - name: "X thread 2"
+    url: "https://x.com/huskydogewoof/status/2058320088475037801?s=20"
 priority: -2
 ---
 
 <blockquote className="twitter-tweet">
   <a href="https://x.com/i/status/2057641657580064941">View this thread on X</a>
+</blockquote>
+
+<blockquote className="twitter-tweet">
+  <a href="https://x.com/huskydogewoof/status/2058320088475037801?s=20">View thread 2 on X</a>
 </blockquote>

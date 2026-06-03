@@ -882,6 +882,171 @@
   text-decoration: underline;
 }
 
+/* Short-form notes keep informal writing separate from formal news. */
+.insightToolbar {
+  align-items: center;
+  display: flex;
+  gap: 0.7rem;
+  justify-content: flex-start;
+  margin-bottom: 1.15rem;
+
+  @media screen and (max-width: 767px) {
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+}
+
+.insightYearPager {
+  align-items: center;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  padding: 0.18rem;
+}
+
+.insightYearButton {
+  background: transparent;
+  border: 0;
+  border-radius: var(--app-radius-xs);
+  color: var(--app-text-muted);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  min-height: 1.65rem;
+  padding: 0.42rem 0.6rem;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.insightYearButton:hover {
+  color: var(--app-text-primary);
+}
+
+.insightYearButtonActive {
+  background: rgba(214, 141, 107, 0.16);
+  color: var(--app-accent-strong);
+}
+
+.insightCount {
+  color: var(--app-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.insightList {
+  display: grid;
+  gap: 1.05rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.insightItem {
+  align-items: stretch;
+  display: grid;
+  column-gap: 1.2rem;
+  grid-template-columns: 6.25rem minmax(0, 1fr);
+  min-width: 0;
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+    row-gap: 0.38rem;
+  }
+}
+
+.insightDate {
+  color: var(--app-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 650;
+  line-height: 1.35;
+  padding-top: 0.82rem;
+  white-space: nowrap;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.78rem;
+    padding-top: 0;
+  }
+}
+
+.insightLink {
+  border-left: 1px solid var(--app-border-strong);
+  color: inherit;
+  display: grid;
+  gap: 0.36rem;
+  min-width: 0;
+  padding: 0.7rem 0 0.76rem 1.15rem;
+  position: relative;
+  text-decoration: none;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+
+  &::before {
+    background: var(--app-border-strong);
+    content: '';
+    height: 1px;
+    left: 0;
+    opacity: 0.68;
+    position: absolute;
+    top: 1.36rem;
+    width: 0.68rem;
+  }
+
+  &:hover {
+    border-left-color: rgba(214, 141, 107, 0.54);
+    transform: translateX(2px);
+  }
+
+  &:hover .insightTitle {
+    color: var(--app-accent-strong);
+  }
+
+  @media screen and (max-width: 767px) {
+    padding-bottom: 0.48rem;
+    padding-top: 0.42rem;
+  }
+}
+
+.insightTitle {
+  color: var(--app-text-primary);
+  font-family: var(--font-serif);
+  font-size: 1.03rem;
+  font-weight: 700;
+  line-height: 1.35;
+  transition: color 0.18s ease;
+}
+
+.insightTldr {
+  align-items: baseline;
+  color: var(--app-text-secondary);
+  display: flex;
+  gap: 0.42rem;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  max-width: 62rem;
+
+  strong {
+    color: var(--app-text-muted);
+    flex: 0 0 auto;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 767px) {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.12rem;
+    font-size: 0.78rem;
+    line-height: 1.42;
+  }
+}
+
 :global(.timeline) {
   color: var(--app-text-secondary);
 }

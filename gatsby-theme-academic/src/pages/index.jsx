@@ -4,6 +4,7 @@ import React from "react";
 import AboutMe from "../components/PageFragments/HomePage/AboutMe";
 import Awards from "../components/PageFragments/HomePage/Awards";
 import Experience from "../components/PageFragments/HomePage/Experience";
+import NotesAndInsights from "../components/PageFragments/HomePage/NotesAndInsights";
 import SelectedResearch from "../components/PageFragments/HomePage/SelectedResearch";
 import SkillProgress from "../components/PageFragments/HomePage/SkillProgress";
 import News from "../components/PageFragments/HomePage/News";
@@ -48,6 +49,7 @@ export default () => (
     <div className={styles.homePageBody}>
       <AboutMe />
       <News />
+      <NotesAndInsights />
       <SelectedResearch />
       <Experience />
       <Awards />
