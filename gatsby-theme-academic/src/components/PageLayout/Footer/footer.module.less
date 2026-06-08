@@ -1,0 +1,78 @@
+/* Minimal site footer inspired by academic personal-site colophons. */
+.footerShell {
+  align-items: center;
+  border-top: 1px solid var(--app-border);
+  color: var(--app-text-tertiary);
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+  margin-top: 3.6rem;
+  padding: 2.4rem 0 0.4rem;
+}
+
+.footerIdentity {
+  display: grid;
+  gap: 0.42rem;
+  min-width: 0;
+
+  strong {
+    color: var(--app-text-primary);
+    font-family: var(--font-serif);
+    font-size: 1.02rem;
+    font-weight: 650;
+    letter-spacing: 0;
+    line-height: 1.2;
+  }
+
+  span {
+    color: var(--app-text-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    line-height: 1.3;
+  }
+}
+
+.footerSocials {
+  align-items: center;
+  color: var(--app-text-tertiary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.footerSocialAction {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--app-text-tertiary);
+  display: inline-flex;
+  font-size: 0.95rem;
+  height: 2rem;
+  justify-content: center;
+  padding: 0;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  width: 2rem;
+
+  &:hover,
+  &:focus-visible {
+    border-color: rgba(44, 93, 116, 0.18);
+    color: var(--app-link-strong);
+    transform: translateY(-1px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footerShell {
+    align-items: flex-start;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    margin-top: 2.4rem;
+    padding-top: 1.5rem;
+  }
+
+  .footerSocials {
+    justify-content: flex-start;
+  }
+}

@@ -424,68 +424,6 @@
   }
 }
 
-.activityStrip {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-  justify-content: flex-start;
-  margin: 0.2rem 0 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--app-border);
-
-  img {
-    display: block;
-    max-width: 100%;
-  }
-
-  .visitorMapImage {
-    max-width: 190px;
-  }
-
-  .githubActivityImage {
-    max-width: 600px;
-  }
-
-  @media screen and (max-width: 767px) {
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-}
-
-.visitorMapLink {
-  display: block;
-  flex: 0 0 clamp(160px, 18%, 190px);
-  max-width: 190px;
-  min-width: 0;
-  width: clamp(160px, 18%, 190px);
-}
-
-.visitorMapImage,
-.githubActivityImage {
-  height: auto;
-}
-
-.visitorMapImage {
-  opacity: 0.92;
-  width: 100%;
-}
-
-.githubActivityImage {
-  flex: 0 1 600px;
-  max-width: 600px;
-  min-width: 320px;
-  opacity: 0.86;
-  width: 600px;
-
-  @media screen and (max-width: 767px) {
-    min-width: 0;
-    width: 100%;
-  }
-}
-
 .awardTitleGrid {
   min-width: 0;
   width: 100%;

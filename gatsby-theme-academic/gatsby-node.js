@@ -581,6 +581,8 @@ exports.createSchemaCustomization = async (
       url: String
       icon: [String] @fontAwesomeIcon
       qrImage: String
+      emailUser: String
+      emailDomain: String
     }
     type SiteSiteMetadataInterests @dontInfer {
       icon: [String] @fontAwesomeIcon

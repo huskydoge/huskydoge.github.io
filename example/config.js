@@ -50,27 +50,34 @@ module.exports = {
   },
   social: [
     {
+      label: "CV",
       url: "https://docs.google.com/document/d/17Plv8CVYGSZ-8BX4-iFgNfxreOb0WJPD3kCndufbyMo/edit?tab=t.0",
       icon: ["ai", "cv"],
     },
     {
+      label: "GitHub",
       url: "https://github.com/huskydoge",
       icon: ["fab", "github"],
     },
     {
+      label: "Twitter",
       url: "https://twitter.com/huskydogewoof",
       icon: ["fab", "twitter"],
     },
     {
+      label: "Google Scholar",
       url: "https://scholar.google.com/citations?hl=en&user=h2Lf0_EAAAAJ",
       icon: ["fa", "graduation-cap"],
     },
     {
+      label: "LinkedIn",
       url: "https://www.linkedin.com/in/benhao-h-6534b629a/",
       icon: ["fab", "linkedin"],
     },
     {
-      url: "mailto:huskydogewoof@gmail.com",
+      label: "Email",
+      emailUser: "benhaoh",
+      emailDomain: "andrew.cmu.edu",
       icon: ["fas", "envelope"],
     },
     {
@@ -79,10 +86,12 @@ module.exports = {
       qrImage: "/qr-code.png",
     },
     {
+      label: "Xiaohongshu",
       url: "https://www.xiaohongshu.com/user/profile/614a97f000000000020250c8",
       icon: ["custom", "xiaohongshu"],
     },
     {
+      label: "Zhihu",
       url: "https://www.zhihu.com/people/huskydoge",
       icon: ["fab", "zhihu"],
     }

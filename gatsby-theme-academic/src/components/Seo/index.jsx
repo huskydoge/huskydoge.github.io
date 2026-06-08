@@ -1,3 +1,4 @@
+/** SEO metadata and analytics head composition for site pages. */
 /* Vendor imports */
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -20,6 +21,13 @@ const detailsQuery = graphql`
   }
 `;
 
+const CLOUDFLARE_WEB_ANALYTICS_SCRIPT = {
+  defer: true,
+  src: 'https://static.cloudflareinsights.com/beacon.min.js',
+  'data-cf-beacon': '{"token": "14effe4522bb49b08a55213c9a58229c"}',
+};
+
+/** Render SEO, social preview metadata, canonical links, and analytics scripts. */
 function SEO({
   title,
   description,
@@ -94,6 +102,7 @@ function SEO({
                   }))
                   : [],
               )}
+            script={[CLOUDFLARE_WEB_ANALYTICS_SCRIPT]}
           />
         );
       }}

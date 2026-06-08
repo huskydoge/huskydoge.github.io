@@ -78,6 +78,8 @@ export const useSiteMetadata = () => {
             url
             icon
             qrImage
+            emailUser
+            emailDomain
           }
           disqusScript
           contactFormUrl
