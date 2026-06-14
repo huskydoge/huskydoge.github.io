@@ -201,14 +201,9 @@ const ResearchCard = (props) => {
           <Img fluid={fluid} />
         ) : publicURL ? (
           <img
+            className={classnames(style.rawPreviewImage, { [style.animatedPreviewImage]: isGif })}
             src={publicURL}
             alt={title}
-            style={{ 
-              width: '100%', 
-              height: 'auto', 
-              display: 'block',
-              objectFit: 'contain'
-            }}
             loading="lazy"
           />
         ) : (

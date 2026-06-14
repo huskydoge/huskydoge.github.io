@@ -104,14 +104,30 @@
             animation-play-state: running;
         }
 
+        .rawPreviewImage {
+            display: block;
+            height: auto;
+            object-fit: contain;
+            width: 100%;
+        }
+
         &.animatedPreview {
-            // GIF previews carry motion, but should not dominate the publication row.
-            max-height: 18em;
+            // GIF previews should scale down as a whole rather than be cropped by the row.
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            max-height: none;
+            overflow: visible;
 
             :global(.gatsby-image-wrapper),
             img {
                 max-height: 18em;
                 object-fit: contain;
+            }
+
+            .animatedPreviewImage {
+                max-width: 100%;
+                width: auto;
             }
         }
 
@@ -125,7 +141,7 @@
             }
 
             &.animatedPreview {
-                max-height: 13em;
+                max-height: none;
 
                 img, :global(.gatsby-image-wrapper) {
                     max-height: 13em;

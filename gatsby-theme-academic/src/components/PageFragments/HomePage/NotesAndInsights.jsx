@@ -51,7 +51,7 @@ const NotesAndInsights = () => {
   return (
     <div className={styles.homepageSection}>
       <div className={styles.sectionHeading}>
-        <h2>Notes & Insights</h2>
+        <h2>Notes & Thoughts</h2>
         <p>Short posts, ideas, and quick public notes.</p>
       </div>
       <div className={styles.insightToolbar} aria-label="Post years">

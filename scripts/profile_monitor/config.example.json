@@ -1,0 +1,39 @@
+{
+  "profile": {
+    "display_name": "Benhao Huang",
+    "timezone": "America/Los_Angeles"
+  },
+  "github": {
+    "username": "huskydoge",
+    "repos": [
+      "huskydoge/huskydoge.github.io",
+      "huskydoge/Awesome-Loop-Models"
+    ]
+  },
+  "scholar": {
+    "profile_id": "h2Lf0_EAAAAJ",
+    "papers": [
+      {
+        "title": "Example Paper Title",
+        "doi": "",
+        "arxiv": ""
+      }
+    ]
+  },
+  "cloudflare": {
+    "hostname": "huskydoge.github.io",
+    "account_id_env": "CLOUDFLARE_ACCOUNT_ID",
+    "web_analytics_site_tag_env": "CLOUDFLARE_WEB_ANALYTICS_SITE_TAG",
+    "zone_tag_env": "CLOUDFLARE_ZONE_TAG",
+    "api_token_env": "CLOUDFLARE_API_TOKEN"
+  },
+  "x": {
+    "username": "huskydogewoof",
+    "user_id": "",
+    "bearer_token_env": "X_BEARER_TOKEN"
+  },
+  "linkedin": {
+    "gmail_query": "from:(linkedin.com) (invitation OR invite OR connect) newer_than:1d",
+    "summary_json_env": "LINKEDIN_SUMMARY_JSON"
+  }
+}

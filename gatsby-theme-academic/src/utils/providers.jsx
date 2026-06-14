@@ -11,16 +11,20 @@ import { ContextProvider } from './context';
 
 const shortcodes = { Gist };
 
+/**
+ * Wrap each Gatsby page with the shared academic site shell.
+ */
 export const wrapPageElement = ({ element, props }) => {
   const pathname = props?.location?.pathname || '';
   const isFullWidth = pathname.startsWith('/misc') || pathname.startsWith('/bookshelf') || pathname.startsWith('/calendar');
+  const containerClassName = isFullWidth ? 'container containerFullWidth' : 'container';
 
   return (
     <ContextProvider>
       <MDXProvider components={shortcodes}>
         <Header />
         <Container className="outerPadding">
-          <Container className="container">
+          <Container className={containerClassName}>
             {isFullWidth ? (
               <>
                 <div>
