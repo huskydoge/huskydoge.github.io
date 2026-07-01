@@ -17,7 +17,7 @@ const News = () => (
                 <div className={`${styles.newsContent} ${styles.newsContentGrouped}`}>
                     <ul className={styles.newsContentList}>
                         <li>
-                            Two papers (<strong>EqR</strong> and <strong>FloWM</strong>) are accepted to <strong>ICML 2026</strong>. See you in Seoul!
+                            Two papers (<strong><a href="https://arxiv.org/abs/2605.21488v1">EqR</a></strong> and <strong><a href="https://arxiv.org/abs/2601.01075">FloWM</a></strong>) are accepted to <strong>ICML 2026</strong>. See you in Seoul!
                         </li>
                         <li>
                             <strong><a href="https://github.com/huskydoge/Awesome-Loop-Models">Awesome Loop Models</a></strong> is released: a curated list and interactive browser for loop-model papers and technical blogs.

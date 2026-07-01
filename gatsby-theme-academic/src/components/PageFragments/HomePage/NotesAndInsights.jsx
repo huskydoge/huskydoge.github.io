@@ -5,6 +5,13 @@ import * as styles from './homePage.module.less';
 
 const insightItems = [
   {
+    date: '2026/06/18',
+    year: '2026',
+    name: 'Weight-Tied Iterative Models: Promise, Hype, and the Missing Evidence in 2026',
+    url: 'https://x.com/huskydogewoof/status/2067520786001530964?s=20',
+    tldr: 'Weight-tied iterative models are exciting, but the field still lacks solid evidence that they beat strong feedforward baselines under matched training and inference budgets.',
+  },
+  {
     date: '2026/05/21',
     year: '2026',
     name: 'Rethinking Hierarchy in Iterative Reasoning Models',
