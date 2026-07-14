@@ -5,7 +5,8 @@
   color: var(--app-text-tertiary);
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+  grid-template-areas: "map identity socials";
+  grid-template-columns: 11.25rem minmax(0, 1fr) minmax(0, auto);
   margin-top: 3.6rem;
   padding: 2.4rem 0 0.4rem;
 }
@@ -13,6 +14,7 @@
 .footerIdentity {
   display: grid;
   gap: 0.42rem;
+  grid-area: identity;
   min-width: 0;
 
   strong {
@@ -38,6 +40,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  grid-area: socials;
   justify-content: flex-end;
   min-width: 0;
 }
@@ -63,10 +66,27 @@
   }
 }
 
+.visitorMap {
+  grid-area: map;
+  justify-self: center;
+  max-width: 11.25rem;
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.visitorMap :global(#mapmyvisitors-widget) {
+  min-height: 0;
+}
+
 @media screen and (max-width: 767px) {
   .footerShell {
     align-items: flex-start;
     gap: 1rem;
+    grid-template-areas:
+      "identity"
+      "socials"
+      "map";
     grid-template-columns: 1fr;
     margin-top: 2.4rem;
     padding-top: 1.5rem;

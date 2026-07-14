@@ -1,10 +1,15 @@
 /** Minimal site footer with contact identity and social destinations. */
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { useSiteMetadata } from '../../../utils/hooks';
 import SocialIconLink from '../../SocialIconLink';
 
 import * as styles from './footer.module.less';
+
+const VISITOR_MAP_SRC = [
+  'https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=n',
+  '&d=kSjXsVwrxvK-nD9lnu4jzabJKRSwpsNTQlJDNnAmDRA',
+].join('');
 
 /** Return the best email parts from site metadata or social links. */
 const getEmailParts = (siteMetadata) => {
@@ -30,6 +35,21 @@ const formatEmailDisplay = (emailParts) => {
 export default () => {
   const siteMetadata = useSiteMetadata();
   const emailDisplay = formatEmailDisplay(getEmailParts(siteMetadata));
+  const visitorMapRef = useRef(null);
+
+  useEffect(() => {
+    const visitorMap = visitorMapRef.current;
+    const script = window.document.createElement('script');
+
+    script.id = 'mapmyvisitors';
+    script.type = 'text/javascript';
+    script.src = VISITOR_MAP_SRC;
+    visitorMap.appendChild(script);
+
+    return () => {
+      visitorMap.textContent = '';
+    };
+  }, []);
 
   return (
     <footer className={styles.footerShell}>
@@ -37,6 +57,12 @@ export default () => {
         <strong>{siteMetadata.authorAlternative || siteMetadata.author}</strong>
         {emailDisplay ? <span>{emailDisplay}</span> : null}
       </div>
+      <div
+        ref={visitorMapRef}
+        className={styles.visitorMap}
+        role="region"
+        aria-label="Visitor map"
+      />
       <nav className={styles.footerSocials} aria-label="Social links">
         {siteMetadata.social.map((social) => (
           <SocialIconLink
