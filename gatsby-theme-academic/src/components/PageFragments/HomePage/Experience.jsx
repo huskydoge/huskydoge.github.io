@@ -169,7 +169,7 @@ const Experience = () => {
   }
 
   return (
-    <div className={styles.homepageSection}>
+    <div id="experience-education" className={styles.homepageSection}>
       <div className={styles.sectionHeading}>
         <h2>Experience & Education</h2>
       </div>

@@ -9,7 +9,7 @@ module.exports = {
   introduction: [
     "Hello! Husky here! I'm an MSML student at CMU, working with the [Locus Lab](https://github.com/locuslab). My research focuses on LLM pre-training, particularly model architectures and training algorithms. I am currently interested in: \n - **Loop Models** - weight-tied architectures and iterative dynamics. \n - **Scalable Reasoning** - architectures and training methods that improve both reasoning capability and computational efficiency.",
     
-    "Before this, I worked on generative world models with the [VCG Group](https://vcg.seas.harvard.edu/) at Harvard and [Maitrix](https://github.com/maitrix-org) at UCSD, LLM-agent-based dataset curation with the [TRAIS Lab](https://github.com/TRAIS-Lab) at UIUC, and AI interpretability with the [XAI Lab](https://sjtu-xai-lab.github.io/) at SJTU. More details are available on my **[Experience](/experience)** page."
+    "Before this, I worked on generative world models with the [VCG Group](https://vcg.seas.harvard.edu/) at Harvard and [Maitrix](https://github.com/maitrix-org) at UCSD, LLM-agent-based dataset curation with the [TRAIS Lab](https://github.com/TRAIS-Lab) at UIUC, and AI interpretability with the [XAI Lab](https://sjtu-xai-lab.github.io/) at SJTU. More details are available in **[Experience](#experience-education)** below."
   ],
   avatar: "/avatar.png",
   avatarBack: "/avatar-back.jpeg",
