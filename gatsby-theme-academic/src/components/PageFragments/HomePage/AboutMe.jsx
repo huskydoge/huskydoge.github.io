@@ -35,7 +35,9 @@ const QuickLinks = () => (
       GitHub
     </a>
     <a
-      href="/calendar"
+      href="https://cal.com/husky-doge-husky-j4pyhn/random-chat"
+      target="_blank"
+      rel="noopener noreferrer"
       className={styles.quickLink}
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

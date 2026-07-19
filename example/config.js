@@ -7,9 +7,9 @@ module.exports = {
   author: "HuskyDoge",
   authorAlternative: "Benhao Huang",
   introduction: [
-    "Hello! Husky here! I'm a MSML student at CMU [Locus Lab](https://github.com/locuslab). Throughout my research journey, I've explored a variety of topics. Currently, my primary focus is on generative world modeling,  where I have been fortunate to work closely with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) and Professor [Yilun Du](https://yilundu.github.io/) on advancing the capabilities of world models. Previously, I collaborated with my amazing advisor [Jiaqi W. Ma](https://jiaqima.github.io/) at the [TRAIS Lab](https://github.com/TRAIS-Lab), focusing on dataset curation using LLM agents. I also gained valuable research experience in AI interpretability under Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
+    "Hello! Husky here! I'm an MSML student at CMU, working with the [Locus Lab](https://github.com/locuslab). My research focuses on LLM pre-training, particularly model architectures and training algorithms. I am currently interested in: \n - **Loop Models** - weight-tied architectures and iterative dynamics. \n - **Scalable Reasoning** - architectures and training methods that improve both reasoning capability and computational efficiency.",
     
-    "My primary research goal is to build autonomous AI agents with human-level reasoning, planning, and memory that can flexibly allocate computation under varying budget constraints and adapt to evolving environments through closed-loop interaction. Currently, I am particularly interested in: \n - **Scalable Reasoning** - methods that improve both capability and efficiency. \n - **World Modeling** - video generative models for long horizon prediction, control, and planning."    
+    "Before this, I worked on generative world models with the [VCG Group](https://vcg.seas.harvard.edu/) at Harvard and [Maitrix](https://github.com/maitrix-org) at UCSD, LLM-agent-based dataset curation with the [TRAIS Lab](https://github.com/TRAIS-Lab) at UIUC, and AI interpretability with the [XAI Lab](https://sjtu-xai-lab.github.io/) at SJTU. More details are available on my **[Experience](/experience)** page."
   ],
   avatar: "/avatar.png",
   avatarBack: "/avatar-back.jpeg",
@@ -127,15 +127,15 @@ module.exports = {
   interests: [
     {
       icon: "brain",
-      title: "World Model, Reasoning and Planning"
+      title: "Loop Models, Scalable Reasoning"
     },
     {
       icon: "cubes",
-      title: "Data-centric AI, AI Automation",
+      title: "LLM Pre-training, Model Architecture",
     },
     {
       icon: "layer-group",
-      title: "Efficient ML, Long Sequence Modeling",
+      title: "Efficient ML, Adaptive Computation",
     }
   ],
   experience: [
@@ -147,7 +147,7 @@ module.exports = {
           date: "Sept. 2025 - Present",
           title: "[Locus Lab](https://zicokolter.com/), CMU",
           location: "Pittsburgh, PA, USA",
-          description: "Studying scalable equilibrium models.",
+          description: "Studying scalable equilibrium models. Advised by [**Zico Kolter**](https://zicokolter.com/).",
         },
         {
           date: "May 2026 - Aug. 2026",
@@ -158,13 +158,13 @@ module.exports = {
           date: "Mar. 2025 - Aug. 2025",
           title: "[VCG Group](https://vcg.seas.harvard.edu/), Harvard",
           location: "Cambridge, MA, USA",
-          description: "Developed [**Flow Equivariant World Models**](https://arxiv.org/abs/2601.01075), studying structured dynamics outside the visible field of view.",
+          description: "Developed [**Flow Equivariant World Models**](https://arxiv.org/abs/2601.01075), studying structured dynamics outside the visible field of view. Advised by [**Yilun Du**](https://yilundu.github.io/), [**Fangneng Zhan**](https://fnzhan.com/), and [**Andy Keller**](https://akandykeller.github.io/).",
         },
         {
           date: "Jun. 2024 - Mar. 2025",
           title: "[Maitrix.org](https://github.com/maitrix-org), UCSD",
           location: "San Diego, CA, USA",
-          description: "Core contributor to [**PAN World Models**](https://arxiv.org/abs/2511.09057), previously leading the data and game-generation components.",
+          description: "Core contributor to [**PAN World Models**](https://arxiv.org/abs/2511.09057), previously leading the data and game-generation components. Advised by [**Zhiting Hu**](http://zhiting.ucsd.edu/).",
         },
         {
           date: "Mar. 2024 - Jun. 2024",
@@ -175,13 +175,13 @@ module.exports = {
           date: "Nov. 2023 - Sept. 2024",
           title: "[TRAIS Lab](https://github.com/TRAIS-Lab), UIUC",
           location: "remote",
-          description: "Developed [**DCA-Bench**](https://arxiv.org/abs/2406.07275), a benchmark for evaluating LLM agents on dataset issue detection and dataset curation.",
+          description: "Developed [**DCA-Bench**](https://arxiv.org/abs/2406.07275), a benchmark for evaluating LLM agents on dataset issue detection and dataset curation. Advised by [**Jiaqi W. Ma**](https://jiaqima.github.io/).",
         },
         {
           date: "Feb. 2023 - Jan. 2024",
           title: "[XAI Lab](https://sjtu-xai-lab.github.io/), SJTU",
           location: "Shanghai, China",
-          description: "Studied AI interpretability and safety through [**generalizable interaction primitives in DNNs**](https://arxiv.org/abs/2401.16318), using Shapley-value theory.",
+          description: "Studied AI interpretability and safety through [**generalizable interaction primitives in DNNs**](https://arxiv.org/abs/2401.16318), using Shapley-value theory. Advised by [**Quanshi Zhang**](http://qszhang.com/).",
         },
       ],
     },
