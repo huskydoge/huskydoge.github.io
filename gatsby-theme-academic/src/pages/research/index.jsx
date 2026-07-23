@@ -323,6 +323,7 @@ export const query = graphql`
             }
             date
             venue
+            conference
             authors
             path
             title

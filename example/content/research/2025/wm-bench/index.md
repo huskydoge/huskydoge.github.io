@@ -5,7 +5,8 @@ tags:
   - "World Model"
   - "Benchmark"
 
-venue: "ICLR 2025 Workshop World Models / ACL 2025 Findings"
+conference: "ACL 2025 Findings"
+venue: "World Models Workshop @ ICLR 2025"
 
 authors:
   - name: "Qiyue Gao"
@@ -51,5 +52,4 @@ priority: 2
 
 
 This paper evaluates whether modern Vision-Language Models (VLMs) like GPT-4o and Gemini can act as internal world models (WMs)—systems that understand and predict the world. The authors introduce WM-ABench, a benchmark assessing core perception and prediction abilities (e.g., motion, spatial reasoning, causal inference) across 23 dimensions and 6 simulated environments. Results from 517 experiments show major limitations: VLMs often perform at chance level in motion tasks and exhibit entangled, biased reasoning (e.g., associating object color with speed). The study reveals that current VLMs fall far short of human-like world modeling.
-
 

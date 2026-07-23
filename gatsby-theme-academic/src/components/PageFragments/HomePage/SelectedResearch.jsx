@@ -39,6 +39,7 @@ const SelectedResearch = () => {
             }
             date
             venue
+            conference
             authors
             path
             title

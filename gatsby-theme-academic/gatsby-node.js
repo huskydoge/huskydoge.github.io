@@ -647,6 +647,10 @@ exports.createSchemaCustomization = async (
         type: 'String',
         resolve: (source) => source.venue || '',
       },
+      conference: {
+        type: 'String',
+        resolve: (source) => source.conference || '',
+      },
       authors: {
         type: '[String]',
         extensions: {

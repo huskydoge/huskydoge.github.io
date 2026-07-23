@@ -39,6 +39,7 @@ const ResearchCard = (props) => {
       date,
       tags,
       venue,
+      conference,
       cover,
       links,
       highlight,
@@ -221,6 +222,7 @@ const ResearchCard = (props) => {
   ) : null;
 
   // Content section
+  const conferenceHTML = conference ? Utils.parseMarkDown(conference, true) : '';
   const contentSection = (
     <FlexboxGrid.Item as={Col} xs={24} sm={24} md={contentMdColumns} lg={contentLgColumns}>
       <h5><a href={Utils.generateFullUrl(siteMetadata, url)}>{title}</a></h5>
@@ -252,11 +254,24 @@ const ResearchCard = (props) => {
 
   return (
     <Panel
-      className={classnames(style.researchCard, { [style.highlighted]: highlight && enableHighlight }, 'cursor-default')}
+      className={classnames(
+        style.researchCard,
+        {
+          [style.highlighted]: highlight && enableHighlight,
+          [style.hasConference]: conference,
+        },
+        'cursor-default',
+      )}
       style={{ padding: 0 }}
       // hoverable
       bordered
     >
+      {conference ? (
+        <span
+          className={style.conferenceBadge}
+          dangerouslySetInnerHTML={{ __html: conferenceHTML }}
+        />
+      ) : null}
       <FlexboxGrid gutter={8} align="middle">
         {/* On mobile: content first (title, links), then image below. On desktop: content left, image right */}
         {contentSection}

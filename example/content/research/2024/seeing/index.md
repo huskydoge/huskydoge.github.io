@@ -4,7 +4,7 @@ date: "2024-12-10"
 tags:
   - "Adversarial Perturbations"
   - "AI Safety"
-venue: AAAI 2025
+conference: "AAAI 2025"
 authors:
   - name: "Lu Chen"
   - name: "Shaofeng Li"

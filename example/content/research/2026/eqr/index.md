@@ -6,7 +6,7 @@ tags:
   - "Test-Time Compute"
   - "Equilibrium Models"
 highlight: true
-venue: "ICML 2026"
+conference: "ICML 2026"
 authors:
   - name: "**Benhao Huang**"
   - name: "Zhengyang Geng"

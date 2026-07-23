@@ -6,7 +6,8 @@ tags:
   - "Benchmark"
   - "Data-centric AI"
 highlight: true
-venue: "[KDD-2025 DB Track](https://kdd2025.kdd.org/call-for-datasets-and-benchmarks-track-papers/) **(Oral)**, [ICML-2025 Data World](https://dataworldicml2025.github.io/)"
+conference: "[KDD 2025](https://kdd2025.kdd.org/call-for-datasets-and-benchmarks-track-papers/)"
+venue: "[Data World Workshop @ ICML 2025](https://dataworldicml2025.github.io/)"
 
 authors:
   - name: "**Benhao Huang**"
@@ -43,4 +44,3 @@ It’s a pity that I won’t be able to attend KDD 2025 due to visa issues. My a
 ** 08/05/2025 Update: **
 
 - I’m happy to hear that DCA-Bench received a total of six questions during the oral session. Surprisingly, the session chair showed great interest in our work—haha!
-

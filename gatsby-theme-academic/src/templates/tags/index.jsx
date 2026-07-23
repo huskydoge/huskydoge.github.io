@@ -165,6 +165,7 @@ export const pageQuery = graphql`
             }
             date
             venue
+            conference
             authors
             path
             title
