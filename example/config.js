@@ -152,7 +152,7 @@ module.exports = {
         {
           date: "May 2026 - Aug. 2026",
           title: "[Institute of Foundation Models](https://www.linkedin.com/showcase/institute-of-foundation-models/posts/?feedView=all)",
-          description: "Research internship on **Loop Models on Scale**.",
+          description: "Research internship on **Loop Models on Scale**. Advised by [**Xuezhe Ma**](https://xuezhemax.github.io/).",
         },
         {
           date: "Mar. 2025 - Aug. 2025",
