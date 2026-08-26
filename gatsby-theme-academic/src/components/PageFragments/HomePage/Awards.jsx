@@ -29,7 +29,7 @@ const AwardItem = ({ title: awardTitle, date, iconSize, icon }) => {
         color: 'var(--app-text-secondary)',
       }}
       icon={<Icon size={iconSize || 'lg'} fixedWidth icon={icon || 'award'} />}
-      iconStyle={{ cursor: 'default', background: 'rgba(232, 166, 139, 0.18)', borderRadius: 'var(--app-radius-sm)' }}
+      iconStyle={{ cursor: 'default', background: 'rgba(232, 166, 139, 0.18)', borderRadius: '50%' }}
       iconColor="#d68d6b"
       // bubbleStyle={{ background: 'none', border: '0' }}
     />
