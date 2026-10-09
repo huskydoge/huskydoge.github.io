@@ -70,6 +70,11 @@ module.exports = {
       icon: ["fa", "graduation-cap"],
     },
     {
+      label: "alphaXiv",
+      url: "https://www.alphaxiv.org/@benhao-huang",
+      icon: ["custom", "alphaxiv"],
+    },
+    {
       label: "LinkedIn",
       url: "https://www.linkedin.com/in/benhao-h-6534b629a/",
       icon: ["fab", "linkedin"],
